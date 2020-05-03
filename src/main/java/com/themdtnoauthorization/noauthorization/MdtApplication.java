@@ -1,4 +1,4 @@
-package com.themdtnoauthorization.noauthorization.entity;
+package com.themdtnoauthorization.noauthorization;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

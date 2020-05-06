@@ -8,6 +8,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +52,7 @@ public class PatientManager {
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){
-        save(new Patient("Tomasz", "Ostrowski", "ATS210321", new Date(), "M", "+48 603 923 436", "t.z.ostrowski@gmail.com", 123345));
+        save(new Patient("Tomasz", "Ostrowski", "ATS210321", LocalDate.of(1982, 11, 14 ), "M", "+48 603 923 436", "t.z.ostrowski@gmail.com", 123345));
         save(new Patient( "Mateusz", "Waćkowski"));
         save(new Patient("Piotr", "Żołądziejewski"));
         save(new Patient("Baltazar", "Kościuszko"));

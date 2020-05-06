@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -20,7 +22,7 @@ public class Mdt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date DateOfReferralForMDT;
+    private LocalDateTime DateOfReferralForMDT;
 
     @OneToOne
     private Disease disease;
@@ -31,8 +33,8 @@ public class Mdt {
     private String summary;
     private Date reviewDate;
     private String additionalComments;
-    private Date startDate;  //and time
-    private Date endDate;
+    private LocalDateTime  startDate;  //and time
+    private LocalDateTime  endDate;
 
     @OneToMany
     private Set<MedicalProfessional> attendees;

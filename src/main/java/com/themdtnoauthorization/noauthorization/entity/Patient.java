@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,7 +24,7 @@ public class Patient {
     private String givenName;
     private String surname;
     private String idNumber;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private int age;
     private String gender;
     private String mobileNumber;
@@ -37,7 +39,7 @@ public class Patient {
         this.surname = surname;
     }
 
-    public Patient(String givenName, String surname, String idNumber, Date dateOfBirth, String gender, String mobileNumber, String email, int patientNumber) {
+    public Patient(String givenName, String surname, String idNumber, LocalDate dateOfBirth, String gender, String mobileNumber, String email, int patientNumber) {
         this.givenName = givenName;
         this.surname = surname;
         this.idNumber = idNumber;

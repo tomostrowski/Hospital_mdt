@@ -27,7 +27,7 @@ public class TreatmentHistoryApi {
         return treatmentHistoryManager.findAll();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/new")
     public TreatmentHistory addNew(TreatmentHistory treatmentHistory){
         return treatmentHistoryManager.save(treatmentHistory);
     }

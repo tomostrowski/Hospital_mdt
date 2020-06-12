@@ -72,6 +72,14 @@ public class CancerInfoApi {
         return ResponseEntity.ok().body("Ki67 has been changed to "+ki67);
     }
 
+    @PatchMapping("/{id}/typeOther={typeOther}")
+    public ResponseEntity<String> changeTypeOther(@PathVariable Long id, @PathVariable String typeOther){
+        CancerInfo cancerInfo = findById(id).get();
+        cancerInfo.setKi67(typeOther);
+        cancerInfoManager.save(cancerInfo);
+        return ResponseEntity.ok().body("Other type has been changed to "+ typeOther);
+    }
+
     @PatchMapping("/{id}/size={size}")
     public ResponseEntity<String> changeSize(@PathVariable Long id, @PathVariable int size){
         CancerInfo cancerInfo = findById(id).get();

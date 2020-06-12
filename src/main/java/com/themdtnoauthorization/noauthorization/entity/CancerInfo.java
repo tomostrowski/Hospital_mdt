@@ -32,6 +32,7 @@ public class CancerInfo {
     private String grade;
     private String biomarkers;
     private String ki67;
+    private String typeOther;
     private int size;
     private String margins;
     private double MarginNumber;

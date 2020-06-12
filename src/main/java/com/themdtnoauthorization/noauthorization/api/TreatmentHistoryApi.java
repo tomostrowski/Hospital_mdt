@@ -62,6 +62,14 @@ public class TreatmentHistoryApi {
         return ResponseEntity.ok().body("Radiotherapy has been changed.");
     }
 
+    @PatchMapping("/{id}/endocrine")
+    public ResponseEntity<String> changeEndocrineTreatment(@PathVariable Long id, @RequestBody String endocrine){
+        TreatmentHistory treatmentHistory = treatmentHistoryManager.findById(id).get();
+        treatmentHistory.setEndocrineTreatment(endocrine);
+        treatmentHistoryManager.save(treatmentHistory);
+        return ResponseEntity.ok().body("Endocrine Treatment has been changed.");
+    }
+
     @PatchMapping("/{id}/chemotherapy")
     public ResponseEntity<String> changeChemotherapy(@PathVariable Long id, @RequestBody String chemotherapy){
         TreatmentHistory treatmentHistory = treatmentHistoryManager.findById(id).get();

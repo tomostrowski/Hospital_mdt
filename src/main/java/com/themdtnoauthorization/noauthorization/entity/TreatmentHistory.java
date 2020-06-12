@@ -22,6 +22,7 @@ public class TreatmentHistory {
     private String biopsy;
     private String surgery;
     private String radiotherapy;
+    private String endocrineTreatment;
     private String chemotherapy;
     private String immunotherapy;
     private String physiotherapy;

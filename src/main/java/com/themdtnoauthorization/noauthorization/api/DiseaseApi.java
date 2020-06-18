@@ -11,6 +11,8 @@ import com.themdtnoauthorization.noauthorization.manager.TreatmentHistoryManager
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/disease")
 @CrossOrigin
@@ -21,14 +23,15 @@ public class DiseaseApi {
     private TreatmentHistoryManager treatmentHistoryManager;
 
     public DiseaseApi(DiseaseManager diseaseManager, MedicalProfessionalManager medicalProfessionalManager, CancerInfoManager cancerInfoManager, TreatmentHistoryManager treatmentHistoryManager){
+        this.diseaseManager = diseaseManager;
         this.medicalProfessionalManager = medicalProfessionalManager;
         this.cancerInfoManager = cancerInfoManager;
         this.treatmentHistoryManager = treatmentHistoryManager;
     }
 
     @GetMapping("/{id}")
-    public Disease findById(Long id) {
-        return diseaseManager.findById(id).get();
+    public Optional<Disease> findById(@PathVariable Long id) {
+        return diseaseManager.findById(id);
     }
 
     @GetMapping("/all")

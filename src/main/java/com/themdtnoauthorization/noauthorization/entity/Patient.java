@@ -29,7 +29,7 @@ public class Patient {
     private String gender;
     private String mobileNumber;
     private String email;
-    private int patientNumber;
+    private String patientNumber;
 
     @OneToMany
     private Set<Disease> diseases;
@@ -39,7 +39,7 @@ public class Patient {
         this.surname = surname;
     }
 
-    public Patient(String givenName, String surname, String idNumber, LocalDate dateOfBirth, String gender, String mobileNumber, String email, int patientNumber) {
+    public Patient(String givenName, String surname, String idNumber, LocalDate dateOfBirth, String gender, String mobileNumber, String email, String patientNumber) {
         this.givenName = givenName;
         this.surname = surname;
         this.idNumber = idNumber;

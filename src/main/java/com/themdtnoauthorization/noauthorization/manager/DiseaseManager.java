@@ -7,6 +7,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Service
@@ -36,7 +37,7 @@ public class DiseaseManager {
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDb(){
-        save(new Disease("LEFT breast IDCG3 ER neg, PR neg, Her2 awaited (FISH) 28mm on US"));
-        save(new Disease("Breast Cancer VTT2"));
+        save(new Disease("LEFT breast IDCG3 ER neg, PR neg, Her2 awaited (FISH) 28mm on US", LocalDate.of(2005, 11, 14 ),"Marek Mariusz Ostrowski","Grzegorz Waryński","Shah Hospital Kenia","palpable 3cm mass UOQ and axillary nodes, Imaging: MMG Right breast normal, left breast 27mm density with microcalcifications suspicious for malignancy BIRADS 4c/5" +
+                "US: left breast solitary 28mm abnormality multiple abnormal axillary nodes. Right breast NAD"));
     }
 }

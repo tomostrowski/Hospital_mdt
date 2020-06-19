@@ -52,11 +52,11 @@ public class PatientManager {
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){
-        save(new Patient("Tomasz", "Ostrowski", "ATS210321", LocalDate.of(1982, 11, 14 ), "M", "+48 603 923 436", "t.z.ostrowski@gmail.com", "as123345"));
-        save(new Patient( "Mateusz", "Waćkowski"));
-        save(new Patient("Piotr", "Żołądziejewski"));
-        save(new Patient("Baltazar", "Kościuszko"));
-        save(new Patient("Arkadiusz", "Słomiński"));
-        save(new Patient("Grzegorz", "Mickiewicz"));
+        save(new Patient("Anna", "Kowal", "ATS210321", LocalDate.of(1982, 11, 14 ), "M", "+48 603 923 436", "t.z.ostrowski@gmail.com", "as123345"));
+        save(new Patient( "Monika", "Waćkowska"));
+        save(new Patient("Maria", "Żołądziejewska"));
+        save(new Patient("Małgorzata", "Kościuszko"));
+        save(new Patient("Barbara", "Słomińska"));
+        save(new Patient("Anna", "Mickiewicz"));
     }
 }

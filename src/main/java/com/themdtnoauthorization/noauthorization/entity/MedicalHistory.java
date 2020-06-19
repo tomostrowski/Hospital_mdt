@@ -24,9 +24,6 @@ public class MedicalHistory {
     @OneToOne
     private Patient patient;
 
-    @OneToOne
-    private Disease disease;
-
     public MedicalHistory(String familyHistory, String medication, String allergies, String performanceStatus) {
         this.familyHistory = familyHistory;
         this.medication = medication;

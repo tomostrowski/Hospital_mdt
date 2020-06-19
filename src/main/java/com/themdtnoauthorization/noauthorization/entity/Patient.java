@@ -34,6 +34,9 @@ public class Patient {
     @OneToMany
     private Set<Disease> diseases;
 
+    @OneToOne
+    private MedicalHistory medicalHistory;
+
     public Patient(String givenName, String surname) {
         this.givenName = givenName;
         this.surname = surname;

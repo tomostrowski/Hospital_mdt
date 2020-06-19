@@ -2,8 +2,10 @@ package com.themdtnoauthorization.noauthorization.api;
 
 
 import com.themdtnoauthorization.noauthorization.entity.Disease;
+import com.themdtnoauthorization.noauthorization.entity.MedicalHistory;
 import com.themdtnoauthorization.noauthorization.entity.Patient;
 import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
+import com.themdtnoauthorization.noauthorization.manager.MedicalHistoryManager;
 import com.themdtnoauthorization.noauthorization.manager.PatientManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +22,13 @@ public class PatientApi {
 
     private PatientManager patientManager;
     private DiseaseManager diseaseManager;
+    private  MedicalHistoryManager medicalHistoryManager;
 
     @Autowired
-    public PatientApi(PatientManager patientManager, DiseaseManager diseaseManager) {
+    public PatientApi(PatientManager patientManager, DiseaseManager diseaseManager, MedicalHistoryManager medicalHistoryManager) {
         this.patientManager = patientManager;
         this.diseaseManager = diseaseManager;
+        this.medicalHistoryManager = medicalHistoryManager;
     }
 
     @GetMapping("/{id}")
@@ -97,6 +101,17 @@ public class PatientApi {
 //        disease.setPatient(patient);
 //        diseaseManager.save(disease);
         return ResponseEntity.ok().body("Disease has been added to patient "+ patient.getGivenName()+" "+patient.getSurname()+".");
+    }
+
+    @PatchMapping("/{id}/setMedicalHistory={medicalHistoryId}")
+    public ResponseEntity<String> setMedicalHistory(@PathVariable Long id, @PathVariable Long medicalHistoryId){
+        Patient patient= patientManager.findById(id).get();
+        MedicalHistory medicalHistory = medicalHistoryManager.findById(medicalHistoryId).get();
+        patient.setMedicalHistory(medicalHistory);
+        patientManager.save(patient);
+//        disease.setPatient(patient);
+//        diseaseManager.save(disease);
+        return ResponseEntity.ok().body("Medical History has been added to patient "+ patient.getGivenName()+" "+patient.getSurname()+".");
     }
 
 }

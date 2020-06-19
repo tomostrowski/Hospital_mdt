@@ -48,11 +48,10 @@ public class Disease {
     @OneToOne
     private CancerInfo cancerInfo;
 //
-//    @OneToOne
-//    private TreatmentHistory treatmentHistory;
-//
-//    @OneToOne
-//    private MedicalHistory medicalHistory;
+    @OneToOne
+    private TreatmentHistory treatmentHistory;
+
+
 
 //    @OneToMany
 //    private Set<Mdt> mdts;

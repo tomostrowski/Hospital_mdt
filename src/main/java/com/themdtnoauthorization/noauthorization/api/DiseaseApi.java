@@ -89,15 +89,15 @@ public class DiseaseApi {
         return ResponseEntity.ok().body("Cancer Info has been added.");
     }
 
-//    @PatchMapping("/{id}/setTreatmentHistory={treatmentId}")
-//    public ResponseEntity<String> setTreatmentHistory(@PathVariable Long id, @PathVariable Long treatmentId) {
-//        Disease disease = diseaseManager.findById(id).orElseThrow(() -> new RuntimeException("Disease doesn't exist"));
-//        TreatmentHistory treatmentHistory = treatmentHistoryManager.findById(treatmentId)
-//                .orElseThrow(()->new RuntimeException("Treatment History does't exist"));
-//        disease.setTreatmentHistory(treatmentHistory);
-//        diseaseManager.save(disease);
-//        return ResponseEntity.ok().body("Treatment History has been added.");
-//    }
+    @PatchMapping("/{id}/setTreatmentHistory={treatmentId}")
+    public ResponseEntity<String> setTreatmentHistory(@PathVariable Long id, @PathVariable Long treatmentId) {
+        Disease disease = diseaseManager.findById(id).orElseThrow(() -> new RuntimeException("Disease doesn't exist"));
+        TreatmentHistory treatmentHistory = treatmentHistoryManager.findById(treatmentId)
+                .orElseThrow(()->new RuntimeException("Treatment History does't exist"));
+        disease.setTreatmentHistory(treatmentHistory);
+        diseaseManager.save(disease);
+        return ResponseEntity.ok().body("Treatment History has been added.");
+    }
 //
 //    @PatchMapping("/{id}/setMedicalHistory={medicalHistoryId}")
 //    public ResponseEntity<String> setMedicaltHistory(@PathVariable Long id, @PathVariable Long medicalHistoryId) {

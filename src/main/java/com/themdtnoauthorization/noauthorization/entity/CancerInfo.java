@@ -37,4 +37,8 @@ public class CancerInfo {
     private String margins;
     private double MarginNumber;
     private String positiveLymphNodes;
+
+    public CancerInfo(String summary) {
+        this.summary = summary;
+    }
 }

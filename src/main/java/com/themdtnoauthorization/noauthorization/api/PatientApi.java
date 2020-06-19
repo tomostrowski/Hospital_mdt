@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -27,8 +28,8 @@ public class PatientApi {
     }
 
     @GetMapping("/{id}")
-    public Patient getPatientById(@PathVariable Long id){
-        return patientManager.findById(id).get();
+    public Optional<Patient> getPatientById(@PathVariable Long id){
+        return patientManager.findById(id);
     }
 
     @GetMapping("/all")

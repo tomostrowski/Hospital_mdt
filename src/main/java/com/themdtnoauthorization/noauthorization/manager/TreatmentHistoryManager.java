@@ -34,6 +34,6 @@ public class TreatmentHistoryManager {
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB(){
-        save(new TreatmentHistory());
+        save(new TreatmentHistory("US guided core Bx 15/06/2020","","MMG: Right breast normal, left breast 27mm density with microcalcifications suspicious for malignancy BIRADS 4c/5 US: left breast solitary 28mm abnormality multiple abnormal axillary nodes. Right breast NAD.","","","","",""));
     }
 }

@@ -41,6 +41,9 @@ public class Disease {
     @OneToOne
     private TreatmentHistory treatmentHistory;
 
+    @OneToOne
+    private MedicalHistory medicalHistory;
+
     @OneToMany
     private Set<Mdt> mdts;
 

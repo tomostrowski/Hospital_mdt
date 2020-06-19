@@ -1,13 +1,7 @@
 package com.themdtnoauthorization.noauthorization.api;
 
-import com.themdtnoauthorization.noauthorization.entity.CancerInfo;
-import com.themdtnoauthorization.noauthorization.entity.Disease;
-import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
-import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
-import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
-import com.themdtnoauthorization.noauthorization.manager.MedicalProfessionalManager;
-import com.themdtnoauthorization.noauthorization.manager.CancerInfoManager;
-import com.themdtnoauthorization.noauthorization.manager.TreatmentHistoryManager;
+import com.themdtnoauthorization.noauthorization.entity.*;
+import com.themdtnoauthorization.noauthorization.manager.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,12 +15,14 @@ public class DiseaseApi {
     private MedicalProfessionalManager medicalProfessionalManager;
     private CancerInfoManager cancerInfoManager;
     private TreatmentHistoryManager treatmentHistoryManager;
+    private MedicalHistoryManager medicalHistoryManager;
 
-    public DiseaseApi(DiseaseManager diseaseManager, MedicalProfessionalManager medicalProfessionalManager, CancerInfoManager cancerInfoManager, TreatmentHistoryManager treatmentHistoryManager){
+    public DiseaseApi(DiseaseManager diseaseManager, MedicalProfessionalManager medicalProfessionalManager, CancerInfoManager cancerInfoManager, TreatmentHistoryManager treatmentHistoryManager, MedicalHistoryManager medicalHistoryManager) {
         this.diseaseManager = diseaseManager;
         this.medicalProfessionalManager = medicalProfessionalManager;
         this.cancerInfoManager = cancerInfoManager;
         this.treatmentHistoryManager = treatmentHistoryManager;
+        this.medicalHistoryManager = medicalHistoryManager;
     }
 
     @GetMapping("/{id}")
@@ -101,6 +97,16 @@ public class DiseaseApi {
         disease.setTreatmentHistory(treatmentHistory);
         diseaseManager.save(disease);
         return ResponseEntity.ok().body("Treatment History has been added.");
+    }
+
+    @PatchMapping("/{id}/setMedicalHistory={medicalHistoryId}")
+    public ResponseEntity<String> setMedicaltHistory(@PathVariable Long id, @PathVariable Long medicalHistoryId) {
+        Disease disease = diseaseManager.findById(id).orElseThrow(() -> new RuntimeException("Disease doesn't exist"));
+        MedicalHistory medicalHistory = medicalHistoryManager.findById(medicalHistoryId)
+                .orElseThrow(()->new RuntimeException("Medical History does't exist"));
+        disease.setMedicalHistory(medicalHistory);
+        diseaseManager.save(disease);
+        return ResponseEntity.ok().body("Medical History has been added.");
     }
 
 //    @PatchMapping("/{id}/addMDTs={mdtId}")

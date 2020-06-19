@@ -26,13 +26,11 @@ public class Disease {
     private String diagnosingPhysician;
     private String referringPhysician;
     private String placeOfDiagnosis;
-    private String cancerInfo;
-    public Disease(String name, LocalDate diagnosisDate, String diagnosingPhysician, String referringPhysician, String placeOfDiagnosis, String cancerInfo) {
+    public Disease(String name, LocalDate diagnosisDate, String diagnosingPhysician, String referringPhysician, String placeOfDiagnosis) {
     this.name = name;
     this.diagnosisDate = diagnosisDate;
     this.referringPhysician = referringPhysician;
     this.placeOfDiagnosis = placeOfDiagnosis;
-    this.cancerInfo =cancerInfo;
     }
 
 //    @OneToOne
@@ -47,8 +45,8 @@ public class Disease {
     @ManyToOne
     private Patient patient;
 //
-//    @OneToOne
-//    private CancerInfo cancerInfo;
+    @OneToOne
+    private CancerInfo cancerInfo;
 //
 //    @OneToOne
 //    private TreatmentHistory treatmentHistory;

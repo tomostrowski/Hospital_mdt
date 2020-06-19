@@ -79,15 +79,15 @@ public class DiseaseApi {
 //        return ResponseEntity.ok().body("Referring Physician has been added.");
 //    }
 //
-//    @PatchMapping("/{id}/setCancerInfo={cancerInfoId}")
-//    public ResponseEntity<String> setCancerInfo(@PathVariable Long id, @PathVariable Long cancerInfoId) {
-//        Disease disease = diseaseManager.findById(id).orElseThrow(() -> new RuntimeException("Disease doesn't exist"));
-//        CancerInfo cancerInfo = cancerInfoManager.findById(cancerInfoId)
-//                .orElseThrow(()->new RuntimeException("Cancer Info does't exist"));
-//        disease.setCancerInfo(cancerInfo);
-//        diseaseManager.save(disease);
-//        return ResponseEntity.ok().body("Cancer Info has been added.");
-//    }
+    @PatchMapping("/{id}/setCancerInfo={cancerInfoId}")
+    public ResponseEntity<String> setCancerInfo(@PathVariable Long id, @PathVariable Long cancerInfoId) {
+        Disease disease = diseaseManager.findById(id).orElseThrow(() -> new RuntimeException("Disease doesn't exist"));
+        CancerInfo cancerInfo = cancerInfoManager.findById(cancerInfoId)
+                .orElseThrow(()->new RuntimeException("Cancer Info does't exist"));
+        disease.setCancerInfo(cancerInfo);
+        diseaseManager.save(disease);
+        return ResponseEntity.ok().body("Cancer Info has been added.");
+    }
 
 //    @PatchMapping("/{id}/setTreatmentHistory={treatmentId}")
 //    public ResponseEntity<String> setTreatmentHistory(@PathVariable Long id, @PathVariable Long treatmentId) {

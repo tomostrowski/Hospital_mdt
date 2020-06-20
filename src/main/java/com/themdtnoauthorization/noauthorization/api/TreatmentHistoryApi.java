@@ -28,7 +28,7 @@ public class TreatmentHistoryApi {
     }
 
     @PostMapping("/new")
-    public TreatmentHistory addNew(TreatmentHistory treatmentHistory){
+    public TreatmentHistory addNew(@RequestBody TreatmentHistory treatmentHistory){
         return treatmentHistoryManager.save(treatmentHistory);
     }
 

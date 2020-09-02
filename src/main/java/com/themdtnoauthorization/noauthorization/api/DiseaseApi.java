@@ -46,6 +46,12 @@ public class DiseaseApi {
         return diseaseManager.save(disease);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Disease update) {
+        diseaseManager.update(id, update);
+    return ResponseEntity.ok("Disease has been updated.");
+    }
+
     @PatchMapping("{id}/name={name}")
     public ResponseEntity<String> changeName(@PathVariable Long id, @PathVariable String name) {
         Disease disease = diseaseManager.findById(id).get();

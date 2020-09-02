@@ -20,6 +20,11 @@ public class TreatmentHistoryManager {
         return treatmentHistoryRepo.save(treatmentHistory);
     }
 
+    public TreatmentHistory update(Long id, TreatmentHistory update){
+        update.setId(id);
+        return treatmentHistoryRepo.save(update);
+    }
+
     public Optional<TreatmentHistory> findById(Long id){
         return treatmentHistoryRepo.findById(id);
     }

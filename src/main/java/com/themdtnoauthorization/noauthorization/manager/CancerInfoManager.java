@@ -20,6 +20,11 @@ public class CancerInfoManager {
         return cancerInfoRepo.save(cancerInfo);
     }
 
+    public CancerInfo update(Long id, CancerInfo updatedCancerInfo) {
+        updatedCancerInfo.setId(id);
+        return cancerInfoRepo.save(updatedCancerInfo);
+    }
+
     public Optional<CancerInfo> findById(Long id){
         return cancerInfoRepo.findById(id);
     }

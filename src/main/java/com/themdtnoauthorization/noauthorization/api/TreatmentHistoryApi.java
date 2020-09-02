@@ -32,6 +32,12 @@ public class TreatmentHistoryApi {
         return treatmentHistoryManager.save(treatmentHistory);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> update (@PathVariable Long id, @RequestBody TreatmentHistory update){
+        treatmentHistoryManager.update(id, update);
+        return ResponseEntity.ok("Treatment History has been updated.");
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         treatmentHistoryManager.deleteById(id);

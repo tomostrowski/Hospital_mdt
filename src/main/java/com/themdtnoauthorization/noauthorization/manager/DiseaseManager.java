@@ -31,6 +31,11 @@ public class DiseaseManager {
         return diseaseRepo.save(disease);
     }
 
+    public Disease update(Long id, Disease update) {
+        update.setId(id);
+        return diseaseRepo.save(update);
+    }
+
     public void deleteById(Long id){
         diseaseRepo.deleteById(id);
     }

@@ -33,6 +33,12 @@ public class CancerInfoApi {
         return cancerInfoManager.save(cancerInfo);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody CancerInfo updatedCancerInfo) {
+        cancerInfoManager.update(id, updatedCancerInfo);
+        return ResponseEntity.ok("Cancer info has been updated.");
+    }
+
     @PatchMapping("/{id}/summary={summary}")
     public ResponseEntity<String> changeName(@PathVariable Long id, @PathVariable String summary){
         CancerInfo cancerInfo = findById(id).get();

@@ -42,6 +42,12 @@ public class MedicalHistoryApi {
         return medicalHistoryManager.save(medicalHistory);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody MedicalHistory update){
+        medicalHistoryManager.update(id, update);
+        return ResponseEntity.ok("Medical History has been updated.");
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         MedicalHistory medicalHistory= medicalHistoryManager.findById(id).get();

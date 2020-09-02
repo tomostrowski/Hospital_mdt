@@ -52,8 +52,9 @@ public class PatientApi {
     }
 
     @PutMapping("/{id}")
-    public Patient updatePatient(@RequestBody Patient patientToUpdate, @PathVariable Long id) {
-        return patientManager.update(id, patientToUpdate);
+    public ResponseEntity<String> updatePatient(@RequestBody Patient patientToUpdate, @PathVariable Long id) {
+        patientManager.update(id, patientToUpdate);
+        return ResponseEntity.ok("Patient has been updated.");
     }
 
     @DeleteMapping("/{id}")

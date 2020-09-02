@@ -23,6 +23,11 @@ public class MedicalHistoryManager {
         return medicalHistoryRepo.save(medicalHistory);
     }
 
+    public MedicalHistory update(Long id, MedicalHistory update){
+        update.setId(id);
+       return medicalHistoryRepo.save(update);
+    }
+
     public Optional<MedicalHistory> findById(Long id){
         return medicalHistoryRepo.findById(id);
     }

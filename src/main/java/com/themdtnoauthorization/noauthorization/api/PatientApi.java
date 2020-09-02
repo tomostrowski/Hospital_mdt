@@ -51,6 +51,12 @@ public class PatientApi {
         return patientManager.save(patient);
     }
 
+    @PutMapping("/{id}")
+    public Patient updatePatient(@RequestBody Patient patient, @PathVariable Long id) {
+        Patient patientToUpdate= patientManager.findById(id).get();
+        return patientManager.save(patientToUpdate);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePatientById(@PathVariable Long id){
         Patient patient= patientManager.findById(id).get();

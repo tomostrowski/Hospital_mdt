@@ -33,6 +33,11 @@ public class PatientManager {
         return patientRepo.save(patient);
     }
 
+    public Patient update(Long id, Patient updatedPatient) {
+            updatedPatient.setId(id);
+            return patientRepo.save(updatedPatient);
+    }
+
     public Optional<Patient> findById(Long id){
         return patientRepo.findById(id);
     }

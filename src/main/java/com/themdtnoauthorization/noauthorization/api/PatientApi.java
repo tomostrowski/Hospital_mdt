@@ -52,9 +52,8 @@ public class PatientApi {
     }
 
     @PutMapping("/{id}")
-    public Patient updatePatient(@RequestBody Patient patient, @PathVariable Long id) {
-        Patient patientToUpdate= patientManager.findById(id).get();
-        return patientManager.save(patientToUpdate);
+    public Patient updatePatient(@RequestBody Patient patientToUpdate, @PathVariable Long id) {
+        return patientManager.update(id, patientToUpdate);
     }
 
     @DeleteMapping("/{id}")

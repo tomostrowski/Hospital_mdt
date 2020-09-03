@@ -31,10 +31,10 @@ public class Patient {
     private String email;
     private String patientNumber;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private Set<Disease> diseases;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private MedicalHistory medicalHistory;
 
     public Patient(String givenName, String surname) {

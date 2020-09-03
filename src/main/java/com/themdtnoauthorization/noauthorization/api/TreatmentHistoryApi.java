@@ -30,7 +30,7 @@ public class TreatmentHistoryApi {
     @PostMapping("/new")
     public ResponseEntity<String> addNew(@RequestBody TreatmentHistory treatmentHistory){
         treatmentHistoryManager.save(treatmentHistory);
-        ResponseEntity.ok().body("Treatment History has been added.");
+        return  ResponseEntity.ok().body("Treatment History has been added.");
     }
 
     @PutMapping("/{id}")

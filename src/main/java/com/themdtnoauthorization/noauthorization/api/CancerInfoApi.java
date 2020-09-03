@@ -29,8 +29,9 @@ public class CancerInfoApi {
     }
 
     @PostMapping("/new")
-    public CancerInfo addNew(@RequestBody CancerInfo cancerInfo){
-        return cancerInfoManager.save(cancerInfo);
+    public ResponseEntity<String> addNew(@RequestBody CancerInfo cancerInfo){
+        cancerInfoManager.save(cancerInfo);
+        return ResponseEntity.ok().body("Cancer info has been added.");
     }
 
     @PutMapping("/{id}")

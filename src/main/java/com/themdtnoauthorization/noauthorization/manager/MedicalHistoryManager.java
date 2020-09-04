@@ -34,9 +34,9 @@ public class MedicalHistoryManager {
 
     public Optional<Long> findLastId(){
          List<MedicalHistory> medicalHistoryList= medicalHistoryRepo.findAll();
-//         int numberOfElements = medicalHistoryList.size();
-//         MedicalHistory lastElement =medicalHistoryList.get(numberOfElements-1);
-         return Optional.ofNullable(medicalHistoryList.get(1).getId());
+         int numberOfElements = medicalHistoryList.size();
+         MedicalHistory lastElement =medicalHistoryList.get(numberOfElements-1);
+         return Optional.ofNullable(lastElement.getId());
     }
 
     public List<MedicalHistory> findAll(){

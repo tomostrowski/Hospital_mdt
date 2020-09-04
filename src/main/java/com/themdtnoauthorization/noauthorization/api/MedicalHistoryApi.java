@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/medicalHistory")
@@ -22,6 +23,11 @@ public class MedicalHistoryApi {
         this.medicalHistoryManager = medicalHistoryManager;
     }
 
+    @GetMapping("/lastId")
+    public Optional<Long> findLastId(){
+        return medicalHistoryManager.findLastId();
+    }
+
     @GetMapping("/{id}")
     public Optional<MedicalHistory> findById(@PathVariable Long id){
         return medicalHistoryManager.findById(id);
@@ -31,11 +37,6 @@ public class MedicalHistoryApi {
     public List<MedicalHistory> findAll(){
         return medicalHistoryManager.findAll();
     }
-
-//    @GetMapping("{id}/all")
-//    public Set<MedicalHistory> findAllin(@PathVariable Long id){
-//        return medicalHistoryManager.findAllDiseasesByPatientId(id);
-//    }
 
     @PostMapping("/new")
     public ResponseEntity<String> addNew(@RequestBody MedicalHistory medicalHistory){

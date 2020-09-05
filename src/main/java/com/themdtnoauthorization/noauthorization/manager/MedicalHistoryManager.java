@@ -47,9 +47,9 @@ public class MedicalHistoryManager {
         medicalHistoryRepo.deleteById(id);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDb(){
-        save(new MedicalHistory("mother breast cancer at 53yo, mother’s sister breast cancer at 49", "none", "none", "fdaf"));
-
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDb(){
+//        save(new MedicalHistory("mother breast cancer at 53yo, mother’s sister breast cancer at 49", "none", "none", "fdaf"));
+//
+//    }
 }

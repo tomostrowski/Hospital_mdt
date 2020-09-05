@@ -30,6 +30,11 @@ public class DiseaseApi {
         return diseaseManager.findById(id);
     }
 
+    @GetMapping("/token={token}")
+    public Optional<Disease> findById(@PathVariable String token) {
+        return diseaseManager.findByToken(token);
+    }
+
     @GetMapping("/all")
     public Iterable<Disease> findAll() {
         return diseaseManager.findAll();

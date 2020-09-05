@@ -26,6 +26,9 @@ public class DiseaseManager {
     public Iterable<Disease> findAll(){
         return diseaseRepo.findAll();
     }
+    public Optional<Disease> findByToken(String token){
+        return diseaseRepo.findByToken(token);
+    }
 
     public Disease save(Disease disease){
         return diseaseRepo.save(disease);

@@ -52,7 +52,7 @@ public class PatientManager {
 
     public Set<Disease> findAllDiseasesByPatientId(Long id){
         Patient patient = patientRepo.findById(id).get();
-        return diseaseRepo.findAllByPatient(patient);
+        return diseaseRepo.findAllByPatientOrderByDiagnosisDate(patient);
     }
 
     @EventListener(ApplicationReadyEvent.class)

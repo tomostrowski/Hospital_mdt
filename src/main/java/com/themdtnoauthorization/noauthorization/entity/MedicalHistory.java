@@ -20,7 +20,7 @@ public class MedicalHistory {
     private String allergies;
     private String performanceStatus;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private Patient patient;
 
     public MedicalHistory(String familyHistory, String medication, String allergies, String performanceStatus) {

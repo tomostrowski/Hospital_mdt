@@ -39,7 +39,7 @@ public class Patient {
     private String email;
     private String patientNumber;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany
     @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 

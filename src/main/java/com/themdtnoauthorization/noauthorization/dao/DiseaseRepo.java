@@ -11,5 +11,5 @@ import java.util.Set;
 @Repository
 public interface DiseaseRepo extends JpaRepository<Disease, Long> {
 
-    Set<Disease> findAllByPatientOrderByDiagnosisDate(Patient patient);
+    Set<Disease> findAllByPatientOrderByDiagnosisDateDesc(Patient patient);
 }

@@ -22,7 +22,7 @@ public class Disease {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private LocalDate diagnosisDate;
+        private LocalDate diagnosisDate;
     private String diagnosingPhysician;
     private String referringPhysician;
     private String placeOfDiagnosis;

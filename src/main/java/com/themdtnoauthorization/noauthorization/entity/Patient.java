@@ -32,6 +32,7 @@ public class Patient {
     private String patientNumber;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})

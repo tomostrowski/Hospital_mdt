@@ -55,13 +55,13 @@ public class PatientManager {
         return diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDB(){
-        save(new Patient("Anna", "Kowal", "ATS210321", LocalDate.of(1982, 11, 14 ), "M", "+48 603 923 436", "t.z.ostrowski@gmail.com", "as123345"));
-        save(new Patient( "Monika", "Waćkowska"));
-        save(new Patient("Maria", "Żołądziejewska"));
-        save(new Patient("Małgorzata", "Kościuszko"));
-        save(new Patient("Barbara", "Słomińska"));
-        save(new Patient("Anna", "Mickiewicz"));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDB(){
+//        save(new Patient("Anna", "Kowal", "AWS210321", LocalDate.of(1982, 11, 14 ), "F", "+55 524 000 300", "annakowal@gmail.com", "as123345"));
+//        save(new Patient( "Monika", "Waćkowska", "SSS21000021", LocalDate.of(1989, 9, 10 ), "F", "+49 253 923 436", "moniaa@gmail.com", "9856"));
+//        save(new Patient("Maria", "Żołądziejewska", "WTH6427", LocalDate.of(1928, 10, 1 ), "F", "+22 125 923 111", "maria234@gmail.com", "12346"));
+//        save(new Patient("Małgorzata", "Kościuszko", "ATS210321", LocalDate.of(1977, 6, 14 ), "F", "+78 953 923 111", "goska235@gmail.com", "824511"));
+//        save(new Patient("Barbara", "Słomińska", "ATS210321", LocalDate.of(1972, 1, 14 ), "F", "+48 124 685 972", "barbara@gmail.com", "e03952"));
+//        save(new Patient("Anna", "Mickiewicz", "ATS210321", LocalDate.of(1962, 12, 14 ), "F", "+48 777 963 436", "mickiewicz@gmail.com", "234k6427"));
+//    }
 }

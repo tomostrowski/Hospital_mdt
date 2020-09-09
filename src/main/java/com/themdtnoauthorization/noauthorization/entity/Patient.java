@@ -35,11 +35,11 @@ public class Patient {
     private String email;
     private String patientNumber;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany
     @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 
-    @OneToOne(mappedBy = "patient")
+    @OneToOne
     private MedicalHistory medicalHistory;
 
     public Patient(String givenName, String surname) {

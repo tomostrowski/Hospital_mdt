@@ -105,8 +105,6 @@ public class PatientApi {
         Disease disease = diseaseManager.findById(diseaseId).get();
         patient.getDiseases().add(disease);
         patientManager.save(patient);
-//        disease.setPatient(patient);
-//        diseaseManager.save(disease);
         return ResponseEntity.ok().body("Disease has been added to patient "+ patient.getGivenName()+" "+patient.getSurname()+".");
     }
 

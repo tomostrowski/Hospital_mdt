@@ -16,9 +16,7 @@ import javax.persistence.*;
 public class TreatmentHistory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String biopsy;
     private String surgery;
     private String radiotherapy;
@@ -31,6 +29,9 @@ public class TreatmentHistory {
     @OneToOne
     private Disease disease;
 
+    public TreatmentHistory(Long id) {
+        this.id = id;
+    }
     public TreatmentHistory(String biopsy, String surgery, String radiotherapy, String endocrineTreatment, String chemotherapy, String immunotherapy, String physiotherapy, String other) {
         this.biopsy = biopsy;
         this.surgery = surgery;

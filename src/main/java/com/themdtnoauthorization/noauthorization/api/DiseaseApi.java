@@ -48,7 +48,7 @@ public class DiseaseApi {
 
     @PostMapping("/new")
     public Disease addNew(@RequestBody Disease disease) {
-        return diseaseManager.save(disease);
+        return  diseaseManager.save(disease);
     }
 
     @PutMapping("/{id}")

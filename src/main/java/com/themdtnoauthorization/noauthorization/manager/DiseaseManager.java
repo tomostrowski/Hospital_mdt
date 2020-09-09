@@ -1,8 +1,13 @@
 package com.themdtnoauthorization.noauthorization.manager;
 
+import com.themdtnoauthorization.noauthorization.dao.CancerInfoRepo;
 import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
 import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
+import com.themdtnoauthorization.noauthorization.dao.TreatmentHistoryRepo;
+import com.themdtnoauthorization.noauthorization.entity.CancerInfo;
 import com.themdtnoauthorization.noauthorization.entity.Disease;
+import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
+import javassist.NotFoundException;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -14,6 +19,8 @@ import java.util.Optional;
 public class DiseaseManager {
     private DiseaseRepo diseaseRepo;
     private PatientRepo patientRepo;
+    private CancerInfoRepo cancerInfoRepo;
+    private TreatmentHistoryRepo treatmentHistoryRepo;
 
     public DiseaseManager(DiseaseRepo diseaseRepo, PatientRepo patientRepo) {
         this.diseaseRepo = diseaseRepo;
@@ -39,6 +46,7 @@ public class DiseaseManager {
     public void deleteById(Long id){
         diseaseRepo.deleteById(id);
     }
+
 
     @EventListener(ApplicationReadyEvent.class)
     public void fillDb(){

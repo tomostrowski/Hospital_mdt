@@ -37,8 +37,8 @@ public class CancerInfoManager {
         cancerInfoRepo.deleteById(id);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDb(){
-        save(new CancerInfo("palpable 3cm mass UOQ and axillary nodes, Imaging: MMG Right breast normal, left breast 27mm density with microcalcifications suspicious for malignancy BIRADS 4c/5"));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDb(){
+//        save(new CancerInfo("palpable 3cm mass UOQ and axillary nodes, Imaging: MMG Right breast normal, left breast 27mm density with microcalcifications suspicious for malignancy BIRADS 4c/5"));
+//    }
 }

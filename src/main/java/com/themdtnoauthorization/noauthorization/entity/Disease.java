@@ -42,7 +42,7 @@ public class Disease {
 //    @OneToOne
 //    private Institution placeOfDiagnosis;
 //
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne
     private Patient patient;
 //
     @OneToOne

@@ -18,9 +18,7 @@ import javax.persistence.Id;
 @Entity
 public class CancerInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String summary;
     private String Tc;   //c for clinical
     private String Nc;
@@ -40,5 +38,9 @@ public class CancerInfo {
 
     public CancerInfo(String summary) {
         this.summary = summary;
+    }
+
+    public CancerInfo(Long id) {
+        this.id = id;
     }
 }

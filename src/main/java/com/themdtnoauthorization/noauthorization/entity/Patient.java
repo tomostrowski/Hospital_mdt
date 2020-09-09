@@ -39,8 +39,7 @@ public class Patient {
     @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 
-    @OneToOne(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
+    @OneToOne
     private MedicalHistory medicalHistory;
 
     public Patient(String givenName, String surname) {

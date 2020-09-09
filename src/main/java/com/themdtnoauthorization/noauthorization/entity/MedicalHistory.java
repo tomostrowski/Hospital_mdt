@@ -20,7 +20,8 @@ public class MedicalHistory {
     private String allergies;
     private String performanceStatus;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
     private Patient patient;
 
     public MedicalHistory(String familyHistory, String medication, String allergies, String performanceStatus) {

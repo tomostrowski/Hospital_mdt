@@ -35,11 +35,11 @@ public class Patient {
     private String email;
     private String patientNumber;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private MedicalHistory medicalHistory;
 
     public Patient(String givenName, String surname) {

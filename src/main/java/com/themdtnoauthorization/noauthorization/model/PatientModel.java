@@ -1,6 +1,7 @@
 package com.themdtnoauthorization.noauthorization.model;
 
 import com.themdtnoauthorization.noauthorization.entity.Disease;
+import com.themdtnoauthorization.noauthorization.entity.MedicalHistory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,8 @@ public class PatientModel {
     private LocalDate dateOfBirth;
     private String gender;
     private String patientNumber;
-    private Set<Disease> diseases;
+    private Set<DiseaseModel> diseases;
+    private MedicalHistory medicalHistory;
 
     public PatientModel(String givenName, String surname) {
         this.givenName = givenName;

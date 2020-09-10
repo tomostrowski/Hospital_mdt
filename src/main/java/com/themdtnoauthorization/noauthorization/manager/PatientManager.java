@@ -55,7 +55,7 @@ public class PatientManager {
         Patient patient = patientRepo.findById(id).get();
         return diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
     }
-
+//do listy pacjentó jest mniej danych!
     public Set<PatientListModel> getPatientList() {
         Set<Patient> patientSet =  new LinkedHashSet<>(patientRepo.findAll());
         if (patientSet.size() > 0) {
@@ -68,14 +68,14 @@ public class PatientManager {
                 model.setGender(patient.getGender());
                 model.setDateOfBirth(patient.getDateOfBirth());
                 model.setPatientNumber(patient.getPatientNumber());
-                model.setDiseases(getDiseaseSet(patient));
+                model.setDiseases(getDiseaseListSet(patient));
                 patientListModels.add(model);
             }
             return patientListModels;
         } else return new LinkedHashSet<PatientListModel>();
     }
 
-public Set<DiseaseModelList> getDiseaseSet(Patient patient){
+public Set<DiseaseModelList> getDiseaseListSet(Patient patient){
 Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         if (diseaseSet.size() > 0){
             Set<DiseaseModelList> diseaseModelSet = new LinkedHashSet<>();
@@ -91,6 +91,40 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         } else return new LinkedHashSet<DiseaseModelList>();
 }
 
+    public Optional<PatientModel> getPatient(Patient patient) {
+                PatientModel model = new PatientModel();
+                model.setId(patient.getId());
+                model.setGivenName(patient.getGivenName());
+                model.setSurname(patient.getSurname());
+                model.setGender(patient.getGender());
+                model.setDateOfBirth(patient.getDateOfBirth());
+                model.setPatientNumber(patient.getPatientNumber());
+                model.setEmail(patient.getEmail());
+                model.setMobileNumber(patient.getMobileNumber());
+                model.setIdNumber(patient.getIdNumber());
+                model.setDiseases(getDiseaseSet(patient));
+            return Optional.of(model);
+    }
+
+    public Set<DiseaseModel> getDiseaseSet(Patient patient){
+        Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
+        if (diseaseSet.size() > 0){
+            Set<DiseaseModel> diseaseModelSet = new LinkedHashSet<>();
+            for (Disease disease : diseaseSet) {
+                DiseaseModel model = new DiseaseModel();
+                model.setId(disease.getId());
+                model.setName(disease.getName());
+                model.setDiagnosisDate(disease.getDiagnosisDate());
+                model.setDiagnosingPhysician(disease.getDiagnosingPhysician());
+                model.setReferringPhysician(disease.getReferringPhysician());
+                model.setPlaceOfDiagnosis(disease.getPlaceOfDiagnosis());
+//                model.setCancerInfo(get);
+//                model.setTreatmentHistory();
+                diseaseModelSet.add(model);
+            }
+            return diseaseModelSet;
+        } else return new LinkedHashSet<DiseaseModel>();
+    }
 
 //   @EventListener(ApplicationReadyEvent.class)
 //   public void fillDB(){

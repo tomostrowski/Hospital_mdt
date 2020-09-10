@@ -8,6 +8,7 @@ import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
 import com.themdtnoauthorization.noauthorization.manager.MedicalHistoryManager;
 import com.themdtnoauthorization.noauthorization.manager.PatientManager;
 import com.themdtnoauthorization.noauthorization.model.PatientListModel;
+import com.themdtnoauthorization.noauthorization.model.PatientModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,9 @@ public class PatientApi {
     }
 
     @GetMapping("/{id}")
-    public Optional<Patient> getPatientById(@PathVariable Long id){
-        return patientManager.findById(id);
+    public Optional<PatientModel> getPatientById(@PathVariable Long id){
+        Optional<Patient> patient= patientManager.findById(id);
+        return patientManager.getPatient(patient.get());
     }
 
 //    @GetMapping("/all")

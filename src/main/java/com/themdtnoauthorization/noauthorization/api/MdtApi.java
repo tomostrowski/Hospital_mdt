@@ -67,5 +67,16 @@ public class MdtApi {
         return ResponseEntity.ok().body("Location of treatment has been set.");
     }
 
+    @PatchMapping("/{id}/affiliation={institutionId}")
+    public ResponseEntity<String> setAffiliation(@PathVariable Long id, @PathVariable Long institutionId ){
+        Mdt mdt = mdtManager.findById(id)
+                .orElseThrow(()-> new RuntimeException("MDT does not exist."));
+        Institution institution = institutionManager.findById(institutionId)
+                .orElseThrow(()-> new RuntimeException("Institution does not exist."));
+        mdt.setAffiliation(institution);
+        mdtManager.save(mdt);
+        return ResponseEntity.ok().body("Affiliation of treatment has been set.");
+    }
+
 
 }

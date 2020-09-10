@@ -246,8 +246,8 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 MdtModel model = new MdtModel();
                 model.setId(mdt.getId());
                 model.setAdditionalComments(mdt.getAdditionalComments());
-//                if(mdt.getAffiliation().size>0)
-//                model.setAffiliation(mdt.getAffiliation());
+                if(mdt.getAffiliation() != null)
+                model.setAffiliation(mdt.getAffiliation());
                 if(mdt.getAttendees() != null)
                     model.setAttendees(mdt.getAttendees());
                 model.setStartDate(mdt.getStartDate());

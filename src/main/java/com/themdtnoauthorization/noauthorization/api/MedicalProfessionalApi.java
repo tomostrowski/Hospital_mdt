@@ -32,6 +32,10 @@ public class MedicalProfessionalApi {
     @GetMapping("/list")
     public Iterable<MedicalProfessionalListModel> list() { return medicalProfessionalManager.list();}
 
+    @GetMapping("/findByLastName={lastName}")
+    public Iterable<MedicalProfessionalListModel> findByLastName(@PathVariable String lastName) {
+        return medicalProfessionalManager.findByLastName(lastName);
+    }
 
     @PostMapping("/new")
     public MedicalProfessional addNewMedicalProfessional(@RequestBody MedicalProfessional medicalProfessional){

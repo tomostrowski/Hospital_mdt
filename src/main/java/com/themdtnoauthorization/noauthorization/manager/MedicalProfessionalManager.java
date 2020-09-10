@@ -47,6 +47,34 @@ public class MedicalProfessionalManager {
         medicalProfessionalRepo.deleteById(id);
     }
 
+    public Iterable<MedicalProfessionalListModel> findByLastName(String lastName) {
+        Set<MedicalProfessional> medicalProfessionalSet = medicalProfessionalRepo.findMedicalProfessionalsByLastNameIsStartingWith(lastName);
+        if(medicalProfessionalSet.size()>0){
+            Set<MedicalProfessionalListModel> medicalProfessionalListModelSet = new LinkedHashSet<>();
+            for (MedicalProfessional medicalProfessional : medicalProfessionalSet){
+                MedicalProfessionalListModel model = new MedicalProfessionalListModel();
+                model.setId(medicalProfessional.getId());
+                model.setFirstName(medicalProfessional.getFirstName());
+                model.setLastName(medicalProfessional.getLastName());
+                medicalProfessionalListModelSet.add(model);
+            } return medicalProfessionalListModelSet;
+        } else return new LinkedHashSet<>();
+    }
+
+    public Iterable<MedicalProfessionalListModel> findByFirstNameAndLastName(String firstName, String lastName) {
+        Set<MedicalProfessional> medicalProfessionalSet = medicalProfessionalRepo.findMedicalProfessionalsByFirstNameIsStartingWithAndLastNameIsStartingWith(firstName, lastName);
+        if(medicalProfessionalSet.size()>0){
+            Set<MedicalProfessionalListModel> medicalProfessionalListModelSet = new LinkedHashSet<>();
+            for (MedicalProfessional medicalProfessional : medicalProfessionalSet){
+                MedicalProfessionalListModel model = new MedicalProfessionalListModel();
+                model.setId(medicalProfessional.getId());
+                model.setFirstName(medicalProfessional.getFirstName());
+                model.setLastName(medicalProfessional.getLastName());
+                medicalProfessionalListModelSet.add(model);
+            } return medicalProfessionalListModelSet;
+        } else return new LinkedHashSet<>();
+    }
+
 //    @EventListener(ApplicationReadyEvent.class)
 //    public void fillDB(){
 //        save(new MedicalProfessional("Marek Mariusz","Ostrowski"));

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,7 +23,7 @@ public class PatientModel {
     private LocalDate dateOfBirth;
     private String gender;
     private String patientNumber;
-    private List<String> diseaseNames;
+    private Set<Disease> diseases;
 
     public PatientModel(String givenName, String surname) {
         this.givenName = givenName;

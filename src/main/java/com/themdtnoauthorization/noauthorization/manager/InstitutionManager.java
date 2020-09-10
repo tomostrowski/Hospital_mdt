@@ -32,10 +32,10 @@ public class InstitutionManager {
         institutionRepo.deleteById(id);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDb(){
-        save(new Institution("Shah Hospital"));
-        save(new Institution("Kenia Public Hospital"));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDb(){
+//        save(new Institution("Shah Hospital"));
+//        save(new Institution("Kenia Public Hospital"));
+//    }
 
 }

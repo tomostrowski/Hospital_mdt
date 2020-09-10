@@ -32,8 +32,8 @@ public class CommentManager {
         commentRepo.deleteById(id);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDB(){
-        save(new Comment("Cześć to jest komentarz. Uważam, że ten pacjent jest chory i trzeba go szybko operować."));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDB(){
+//        save(new Comment("Cześć to jest komentarz. Uważam, że ten pacjent jest chory i trzeba go szybko operować."));
+//    }
 }

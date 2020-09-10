@@ -48,8 +48,8 @@ public class DiseaseManager {
     }
 
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDb(){
-        save(new Disease("LEFT breast IDCG3 ER neg, PR neg, Her2 awaited (FISH) 28mm on US", LocalDate.of(2005, 11, 14 ),"Marek Mariusz Ostrowski","Grzegorz Waryński","Shah Hospital Kenia"));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDb(){
+//        save(new Disease("LEFT breast IDCG3 ER neg, PR neg, Her2 awaited (FISH) 28mm on US", LocalDate.of(2005, 11, 14 ),"Marek Mariusz Ostrowski","Grzegorz Waryński","Shah Hospital Kenia"));
+//    }
 }

@@ -33,10 +33,10 @@ public class MedicalProfessionalManager {
         medicalProfessionalRepo.deleteById(id);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void fillDB(){
-        save(new MedicalProfessional("Marek Mariusz","Ostrowski"));
-        save(new MedicalProfessional("Adam","Barczewski" ));
-        save(new MedicalProfessional("Michał","Szary" ));
-    }
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void fillDB(){
+//        save(new MedicalProfessional("Marek Mariusz","Ostrowski"));
+//        save(new MedicalProfessional("Adam","Barczewski" ));
+//        save(new MedicalProfessional("Michał","Szary" ));
+//    }
 }

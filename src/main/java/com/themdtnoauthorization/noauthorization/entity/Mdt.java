@@ -24,7 +24,7 @@ public class Mdt {
     private Long id;
     private LocalDateTime DateOfReferralForMDT;
 
-    @OneToOne
+    @ManyToOne
     private Disease disease;
 
     @OneToOne
@@ -33,8 +33,8 @@ public class Mdt {
     private String summary;
     private Date reviewDate;
     private String additionalComments;
-    private LocalDateTime  startDate;  //and time
-    private LocalDateTime  endDate;
+    private LocalDateTime startDate;  //and time
+    private LocalDateTime endDate;
 
     @OneToMany
     private Set<MedicalProfessional> attendees;

@@ -40,12 +40,6 @@ public class Disease {
     }
 
 //    @OneToOne
-//    private MedicalProfessional diagnosingPhysician; //
-//
-//    @OneToOne
-//    private MedicalProfessional referringPhysician;
-//
-//    @OneToOne
 //    private Institution placeOfDiagnosis;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -60,8 +54,8 @@ public class Disease {
 
 
 
-//    @OneToMany
-//    private Set<Mdt> mdts;
+    @OneToMany
+    private Set<Mdt> mdts;
 
 
 

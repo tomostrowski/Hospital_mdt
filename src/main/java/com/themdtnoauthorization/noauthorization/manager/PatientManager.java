@@ -112,8 +112,11 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 model.setId(disease.getId());
                 model.setName(disease.getName());
                 model.setDiagnosisDate(disease.getDiagnosisDate());
-                model.setDiagnosingPhysician(disease.getDiagnosingPhysician().getFirstName()+" "+disease.getDiagnosingPhysician().getLastName());
-                model.setReferringPhysician(disease.getReferringPhysician().getFirstName()+" "+disease.getReferringPhysician().getLastName());
+                //MUSISZ DODAC IFy jesli nie ma tych pół!
+                if(disease.getDiagnosingPhysician() != null)
+                    model.setDiagnosingPhysician(disease.getDiagnosingPhysician().getFirstName()+" "+disease.getDiagnosingPhysician().getLastName());
+                if(disease.getReferringPhysician() != null)
+                    model.setReferringPhysician(disease.getReferringPhysician().getFirstName()+" "+disease.getReferringPhysician().getLastName());
                 model.setPlaceOfDiagnosis(disease.getPlaceOfDiagnosis());
                 model.setCancerInfo(getCancerInfoModel(disease));
                 model.setTreatmentHistory(getTreatmentHistoryModel(disease));

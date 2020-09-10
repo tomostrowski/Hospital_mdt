@@ -24,8 +24,8 @@ public class DiseaseModel {
     private String referringPhysician;
     private String placeOfDiagnosis;
 //    private Patient patient;
-    private CancerInfo cancerInfo;
-    private TreatmentHistory treatmentHistory;
+    private CancerInfoModel cancerInfo;
+    private TreatmentHistoryModel treatmentHistory;
 
     public DiseaseModel(String name, LocalDate diagnosisDate, String diagnosingPhysician, String referringPhysician, String placeOfDiagnosis) {
     this.name = name;

@@ -1,20 +1,22 @@
-package com.themdtnoauthorization.noauthorization.entity;
+package com.themdtnoauthorization.noauthorization.model;
 
+import com.themdtnoauthorization.noauthorization.entity.Disease;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
-@Entity
-public class CancerInfo {
-    @Id
+public class CancerInfoModel {
+
     private Long id;
     private String summary;
     private String Tc;   //c for clinical
@@ -33,14 +35,13 @@ public class CancerInfo {
     private double MarginNumber;
     private String positiveLymphNodes;
 
-    @OneToOne
     private Disease disease;
 
-    public CancerInfo(String summary) {
+    public CancerInfoModel(String summary) {
         this.summary = summary;
     }
 
-    public CancerInfo(Long id) {
+    public CancerInfoModel(Long id) {
         this.id = id;
     }
 }

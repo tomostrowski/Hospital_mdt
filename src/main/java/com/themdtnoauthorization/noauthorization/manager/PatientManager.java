@@ -2,10 +2,7 @@ package com.themdtnoauthorization.noauthorization.manager;
 
 import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
 import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
-import com.themdtnoauthorization.noauthorization.entity.Disease;
-import com.themdtnoauthorization.noauthorization.entity.MedicalHistory;
-import com.themdtnoauthorization.noauthorization.entity.Patient;
-import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
+import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.*;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -118,8 +115,8 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 model.setDiagnosingPhysician(disease.getDiagnosingPhysician());
                 model.setReferringPhysician(disease.getReferringPhysician());
                 model.setPlaceOfDiagnosis(disease.getPlaceOfDiagnosis());
-//                model.setCancerInfo(get);
-//                model.setTreatmentHistory();
+                model.setCancerInfo(getCancerInfoModel(disease));
+                model.setTreatmentHistory(getTreatmentHistoryModel(disease));
                 diseaseModelSet.add(model);
             }
             return diseaseModelSet;
@@ -133,12 +130,52 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         model.setId(medicalHistory.getId());
         model.setFamilyHistory(medicalHistory.getFamilyHistory());
         model.setMedication(medicalHistory.getMedication());
-        model.setPatient(medicalHistory.getAllergies());
-        model.setPerformanceStatus(medicalHistory.getPerformanceStatus());
+        model.setAllergies(medicalHistory.getAllergies());
+//        model.setPerformanceStatus(medicalHistory.getPerformanceStatus());
         return model;}
         else return null;
     }
 
+    public CancerInfoModel getCancerInfoModel(Disease disease){
+        CancerInfo cancerInfo = disease.getCancerInfo();
+        if (cancerInfo != null) {
+            CancerInfoModel model = new CancerInfoModel();
+            model.setId(cancerInfo.getId());
+            model.setBiomarkers(cancerInfo.getBiomarkers());
+            model.setGrade(cancerInfo.getGrade());
+            model.setKi67(cancerInfo.getKi67());
+            model.setMarginNumber(cancerInfo.getMarginNumber());
+            model.setMc(cancerInfo.getMc());
+            model.setMp(cancerInfo.getMp());
+            model.setNc(cancerInfo.getNc());
+            model.setNp(cancerInfo.getNp());
+            model.setPositiveLymphNodes(cancerInfo.getPositiveLymphNodes());
+            model.setSize(cancerInfo.getSize());
+            model.setSummary(cancerInfo.getSummary());
+            model.setTc(cancerInfo.getTc());
+            model.setTp(cancerInfo.getTp());
+            model.setType(cancerInfo.getType());
+            model.setTypeOther(cancerInfo.getTypeOther());
+            return model;}
+        else return null;
+    }
+
+    public TreatmentHistoryModel getTreatmentHistoryModel(Disease disease){
+        TreatmentHistory treatmentHistory = disease.getTreatmentHistory();
+        if (treatmentHistory != null) {
+            TreatmentHistoryModel model = new TreatmentHistoryModel();
+            model.setId(treatmentHistory.getId());
+            model.setBiopsy(treatmentHistory.getBiopsy());
+            model.setSurgery(treatmentHistory.getSurgery());
+            model.setRadiotherapy(treatmentHistory.getRadiotherapy());
+            model.setEndocrineTreatment(treatmentHistory.getEndocrineTreatment());
+            model.setChemotherapy(treatmentHistory.getChemotherapy());
+            model.setImmunotherapy(treatmentHistory.getImmunotherapy());
+            model.setPhysiotherapy(treatmentHistory.getPhysiotherapy());
+            model.setOther(treatmentHistory.getOther());
+            return model;}
+        else return null;
+    }
 //   @EventListener(ApplicationReadyEvent.class)
 //   public void fillDB(){
 //        save(new Patient("Weronika", "Rosatti", "AWQ210321", LocalDate.of(1980, 9, 14 ), "F", "+55 564 000 300", "rosati@gmail.com", "6as123345"));

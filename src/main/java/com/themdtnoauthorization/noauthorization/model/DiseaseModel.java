@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,11 +27,6 @@ public class DiseaseModel {
 //    private Patient patient;
     private CancerInfoModel cancerInfo;
     private TreatmentHistoryModel treatmentHistory;
+    private Set<MdtModel> mdts;
 
-    public DiseaseModel(String name, LocalDate diagnosisDate, String diagnosingPhysician, String referringPhysician, String placeOfDiagnosis) {
-    this.name = name;
-    this.diagnosisDate = diagnosisDate;
-    this.referringPhysician = referringPhysician;
-    this.placeOfDiagnosis = placeOfDiagnosis;
-    }
 }

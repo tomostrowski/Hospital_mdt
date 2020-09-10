@@ -27,8 +27,6 @@ public class TreatmentHistoryModel {
     private String physiotherapy;
     private String other;
 
-    private Disease disease;
-
     public TreatmentHistoryModel(Long id) {
         this.id = id;
     }

@@ -141,6 +141,8 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         } else return new LinkedHashSet<DiseaseModelList>();
 }
 
+
+
     public Optional<PatientModel> getPatient(Patient patient) {
                 PatientModel model = new PatientModel();
                 model.setId(patient.getId());
@@ -174,11 +176,13 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 model.setPlaceOfDiagnosis(disease.getPlaceOfDiagnosis());
                 model.setCancerInfo(getCancerInfoModel(disease));
                 model.setTreatmentHistory(getTreatmentHistoryModel(disease));
+                model.setMdts(getMdtSet(disease));
                 diseaseModelSet.add(model);
             }
             return diseaseModelSet;
         } else return new LinkedHashSet<DiseaseModel>();
     }
+
 
     public MedicalHistoryModel getMedicalHistoryModel(Patient patient){
         MedicalHistory medicalHistory = patient.getMedicalHistory();
@@ -234,7 +238,29 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         else return null;
     }
 
-
+    public Set<MdtModel> getMdtSet(Disease disease){
+        Set<Mdt> mdtSet = new LinkedHashSet<>(disease.getMdts());
+        if (mdtSet.size() > 0){
+            Set<MdtModel> mdtModelSet = new LinkedHashSet<>();
+            for (Mdt mdt : mdtSet){
+                MdtModel model = new MdtModel();
+                model.setId(mdt.getId());
+                model.setAdditionalComments(mdt.getAdditionalComments());
+//                if(mdt.getAffiliation().size>0)
+//                model.setAffiliation(mdt.getAffiliation());
+                if(mdt.getAttendees() != null)
+                    model.setAttendees(mdt.getAttendees());
+                model.setStartDate(mdt.getStartDate());
+                model.setEndDate(mdt.getEndDate());
+                model.setSummary(mdt.getSummary());
+                if(mdt.getLocationOfTreatment() != null)
+                    model.setLocationOfTreatment(mdt.getLocationOfTreatment());
+                model.setDateOfReferralForMDT(mdt.getDateOfReferralForMDT());
+                mdtModelSet.add(model);
+            }
+            return mdtModelSet;
+        } else return new LinkedHashSet<>();
+    }
 
 
 //   @EventListener(ApplicationReadyEvent.class)

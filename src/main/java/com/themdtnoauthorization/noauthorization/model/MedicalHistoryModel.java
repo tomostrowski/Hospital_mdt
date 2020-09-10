@@ -20,7 +20,6 @@ public class MedicalHistoryModel {
     private String medication;
     private String allergies;
     private String performanceStatus;
-    private String patient;
 
     public MedicalHistoryModel(String familyHistory, String medication, String allergies, String performanceStatus) {
         this.familyHistory = familyHistory;

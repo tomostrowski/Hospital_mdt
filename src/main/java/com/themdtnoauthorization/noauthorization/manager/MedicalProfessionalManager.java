@@ -2,11 +2,11 @@ package com.themdtnoauthorization.noauthorization.manager;
 
 import com.themdtnoauthorization.noauthorization.dao.MedicalProfessionalRepo;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
+import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalListModel;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class MedicalProfessionalManager {
@@ -27,6 +27,20 @@ public class MedicalProfessionalManager {
 
     public Iterable<MedicalProfessional> findAll(){
         return medicalProfessionalRepo.findAll();
+    }
+
+    public Iterable<MedicalProfessionalListModel> list(){
+        List<MedicalProfessional> medicalProfessionalList = medicalProfessionalRepo.findAll(Sort.by(Sort.Direction.ASC, "lastName"));
+        if (medicalProfessionalList.size()>0){
+            Set<MedicalProfessionalListModel> medicalProfessionalListModelSet = new LinkedHashSet<>();
+            for (MedicalProfessional medicalProfessional : medicalProfessionalList){
+                MedicalProfessionalListModel model = new MedicalProfessionalListModel();
+                model.setId(medicalProfessional.getId());
+                model.setFirstName(medicalProfessional.getFirstName());
+                model.setLastName(medicalProfessional.getLastName());
+                medicalProfessionalListModelSet.add(model);
+            } return medicalProfessionalListModelSet;
+        } else return new LinkedHashSet<>();
     }
 
     public void deleteById(Long id){

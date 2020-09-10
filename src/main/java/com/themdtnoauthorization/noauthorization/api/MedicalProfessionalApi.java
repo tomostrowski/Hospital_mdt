@@ -2,8 +2,11 @@ package com.themdtnoauthorization.noauthorization.api;
 
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
 import com.themdtnoauthorization.noauthorization.manager.MedicalProfessionalManager;
+import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalListModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.OrderBy;
 
 @RestController
 @RequestMapping("/api/medic")
@@ -25,6 +28,10 @@ public class MedicalProfessionalApi {
     public Iterable<MedicalProfessional> findAll(){
         return medicalProfessionalManager.findAll();
     }
+
+    @GetMapping("/list")
+    public Iterable<MedicalProfessionalListModel> list() { return medicalProfessionalManager.list();}
+
 
     @PostMapping("/new")
     public MedicalProfessional addNewMedicalProfessional(@RequestBody MedicalProfessional medicalProfessional){

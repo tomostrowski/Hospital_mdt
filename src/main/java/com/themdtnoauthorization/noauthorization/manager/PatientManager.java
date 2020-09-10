@@ -75,7 +75,7 @@ public class PatientManager {
     }
 
 public Set<DiseaseModel> getDiseaseSet(Patient patient){
-Set<Disease> diseaseSet = new LinkedHashSet<>(findAllDiseasesByPatientId(patient.getId()));
+Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         if (diseaseSet.size() > 0){
             Set<DiseaseModel> diseaseModelSet = new LinkedHashSet<>();
             for (Disease disease : diseaseSet) {

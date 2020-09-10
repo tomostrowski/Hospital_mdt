@@ -3,11 +3,10 @@ package com.themdtnoauthorization.noauthorization.manager;
 import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
 import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
 import com.themdtnoauthorization.noauthorization.entity.Disease;
+import com.themdtnoauthorization.noauthorization.entity.MedicalHistory;
 import com.themdtnoauthorization.noauthorization.entity.Patient;
-import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
-import com.themdtnoauthorization.noauthorization.model.DiseaseModelList;
-import com.themdtnoauthorization.noauthorization.model.PatientListModel;
-import com.themdtnoauthorization.noauthorization.model.PatientModel;
+import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
+import com.themdtnoauthorization.noauthorization.model.*;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -103,6 +102,7 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 model.setMobileNumber(patient.getMobileNumber());
                 model.setIdNumber(patient.getIdNumber());
                 model.setDiseases(getDiseaseSet(patient));
+                model.setMedicalHistory(getMedicalHistoryModel(patient));
             return Optional.of(model);
     }
 
@@ -124,6 +124,17 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
             }
             return diseaseModelSet;
         } else return new LinkedHashSet<DiseaseModel>();
+    }
+
+    public MedicalHistoryModel getMedicalHistoryModel(Patient patient){
+        MedicalHistoryModel model = new MedicalHistoryModel();
+        MedicalHistory medicalHistory = patient.getMedicalHistory();
+        model.setId(medicalHistory.getId());
+        model.setFamilyHistory(medicalHistory.getFamilyHistory());
+        model.setMedication(medicalHistory.getMedication());
+        model.setPatient(medicalHistory.getAllergies());
+        model.setPerformanceStatus(medicalHistory.getPerformanceStatus());
+        return model;
     }
 
 //   @EventListener(ApplicationReadyEvent.class)

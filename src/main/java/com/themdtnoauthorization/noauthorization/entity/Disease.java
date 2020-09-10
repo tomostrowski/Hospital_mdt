@@ -22,13 +22,19 @@ public class Disease {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-        private LocalDate diagnosisDate;
-    private String diagnosingPhysician;
-    private String referringPhysician;
+    private LocalDate diagnosisDate;
     private String placeOfDiagnosis;
-    public Disease(String name, LocalDate diagnosisDate, String diagnosingPhysician, String referringPhysician, String placeOfDiagnosis) {
+
+    @OneToOne
+    private MedicalProfessional diagnosingPhysician;
+
+    @OneToOne
+    private MedicalProfessional referringPhysician;
+
+    public Disease(String name, LocalDate diagnosisDate, MedicalProfessional diagnosingPhysician, MedicalProfessional referringPhysician, String placeOfDiagnosis) {
     this.name = name;
     this.diagnosisDate = diagnosisDate;
+    this.diagnosingPhysician = diagnosingPhysician;
     this.referringPhysician = referringPhysician;
     this.placeOfDiagnosis = placeOfDiagnosis;
     }

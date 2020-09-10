@@ -1,29 +1,27 @@
 package com.themdtnoauthorization.noauthorization.manager;
 
 import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
+import com.themdtnoauthorization.noauthorization.dao.InstitutionRepo;
 import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.*;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
 
 
 @Service
 public class PatientManager {
 
-    //można usunąć?
-    private PatientRepo patientRepo;
-    private DiseaseRepo diseaseRepo;
-//    private DiseaseRepo diseaseRepo;
+    private final PatientRepo patientRepo;
+    private final DiseaseRepo diseaseRepo;
+    private final InstitutionRepo institutionRepo;
 
-    public PatientManager(PatientRepo patientRepo, DiseaseRepo diseaseRepo) {
+
+    public PatientManager(PatientRepo patientRepo, DiseaseRepo diseaseRepo, InstitutionRepo institutionRepo) {
         this.patientRepo = patientRepo;
         this.diseaseRepo = diseaseRepo;
-//        this.diseaseRepo = diseaseRepo;
+        this.institutionRepo = institutionRepo;
     }
 
     public Patient save(Patient patient) {
@@ -247,19 +245,40 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 model.setId(mdt.getId());
                 model.setAdditionalComments(mdt.getAdditionalComments());
                 if(mdt.getAffiliation() != null)
-                model.setAffiliation(mdt.getAffiliation());
+                model.setAffiliation(getAffiliation(mdt));
                 if(mdt.getAttendees() != null)
                     model.setAttendees(mdt.getAttendees());
                 model.setStartDate(mdt.getStartDate());
                 model.setEndDate(mdt.getEndDate());
                 model.setSummary(mdt.getSummary());
                 if(mdt.getLocationOfTreatment() != null)
-                    model.setLocationOfTreatment(mdt.getLocationOfTreatment());
+                    model.setLocationOfTreatment(getLocationOfTreatment(mdt));
                 model.setDateOfReferralForMDT(mdt.getDateOfReferralForMDT());
                 mdtModelSet.add(model);
             }
             return mdtModelSet;
         } else return new LinkedHashSet<>();
+    }
+
+
+public InstitutionModel getLocationOfTreatment(Mdt mdt){
+        Institution institution = mdt.getLocationOfTreatment();
+        if(institution !=null){
+            InstitutionModel model = new InstitutionModel();
+            model.setId(institution.getId());
+            model.setName(institution.getName());
+            return model;
+        } else return null;
+}
+
+    public InstitutionModel getAffiliation(Mdt mdt){
+        Institution institution = mdt.getAffiliation();
+        if(institution !=null){
+            InstitutionModel model = new InstitutionModel();
+            model.setId(institution.getId());
+            model.setName(institution.getName());
+            return model;
+        } else return null;
     }
 
 

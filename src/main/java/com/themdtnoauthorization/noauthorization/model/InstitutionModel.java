@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class InstitutionModel {
     private Long id;
     private String name;
-    private MdtModel locationOfTreatment;
-    private MdtModel affiliation;
+//    private String address;
+//    private String city;
+//    private String country;
 }

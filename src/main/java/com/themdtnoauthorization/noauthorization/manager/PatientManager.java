@@ -5,6 +5,7 @@ import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
 import com.themdtnoauthorization.noauthorization.entity.Disease;
 import com.themdtnoauthorization.noauthorization.entity.Patient;
 import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
+import com.themdtnoauthorization.noauthorization.model.DiseaseModelList;
 import com.themdtnoauthorization.noauthorization.model.PatientListModel;
 import com.themdtnoauthorization.noauthorization.model.PatientModel;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -74,12 +75,12 @@ public class PatientManager {
         } else return new LinkedHashSet<PatientListModel>();
     }
 
-public Set<DiseaseModel> getDiseaseSet(Patient patient){
+public Set<DiseaseModelList> getDiseaseSet(Patient patient){
 Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         if (diseaseSet.size() > 0){
-            Set<DiseaseModel> diseaseModelSet = new LinkedHashSet<>();
+            Set<DiseaseModelList> diseaseModelSet = new LinkedHashSet<>();
             for (Disease disease : diseaseSet) {
-                DiseaseModel model = new DiseaseModel();
+                DiseaseModelList model = new DiseaseModelList();
                 model.setId(disease.getId());
                 model.setName(disease.getName());
                 model.setDiagnosisDate(disease.getDiagnosisDate());
@@ -87,7 +88,7 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 diseaseModelSet.add(model);
             }
             return diseaseModelSet;
-        } else return new LinkedHashSet<DiseaseModel>();
+        } else return new LinkedHashSet<DiseaseModelList>();
 }
 
 

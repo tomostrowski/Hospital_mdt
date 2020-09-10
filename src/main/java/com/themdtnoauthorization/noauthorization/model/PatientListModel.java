@@ -20,7 +20,7 @@ public class PatientListModel {
     private LocalDate dateOfBirth;
     private String gender;
     private String patientNumber;
-    private Set<DiseaseModel> diseases;
+    private Set<DiseaseModelList> diseases;
 
     public PatientListModel(String givenName, String surname) {
         this.givenName = givenName;

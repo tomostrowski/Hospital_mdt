@@ -39,11 +39,20 @@ public class PatientApi {
         return patientManager.getPatient(patient.get());
     }
 
-//    @GetMapping("/all")
-//    public List<Patient> getAllPatients(){
-//        return patientManager.findAll();
-//    }
+    @GetMapping("/findBySurname={surname}")
+    public Set<PatientListModel> findBySurname(@PathVariable String surname){
+        return patientManager.findBySurname(surname);
+    }
 
+    @GetMapping("/findByPatientNumber={patientNumber}")
+    public Set<PatientListModel> findByPatientNumber(@PathVariable String patientNumber){
+        return patientManager.findByPatientNumber(patientNumber);
+    }
+
+    @GetMapping("/findByIdNumber={idNumber}")
+    public Set<PatientListModel> findByIdNumber(@PathVariable String idNumber){
+        return patientManager.findByIdNumber(idNumber);
+    }
     @GetMapping("/all")
     public Set<PatientListModel> getPatientList(){
         return patientManager.getPatientList();

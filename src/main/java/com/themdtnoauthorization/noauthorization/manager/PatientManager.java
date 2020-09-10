@@ -51,6 +51,60 @@ public class PatientManager {
         Patient patient = patientRepo.findById(id).get();
         return diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
     }
+
+    public Set<PatientListModel> findBySurname(String surname){
+        Set<Patient> patientSet = patientRepo.findPatientsBySurnameStartingWith(surname);
+        if (patientSet.size()>0){
+            Set<PatientListModel> patientListModelSet = new LinkedHashSet<>();
+            for(Patient patient : patientSet){
+                PatientListModel model = new PatientListModel();
+                model.setId(patient.getId());
+                model.setGivenName(patient.getGivenName());
+                model.setSurname(patient.getSurname());
+                model.setDateOfBirth(patient.getDateOfBirth());
+                model.setPatientNumber(patient.getPatientNumber());
+                model.setGender(patient.getGender());
+                patientListModelSet.add(model);
+            } return patientListModelSet;
+        } else return new LinkedHashSet<>();
+    }
+
+    public Set<PatientListModel> findByPatientNumber(String patientNumber) {
+        Set<Patient> patientSet = patientRepo.findByPatientNumberStartingWith(patientNumber);
+        if (patientSet.size() > 0) {
+            Set<PatientListModel> patientListModelSet = new LinkedHashSet<>();
+            for (Patient patient : patientSet) {
+                PatientListModel model = new PatientListModel();
+                model.setId(patient.getId());
+                model.setGivenName(patient.getGivenName());
+                model.setSurname(patient.getSurname());
+                model.setDateOfBirth(patient.getDateOfBirth());
+                model.setPatientNumber(patient.getPatientNumber());
+                model.setGender(patient.getGender());
+                patientListModelSet.add(model);
+            }
+            return patientListModelSet;
+        } else return new LinkedHashSet<>();
+    }
+
+    public Set<PatientListModel> findByIdNumber(String idNumber){
+            Set<Patient> patientSet = patientRepo.findByPatientNumberStartingWith(idNumber);
+            if (patientSet.size() > 0) {
+                Set<PatientListModel> patientListModelSet = new LinkedHashSet<>();
+                for (Patient patient : patientSet) {
+                    PatientListModel model = new PatientListModel();
+                    model.setId(patient.getId());
+                    model.setGivenName(patient.getGivenName());
+                    model.setSurname(patient.getSurname());
+                    model.setDateOfBirth(patient.getDateOfBirth());
+                    model.setPatientNumber(patient.getPatientNumber());
+                    model.setGender(patient.getGender());
+                    patientListModelSet.add(model);
+                }
+                return patientListModelSet;
+            } else return new LinkedHashSet<>();
+     }
+
 //do listy pacjentó jest mniej danych!
     public Set<PatientListModel> getPatientList() {
         Set<Patient> patientSet =  new LinkedHashSet<>(patientRepo.findAll());
@@ -179,6 +233,10 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
             return model;}
         else return null;
     }
+
+
+
+
 //   @EventListener(ApplicationReadyEvent.class)
 //   public void fillDB(){
 //        save(new Patient("Weronika", "Rosatti", "AWQ210321", LocalDate.of(1980, 9, 14 ), "F", "+55 564 000 300", "rosati@gmail.com", "6as123345"));

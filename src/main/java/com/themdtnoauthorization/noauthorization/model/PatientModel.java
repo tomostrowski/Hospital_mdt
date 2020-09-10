@@ -25,7 +25,7 @@ public class PatientModel {
     private String gender;
     private String patientNumber;
     private Set<DiseaseModel> diseases;
-    private MedicalHistory medicalHistory;
+    private MedicalHistoryModel medicalHistory;
 
     public PatientModel(String givenName, String surname) {
         this.givenName = givenName;

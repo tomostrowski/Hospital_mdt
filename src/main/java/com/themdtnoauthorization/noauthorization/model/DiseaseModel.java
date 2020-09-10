@@ -23,7 +23,7 @@ public class DiseaseModel {
     private String diagnosingPhysician;
     private String referringPhysician;
     private String placeOfDiagnosis;
-    private Patient patient;
+//    private Patient patient;
     private CancerInfo cancerInfo;
     private TreatmentHistory treatmentHistory;
 

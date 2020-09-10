@@ -127,14 +127,16 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
     }
 
     public MedicalHistoryModel getMedicalHistoryModel(Patient patient){
-        MedicalHistoryModel model = new MedicalHistoryModel();
         MedicalHistory medicalHistory = patient.getMedicalHistory();
+        if (medicalHistory != null) {
+        MedicalHistoryModel model = new MedicalHistoryModel();
         model.setId(medicalHistory.getId());
         model.setFamilyHistory(medicalHistory.getFamilyHistory());
         model.setMedication(medicalHistory.getMedication());
         model.setPatient(medicalHistory.getAllergies());
         model.setPerformanceStatus(medicalHistory.getPerformanceStatus());
-        return model;
+        return model;}
+        else return null;
     }
 
 //   @EventListener(ApplicationReadyEvent.class)

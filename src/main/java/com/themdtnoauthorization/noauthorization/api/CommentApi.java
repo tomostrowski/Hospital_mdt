@@ -39,9 +39,9 @@ public class CommentApi {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<String> changeComment(@PathVariable Long id, @RequestBody String comment){
+    public ResponseEntity<String> changeComment(@PathVariable Long id, @RequestBody String text){
         Comment commentObject = commentManager.findById(id).get();
-        commentObject.setComment(comment);
+        commentObject.setText(text);
         commentManager.save(commentObject);
         return ResponseEntity.ok().body("Comment has been changed.");
     }

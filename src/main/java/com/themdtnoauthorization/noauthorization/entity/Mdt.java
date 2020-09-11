@@ -40,7 +40,7 @@ public class Mdt {
     private Set<MedicalProfessional> attendees;
 
     @OneToMany
-    private Set<Comment> individualRecommendations;
+    private Set<Comment> comments;
 
     @OneToOne
     private Institution affiliation;

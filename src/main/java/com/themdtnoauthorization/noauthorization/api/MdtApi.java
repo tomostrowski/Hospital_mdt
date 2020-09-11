@@ -6,8 +6,11 @@ import com.themdtnoauthorization.noauthorization.entity.Mdt;
 import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
 import com.themdtnoauthorization.noauthorization.manager.InstitutionManager;
 import com.themdtnoauthorization.noauthorization.manager.MdtManager;
+import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/mdt")
@@ -32,6 +35,11 @@ public class MdtApi {
     @GetMapping("/all")
     public Iterable<Mdt> findAll(){
         return mdtManager.findAll();
+    }
+
+    @GetMapping("{id}/comments")
+    public Set<CommentModel> getAllCommentsById(@PathVariable Long id){
+        return mdtManager.getAllCommentsById(id);
     }
 
     @PostMapping("/new")

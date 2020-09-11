@@ -30,6 +30,6 @@ public class MdtModel {
     private LocalDateTime startDate;  //and time
     private LocalDateTime endDate;
     private Set<MedicalProfessional> attendees;
-    private Set<Comment> individualRecommendations;
+    private Set<Comment> comments;
     private InstitutionModel affiliation;
 }

@@ -55,6 +55,8 @@ public class Disease {
     @OneToMany
     private Set<Mdt> mdts;
 
+    @OneToMany
+    private Set<Comment> comments;
 
 
 }

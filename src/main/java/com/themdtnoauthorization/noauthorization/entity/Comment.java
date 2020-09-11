@@ -21,7 +21,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String comment;
+    private String text;
     private LocalDateTime date;
 
     @ManyToOne
@@ -33,8 +33,4 @@ public class Comment {
     @OneToOne
     private Mdt mdt;
 
-    public Comment(String comment) {
-        this.comment = comment;
-
-    }
 }

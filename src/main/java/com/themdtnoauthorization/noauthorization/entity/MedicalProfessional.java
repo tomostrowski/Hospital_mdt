@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -20,6 +21,8 @@ public class MedicalProfessional {
     private Long id;
     private String firstName;
     private String lastName;
+    @Formula("lastName"+" "+"fistName")
+    private String name;
     private String email;
     private String mobileNumber;
     private String professionalNumber;

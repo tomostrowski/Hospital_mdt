@@ -12,4 +12,5 @@ public interface MedicalProfessionalRepo extends JpaRepository<MedicalProfession
 
     Set<MedicalProfessional> findMedicalProfessionalsByFirstNameIsStartingWithAndLastNameIsStartingWith(String firstName, String lastName);
     Set<MedicalProfessional> findMedicalProfessionalsByLastNameIsStartingWith(String lastName);
+    Set<MedicalProfessional> findMedicalProfessionalsByNameStartingWith(String name);
 }

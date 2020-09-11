@@ -36,6 +36,7 @@ public class MedicalProfessionalManager {
             for (MedicalProfessional medicalProfessional : medicalProfessionalList){
                 MedicalProfessionalListModel model = new MedicalProfessionalListModel();
                 model.setId(medicalProfessional.getId());
+                model.setName((medicalProfessional.getName()));
                 model.setFirstName(medicalProfessional.getFirstName());
                 model.setLastName(medicalProfessional.getLastName());
                 medicalProfessionalListModelSet.add(model);
@@ -45,6 +46,20 @@ public class MedicalProfessionalManager {
 
     public void deleteById(Long id){
         medicalProfessionalRepo.deleteById(id);
+    }
+
+    public Iterable<MedicalProfessionalListModel> findByName(String name) {
+        Set<MedicalProfessional> medicalProfessionalSet = medicalProfessionalRepo.findMedicalProfessionalsByNameStartingWith(name);
+        if(medicalProfessionalSet.size()>0){
+            Set<MedicalProfessionalListModel> medicalProfessionalListModelSet = new LinkedHashSet<>();
+            for (MedicalProfessional medicalProfessional : medicalProfessionalSet){
+                MedicalProfessionalListModel model = new MedicalProfessionalListModel();
+                model.setId(medicalProfessional.getId());
+                model.setFirstName(medicalProfessional.getFirstName());
+                model.setLastName(medicalProfessional.getLastName());
+                medicalProfessionalListModelSet.add(model);
+            } return medicalProfessionalListModelSet;
+        } else return new LinkedHashSet<>();
     }
 
     public Iterable<MedicalProfessionalListModel> findByLastName(String lastName) {

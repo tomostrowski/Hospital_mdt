@@ -32,6 +32,11 @@ public class MedicalProfessionalApi {
     @GetMapping("/list")
     public Iterable<MedicalProfessionalListModel> list() { return medicalProfessionalManager.list();}
 
+    @GetMapping("/findByName={name}")
+    public Iterable<MedicalProfessionalListModel> findByName(@PathVariable String name) {
+        return medicalProfessionalManager.findByName(name);
+    }
+
     @GetMapping("/findByLastName={lastName}")
     public Iterable<MedicalProfessionalListModel> findByLastName(@PathVariable String lastName) {
         return medicalProfessionalManager.findByLastName(lastName);

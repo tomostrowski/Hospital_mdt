@@ -37,7 +37,7 @@ public class MedicalProfessionalApi {
         return medicalProfessionalManager.findByLastName(lastName);
     }
 
-    @GetMapping("/findByfirstName={firstName}/lastName={lastName}")
+    @GetMapping("/findByFirstName={firstName}/lastName={lastName}")
     public Iterable<MedicalProfessionalListModel> findByFirstNameAndLastName(@PathVariable String firstName, @PathVariable String lastName) {
         return medicalProfessionalManager.findByFirstNameAndLastName(firstName, lastName);
     }

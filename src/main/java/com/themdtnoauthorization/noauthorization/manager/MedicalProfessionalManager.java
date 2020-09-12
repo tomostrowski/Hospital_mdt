@@ -7,8 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class MedicalProfessionalManager {
@@ -46,6 +44,13 @@ public class MedicalProfessionalManager {
         } else return new LinkedHashSet<>();
     }
 
+/////!!!!
+//    public Long getIdByName(String name){
+//   MedicalProfessional medicalProfessional = medicalProfessionalRepo.findMedicalProfessionalByName(name).orElse(new MedicalProfessional(name));
+//    }
+
+
+
     public void deleteById(Long id){
         medicalProfessionalRepo.deleteById(id);
     }
@@ -65,6 +70,7 @@ public class MedicalProfessionalManager {
                 model.setId(medicalProfessional.getId());
                 model.setFirstName(medicalProfessional.getFirstName());
                 model.setLastName(medicalProfessional.getLastName());
+                model.setSpecialisation((medicalProfessional.getSpecialisation()));
                 medicalProfessionalListModelSet.add(model);
             } return medicalProfessionalListModelSet;
         } else return new LinkedHashSet<>();

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class MedicalProfessionalManager {
@@ -49,8 +51,14 @@ public class MedicalProfessionalManager {
     }
 
     public Iterable<MedicalProfessionalListModel> findByName(String name) {
-        Set<MedicalProfessional> medicalProfessionalSet = medicalProfessionalRepo.findMedicalProfessionalsByNameStartingWith(name);
+        Set<MedicalProfessional> medicalProfessionalSet = medicalProfessionalRepo.findMedicalProfessionalsByNameStartingWith(name, Sort.by("lastName").ascending());
         if(medicalProfessionalSet.size()>0){
+//            Stream<MedicalProfessional> stream = medicalProfessionalSet.stream();
+//
+//            stream.sorted(Comparator.comparing(medicalProfessionalSet::getLastName)
+//                    .collect(Collectors.toCollection(LinkedHashSet:: new));
+//
+
             Set<MedicalProfessionalListModel> medicalProfessionalListModelSet = new LinkedHashSet<>();
             for (MedicalProfessional medicalProfessional : medicalProfessionalSet){
                 MedicalProfessionalListModel model = new MedicalProfessionalListModel();

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import oracle.jrockit.jfr.StringConstantPool;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
@@ -22,7 +21,7 @@ public class MedicalProfessional {
     private Long id;
     private String firstName;
     private String lastName;
-//    @Formula("concat(LAST_NAME,' ',FIRST_NAME)")
+    @Formula("concat(LAST_NAME,' ',FIRST_NAME)")
     private String name;
     private String email;
     private String mobileNumber;

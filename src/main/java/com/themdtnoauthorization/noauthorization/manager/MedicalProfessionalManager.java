@@ -37,8 +37,8 @@ public class MedicalProfessionalManager {
                 MedicalProfessionalListModel model = new MedicalProfessionalListModel();
                 model.setId(medicalProfessional.getId());
                 model.setName((medicalProfessional.getName()));
-                model.setFirstName(medicalProfessional.getFirstName());
-                model.setLastName(medicalProfessional.getLastName());
+//                model.setFirstName(medicalProfessional.getFirstName());
+//                model.setLastName(medicalProfessional.getLastName());
                 medicalProfessionalListModelSet.add(model);
             } return medicalProfessionalListModelSet;
         } else return new LinkedHashSet<>();
@@ -68,8 +68,9 @@ public class MedicalProfessionalManager {
             for (MedicalProfessional medicalProfessional : medicalProfessionalSet){
                 MedicalProfessionalListModel model = new MedicalProfessionalListModel();
                 model.setId(medicalProfessional.getId());
-                model.setFirstName(medicalProfessional.getFirstName());
-                model.setLastName(medicalProfessional.getLastName());
+                model.setName(medicalProfessional.getName());
+//                model.setFirstName(medicalProfessional.getFirstName());
+//                model.setLastName(medicalProfessional.getLastName());
                 model.setSpecialisation((medicalProfessional.getSpecialisation()));
                 medicalProfessionalListModelSet.add(model);
             } return medicalProfessionalListModelSet;
@@ -83,8 +84,9 @@ public class MedicalProfessionalManager {
             for (MedicalProfessional medicalProfessional : medicalProfessionalSet){
                 MedicalProfessionalListModel model = new MedicalProfessionalListModel();
                 model.setId(medicalProfessional.getId());
-                model.setFirstName(medicalProfessional.getFirstName());
-                model.setLastName(medicalProfessional.getLastName());
+//                model.setFirstName(medicalProfessional.getFirstName());
+//                model.setLastName(medicalProfessional.getLastName());
+                model.setSpecialisation((medicalProfessional.getSpecialisation()));
                 medicalProfessionalListModelSet.add(model);
             } return medicalProfessionalListModelSet;
         } else return new LinkedHashSet<>();
@@ -97,8 +99,8 @@ public class MedicalProfessionalManager {
             for (MedicalProfessional medicalProfessional : medicalProfessionalSet){
                 MedicalProfessionalListModel model = new MedicalProfessionalListModel();
                 model.setId(medicalProfessional.getId());
-                model.setFirstName(medicalProfessional.getFirstName());
-                model.setLastName(medicalProfessional.getLastName());
+//                model.setFirstName(medicalProfessional.getFirstName());
+//                model.setLastName(medicalProfessional.getLastName());
                 medicalProfessionalListModelSet.add(model);
             } return medicalProfessionalListModelSet;
         } else return new LinkedHashSet<>();

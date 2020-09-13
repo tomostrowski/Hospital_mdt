@@ -5,8 +5,10 @@ import com.themdtnoauthorization.noauthorization.dao.InstitutionRepo;
 import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.*;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -281,7 +283,7 @@ public InstitutionModel getLocationOfTreatment(Mdt mdt){
         } else return null;
     }
 
-
+//
 //   @EventListener(ApplicationReadyEvent.class)
 //   public void fillDB(){
 //        save(new Patient("Weronika", "Rosatti", "AWQ210321", LocalDate.of(1980, 9, 14 ), "F", "+55 564 000 300", "rosati@gmail.com", "6as123345"));

@@ -15,5 +15,5 @@ public class MedicalProfessionalListModel {
     private String name;
 //    private String firstName;
 //    private String lastName;
-    private String specialisation;
+//    private String specialisation;
 }

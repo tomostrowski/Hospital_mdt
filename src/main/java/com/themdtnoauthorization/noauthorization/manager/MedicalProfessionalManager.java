@@ -71,7 +71,7 @@ public class MedicalProfessionalManager {
                 model.setName(medicalProfessional.getName());
 //                model.setFirstName(medicalProfessional.getFirstName());
 //                model.setLastName(medicalProfessional.getLastName());
-                model.setSpecialisation((medicalProfessional.getSpecialisation()));
+//                model.setSpecialisation((medicalProfessional.getSpecialisation()));
                 medicalProfessionalListModelSet.add(model);
             } return medicalProfessionalListModelSet;
         } else return new LinkedHashSet<>();
@@ -86,7 +86,7 @@ public class MedicalProfessionalManager {
                 model.setId(medicalProfessional.getId());
 //                model.setFirstName(medicalProfessional.getFirstName());
 //                model.setLastName(medicalProfessional.getLastName());
-                model.setSpecialisation((medicalProfessional.getSpecialisation()));
+//                model.setSpecialisation((medicalProfessional.getSpecialisation()));
                 medicalProfessionalListModelSet.add(model);
             } return medicalProfessionalListModelSet;
         } else return new LinkedHashSet<>();

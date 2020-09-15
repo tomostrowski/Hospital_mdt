@@ -35,7 +35,7 @@ public class Patient {
     private String email;
     private String patientNumber;
 
-    @OneToMany(mappedBy = "patient" ,cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL})
     @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 

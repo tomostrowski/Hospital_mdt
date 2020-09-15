@@ -283,7 +283,7 @@ public InstitutionModel getLocationOfTreatment(Mdt mdt){
         } else return null;
     }
 
-//
+
 //   @EventListener(ApplicationReadyEvent.class)
 //   public void fillDB(){
 //        save(new Patient("Weronika", "Rosatti", "AWQ210321", LocalDate.of(1980, 9, 14 ), "F", "+55 564 000 300", "rosati@gmail.com", "6as123345"));

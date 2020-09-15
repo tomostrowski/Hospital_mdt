@@ -27,9 +27,9 @@ public class Patient {
     private String idNumber;
     private LocalDate dateOfBirth;
 
-    @Formula("floor(((day(current_date())+month(current_date())*30+year(current_date())*365.25)" +
-            "-(day(DATE_OF_BIRTH)+month(DATE_OF_BIRTH)*30+year(DATE_OF_BIRTH)*365.25))/365.25)")
-    private int age;
+//    @Formula("floor(((day(current_date())+month(current_date())*30+year(current_date())*365.25)" +
+//            "-(day(DATE_OF_BIRTH)+month(DATE_OF_BIRTH)*30+year(DATE_OF_BIRTH)*365.25))/365.25)")
+//    private int age;
     private String gender;
     private String mobileNumber;
     private String email;

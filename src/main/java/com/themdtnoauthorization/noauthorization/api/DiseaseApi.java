@@ -100,7 +100,7 @@ public class DiseaseApi {
                 .orElseThrow(()->new RuntimeException("Cancer Info does't exist"));
         disease.setCancerInfo(cancerInfo);
         diseaseManager.save(disease);
-        return ResponseEntity.ok().body("Cancer Info has been added.");
+        return ResponseEntity.ok().body("Cancer Info has been set.");
     }
 
     @PatchMapping("/{id}/setTreatmentHistory={treatmentId}")
@@ -110,7 +110,7 @@ public class DiseaseApi {
                 .orElseThrow(()->new RuntimeException("Treatment History does't exist"));
         disease.setTreatmentHistory(treatmentHistory);
         diseaseManager.save(disease);
-        return ResponseEntity.ok().body("Treatment History has been added.");
+        return ResponseEntity.ok().body("Treatment History has been set.");
     }
 //
 //    @PatchMapping("/{id}/setMedicalHistory={medicalHistoryId}")

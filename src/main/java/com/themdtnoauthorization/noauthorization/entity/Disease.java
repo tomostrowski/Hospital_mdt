@@ -46,20 +46,16 @@ public class Disease {
 //            (cascade = {CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
     private Patient patient;
 //
-    @OneToOne(mappedBy = "disease", cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY, optional = false)
+    @OneToOne
     private CancerInfo cancerInfo;
 //
-    @OneToOne(mappedBy = "disease", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
+    @OneToOne
     private TreatmentHistory treatmentHistory;
 
-    @OneToMany(mappedBy = "disease", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToMany
     private Set<Mdt> mdts;
 
-    @OneToMany(mappedBy = "disease", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @OneToMany
     private Set<Comment> comments;
 
 

@@ -20,7 +20,7 @@ public class MedicalHistory {
     private String allergies;
     private String performanceStatus;
 
-    @OneToOne(mappedBy = "medicalHistory", cascade = CascadeType.ALL,
+    @OneToOne(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private Patient patient;
 

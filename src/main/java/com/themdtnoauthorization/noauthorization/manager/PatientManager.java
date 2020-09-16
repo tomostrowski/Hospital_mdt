@@ -192,7 +192,7 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
         model.setFamilyHistory(medicalHistory.getFamilyHistory());
         model.setMedication(medicalHistory.getMedication());
         model.setAllergies(medicalHistory.getAllergies());
-//        model.setPerformanceStatus(medicalHistory.getPerformanceStatus());
+        model.setPerformanceStatus(medicalHistory.getPerformanceStatus());
         return model;}
         else return null;
     }

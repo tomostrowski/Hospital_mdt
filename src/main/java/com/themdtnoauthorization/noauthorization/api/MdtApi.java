@@ -1,8 +1,10 @@
 package com.themdtnoauthorization.noauthorization.api;
 
+import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.Disease;
 import com.themdtnoauthorization.noauthorization.entity.Institution;
 import com.themdtnoauthorization.noauthorization.entity.Mdt;
+import com.themdtnoauthorization.noauthorization.manager.CommentManager;
 import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
 import com.themdtnoauthorization.noauthorization.manager.InstitutionManager;
 import com.themdtnoauthorization.noauthorization.manager.MdtManager;
@@ -20,11 +22,13 @@ public class MdtApi {
     private MdtManager mdtManager;
     private DiseaseManager diseaseManager;
     private InstitutionManager institutionManager;
+    private CommentManager commentManager;
 
-    public MdtApi(MdtManager mdtManager, DiseaseManager diseaseManager, InstitutionManager institutionManager) {
+    public MdtApi(MdtManager mdtManager, DiseaseManager diseaseManager, InstitutionManager institutionManager, CommentManager commentManager) {
         this.mdtManager = mdtManager;
         this.diseaseManager = diseaseManager;
         this.institutionManager = institutionManager;
+        this.commentManager = commentManager;
     }
 
     @GetMapping("/{id}")
@@ -103,5 +107,14 @@ public class MdtApi {
 //        return ResponseEntity.ok().body("Affiliation of treatment has been set.");
 //    }
 
-
+    @PatchMapping("/{id}/addComment={commentId}")
+    public ResponseEntity<String> setLocation(@PathVariable Long id, @PathVariable Long commentId){
+        Mdt mdt = mdtManager.findById(id)
+                .orElseThrow(()-> new RuntimeException("MDT does not exist."));
+        Comment comment = commentManager.findById(commentId)
+                .orElseThrow(()-> new RuntimeException("Comment does not exist."));
+        mdt.getComments().add(comment);
+        mdtManager.save(mdt);
+        return ResponseEntity.ok().body("Comment has been added.");
+    }
 }

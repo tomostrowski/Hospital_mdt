@@ -28,7 +28,7 @@ public class CommentApi {
     }
 
     @PostMapping("/new")
-    public Comment addNew(Comment comment){
+    public Comment addNew(@RequestBody Comment comment){
         return commentManager.save(comment);
     }
 

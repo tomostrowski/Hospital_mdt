@@ -108,7 +108,7 @@ public class MdtApi {
 //    }
 
     @PatchMapping("/{id}/addComment={commentId}")
-    public ResponseEntity<String> setLocation(@PathVariable Long id, @PathVariable Long commentId){
+    public ResponseEntity<String> addComment(@PathVariable Long id, @PathVariable Long commentId){
         Mdt mdt = mdtManager.findById(id)
                 .orElseThrow(()-> new RuntimeException("MDT does not exist."));
         Comment comment = commentManager.findById(commentId)

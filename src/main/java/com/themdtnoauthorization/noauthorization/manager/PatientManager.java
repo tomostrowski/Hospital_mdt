@@ -249,8 +249,8 @@ public class PatientManager {
 //                if(mdt.getAffiliation() != null)
 //                model.setAffiliation(getAffiliation(mdt));
                 model.setAffiliation(mdt.getAffiliation());
-                if (mdt.getAttendees() != null)
-                    model.setAttendees(mdt.getAttendees());
+//                if (mdt.getAttendees() != null)
+//                    model.setAttendees(mdt.getAttendees());
                 model.setStartDate(mdt.getStartDate());
                 model.setEndDate(mdt.getEndDate());
                 model.setSummary(mdt.getSummary());
@@ -258,6 +258,7 @@ public class PatientManager {
 //                    model.setLocationOfTreatment(getLocationOfTreatment(mdt));
                 model.setLocationOfTreatment(mdt.getLocationOfTreatment());
                 model.setDateOfReferralForMDT(mdt.getDateOfReferralForMDT());
+                model.setComments(getComments(mdt));
                 mdtModelSet.add(model);
             }
             return mdtModelSet;

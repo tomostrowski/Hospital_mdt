@@ -30,8 +30,8 @@ public class MdtModel {
     private String additionalComments;
     private LocalDateTime startDate;  //and time
     private LocalDateTime endDate;
-    private Set<MedicalProfessional> attendees;
-    private Set<Comment> comments;
+    private Set<MedicalProfessionalModel> attendees;
+    private Set<CommentModel> comments;
     private String affiliation;
 //    private InstitutionModel affiliation;
 }

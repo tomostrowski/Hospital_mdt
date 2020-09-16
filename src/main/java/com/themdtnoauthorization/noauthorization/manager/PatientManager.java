@@ -246,15 +246,17 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
                 MdtModel model = new MdtModel();
                 model.setId(mdt.getId());
                 model.setAdditionalComments(mdt.getAdditionalComments());
-                if(mdt.getAffiliation() != null)
-                model.setAffiliation(getAffiliation(mdt));
+//                if(mdt.getAffiliation() != null)
+//                model.setAffiliation(getAffiliation(mdt));
+                model.setAffiliation(mdt.getAffiliation());
                 if(mdt.getAttendees() != null)
                     model.setAttendees(mdt.getAttendees());
                 model.setStartDate(mdt.getStartDate());
                 model.setEndDate(mdt.getEndDate());
                 model.setSummary(mdt.getSummary());
-                if(mdt.getLocationOfTreatment() != null)
-                    model.setLocationOfTreatment(getLocationOfTreatment(mdt));
+//                if(mdt.getLocationOfTreatment() != null)
+//                    model.setLocationOfTreatment(getLocationOfTreatment(mdt));
+                model.setLocationOfTreatment(mdt.getLocationOfTreatment());
                 model.setDateOfReferralForMDT(mdt.getDateOfReferralForMDT());
                 mdtModelSet.add(model);
             }
@@ -263,25 +265,25 @@ Set<Disease> diseaseSet = new LinkedHashSet<>(patient.getDiseases());
     }
 
 
-public InstitutionModel getLocationOfTreatment(Mdt mdt){
-        Institution institution = mdt.getLocationOfTreatment();
-        if(institution !=null){
-            InstitutionModel model = new InstitutionModel();
-            model.setId(institution.getId());
-            model.setName(institution.getName());
-            return model;
-        } else return null;
-}
+//public InstitutionModel getLocationOfTreatment(Mdt mdt){
+//        Institution institution = mdt.getLocationOfTreatment();
+//        if(institution !=null){
+//            InstitutionModel model = new InstitutionModel();
+//            model.setId(institution.getId());
+//            model.setName(institution.getName());
+//            return model;
+//        } else return null;
+//}
 
-    public InstitutionModel getAffiliation(Mdt mdt){
-        Institution institution = mdt.getAffiliation();
-        if(institution !=null){
-            InstitutionModel model = new InstitutionModel();
-            model.setId(institution.getId());
-            model.setName(institution.getName());
-            return model;
-        } else return null;
-    }
+//    public InstitutionModel getAffiliation(Mdt mdt){
+//        Institution institution = mdt.getAffiliation();
+//        if(institution !=null){
+//            InstitutionModel model = new InstitutionModel();
+//            model.setId(institution.getId());
+//            model.setName(institution.getName());
+//            return model;
+//        } else return null;
+//    }
 
 
 //   @EventListener(ApplicationReadyEvent.class)

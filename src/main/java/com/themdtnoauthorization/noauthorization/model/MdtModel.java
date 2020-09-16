@@ -23,13 +23,15 @@ import java.util.Set;
 public class MdtModel {
     private Long id;
     private LocalDateTime DateOfReferralForMDT;
-    private InstitutionModel locationOfTreatment;
     private String summary;
+//    private InstitutionModel locationOfTreatment;
+    private String locationOfTreatment;
     private Date reviewDate;
     private String additionalComments;
     private LocalDateTime startDate;  //and time
     private LocalDateTime endDate;
     private Set<MedicalProfessional> attendees;
     private Set<Comment> comments;
-    private InstitutionModel affiliation;
+    private String affiliation;
+//    private InstitutionModel affiliation;
 }

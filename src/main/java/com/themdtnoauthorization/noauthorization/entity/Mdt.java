@@ -23,27 +23,21 @@ public class Mdt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime DateOfReferralForMDT;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Disease disease;
-
-    @OneToOne
-    private Institution locationOfTreatment;
-
     private String summary;
-    private Date reviewDate;
+    private LocalDateTime reviewDate;
     private String additionalComments;
     private LocalDateTime startDate;  //and time
     private LocalDateTime endDate;
+    private String locationOfTreatment;
+    private String affiliation;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Disease disease;
 
     @OneToMany
     private Set<MedicalProfessional> attendees;
 
     @OneToMany
     private Set<Comment> comments;
-
-    @OneToOne
-    private Institution affiliation;
 
     public Mdt(String summary) {
         this.summary = summary;

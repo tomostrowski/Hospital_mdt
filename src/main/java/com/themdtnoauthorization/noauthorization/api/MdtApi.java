@@ -64,27 +64,44 @@ public class MdtApi {
         return ResponseEntity.ok().body("Disease has been set.");
     }
 
-    @PatchMapping("/{id}/location={institutionId}")
-    public ResponseEntity<String> setLocation(@PathVariable Long id, @PathVariable Long institutionId ){
+        @PatchMapping("/{id}/location={location}")
+    public ResponseEntity<String> setLocation(@PathVariable Long id, @PathVariable String location){
         Mdt mdt = mdtManager.findById(id)
                 .orElseThrow(()-> new RuntimeException("MDT does not exist."));
-        Institution institution = institutionManager.findById(institutionId)
-                .orElseThrow(()-> new RuntimeException("Institution does not exist."));
-        mdt.setLocationOfTreatment(institution);
+        mdt.setLocationOfTreatment(location);
         mdtManager.save(mdt);
         return ResponseEntity.ok().body("Location of treatment has been set.");
     }
 
-    @PatchMapping("/{id}/affiliation={institutionId}")
-    public ResponseEntity<String> setAffiliation(@PathVariable Long id, @PathVariable Long institutionId ){
+//    @PatchMapping("/{id}/location={institutionId}")
+//    public ResponseEntity<String> setLocation(@PathVariable Long id, @PathVariable Long institutionId ){
+//        Mdt mdt = mdtManager.findById(id)
+//                .orElseThrow(()-> new RuntimeException("MDT does not exist."));
+//        Institution institution = institutionManager.findById(institutionId)
+//                .orElseThrow(()-> new RuntimeException("Institution does not exist."));
+//        mdt.setLocationOfTreatment(institution);
+//        mdtManager.save(mdt);
+//        return ResponseEntity.ok().body("Location of treatment has been set.");
+//    }
+
+    @PatchMapping("/{id}/affiliation={institution}")
+    public ResponseEntity<String> setAffiliation(@PathVariable Long id, @PathVariable String institution ){
         Mdt mdt = mdtManager.findById(id)
                 .orElseThrow(()-> new RuntimeException("MDT does not exist."));
-        Institution institution = institutionManager.findById(institutionId)
-                .orElseThrow(()-> new RuntimeException("Institution does not exist."));
         mdt.setAffiliation(institution);
         mdtManager.save(mdt);
         return ResponseEntity.ok().body("Affiliation of treatment has been set.");
     }
+//    @PatchMapping("/{id}/affiliation={institutionId}")
+//    public ResponseEntity<String> setAffiliation(@PathVariable Long id, @PathVariable Long institutionId ){
+//        Mdt mdt = mdtManager.findById(id)
+//                .orElseThrow(()-> new RuntimeException("MDT does not exist."));
+//        Institution institution = institutionManager.findById(institutionId)
+//                .orElseThrow(()-> new RuntimeException("Institution does not exist."));
+//        mdt.setAffiliation(institution);
+//        mdtManager.save(mdt);
+//        return ResponseEntity.ok().body("Affiliation of treatment has been set.");
+//    }
 
 
 }

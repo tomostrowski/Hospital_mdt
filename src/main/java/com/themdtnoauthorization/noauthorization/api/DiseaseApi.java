@@ -123,7 +123,7 @@ public class DiseaseApi {
 //        return ResponseEntity.ok().body("Medical History has been added.");
 //    }
 
-    @PatchMapping("/{id}/addMDT={mdtId}")
+    @PatchMapping("/{id}/addMdt={mdtId}")
     public ResponseEntity<String> addMdt(@PathVariable Long id, @PathVariable Long mdtId) {
         Disease disease = diseaseManager.findById(id).orElseThrow(() -> new RuntimeException("Disease doesn't exist"));
         Mdt mdt = mdtManager.findById(mdtId)

@@ -66,7 +66,8 @@ public class DiseaseManager {
                                             .sorted()
                                             .collect(Collectors.toList());
 
-        return diseaseList.get(diseaseList.size()-1);
+        if (diseaseList.size()>0) return diseaseList.get(0);
+        else return null;
     }
 
 //    @EventListener(ApplicationReadyE{

@@ -10,10 +10,13 @@ import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
 import javassist.NotFoundException;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class DiseaseManager {
@@ -47,8 +50,13 @@ public class DiseaseManager {
         diseaseRepo.deleteById(id);
     }
 
+    public Long findLastId() {
+       List<Disease> diseaseSet=  diseaseRepo.findAll((Sort.by(Sort.Direction.DESC, "id")));
+       return diseaseSet.get(0).getId();
+    }
 
-//    @EventListener(ApplicationReadyEvent.class)
+//    @EventListener(ApplicationReadyE{
+//    event.class)
 //    public void fillDb(){
 //        save(new Disease("LEFT breast IDCG3 ER neg, PR neg, Her2 awaited (FISH) 28mm on US", LocalDate.of(2005, 11, 14 ),"Marek Mariusz Ostrowski","Grzegorz Waryński","Shah Hospital Kenia"));
 //    }

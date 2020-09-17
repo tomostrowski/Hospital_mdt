@@ -60,7 +60,7 @@ public class PatientApi {
 
 
     @GetMapping("{id}/all")
-    public Set<Disease> getAllPatientsDiseases(@PathVariable Long id){
+    public List<Disease> getAllPatientsDiseases(@PathVariable Long id){
         return patientManager.findAllDiseasesByPatientId(id);
     }
 

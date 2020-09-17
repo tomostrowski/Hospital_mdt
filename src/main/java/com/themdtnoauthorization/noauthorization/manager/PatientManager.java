@@ -47,7 +47,7 @@ public class PatientManager {
         patientRepo.deleteById(id);
     }
 
-    public Set<Disease> findAllDiseasesByPatientId(Long id) {
+    public List<Disease> findAllDiseasesByPatientId(Long id) {
         Patient patient = patientRepo.findById(id).get();
         return diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
     }

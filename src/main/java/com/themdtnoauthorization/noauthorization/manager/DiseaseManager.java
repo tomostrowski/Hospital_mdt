@@ -53,7 +53,7 @@ public class DiseaseManager {
 
     public Long findLastId(Long patientId) {
        Patient patient = patientRepo.findById(patientId).orElseThrow(()-> new RuntimeException("Patient doesnt exist."));
-       Disease disease=  diseaseRepo.findFirstByPatientOrderByIdDesc(patient).orElseThrow(()-> new RuntimeException("Disease doesnt exist."));
+       Disease disease=  diseaseRepo.findDistinctByPatient(patient).orElseThrow(()-> new RuntimeException("Disease doesnt exist."));
        return disease.getId();
     }
 

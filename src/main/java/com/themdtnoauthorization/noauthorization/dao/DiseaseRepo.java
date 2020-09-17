@@ -13,4 +13,5 @@ public interface DiseaseRepo extends JpaRepository<Disease, Long> {
 
     Set<Disease> findAllByPatientOrderByDiagnosisDateDesc(Patient patient);
     Optional<Disease> findFirstByPatientOrderByIdDesc(Patient patient);
+    Optional<Disease> findDistinctByPatient(Patient patient);
 }

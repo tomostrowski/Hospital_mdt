@@ -13,6 +13,7 @@ import java.util.Set;
 public interface DiseaseRepo extends JpaRepository<Disease, Long> {
 
     List<Disease> findAllByPatientOrderByDiagnosisDateDesc(Patient patient);
+    List<Disease> findAllByPatient(Patient patient);
     Optional<Disease> findFirstByPatientOrderByIdDesc(Patient patient);
     Optional<Disease> findDistinctByPatient(Patient patient);
 }

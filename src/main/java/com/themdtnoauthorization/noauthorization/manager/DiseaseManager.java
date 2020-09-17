@@ -6,6 +6,7 @@ import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
 import com.themdtnoauthorization.noauthorization.dao.TreatmentHistoryRepo;
 import com.themdtnoauthorization.noauthorization.entity.CancerInfo;
 import com.themdtnoauthorization.noauthorization.entity.Disease;
+import com.themdtnoauthorization.noauthorization.entity.Patient;
 import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
 import javassist.NotFoundException;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -50,9 +51,10 @@ public class DiseaseManager {
         diseaseRepo.deleteById(id);
     }
 
-    public Long findLastId() {
-       List<Disease> diseaseSet=  diseaseRepo.findAll((Sort.by(Sort.Direction.DESC, "id")));
-       return diseaseSet.get(0).getId();
+    public Long findLastId(Long patientId) {
+        Patient patient = patientRepo.findById(patientId).orElseThrow(()-> new RuntimeException("Patient doesnt exist."));
+       Optional<Disease> disease=  diseaseRepo.findFirstByPatientOrderByIdDesc(patient);
+       return disease.orElseThrow(()-> new RuntimeException("Patient doesnt exist.")).getId();
     }
 
 //    @EventListener(ApplicationReadyE{

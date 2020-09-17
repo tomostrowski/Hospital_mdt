@@ -51,11 +51,11 @@ public class DiseaseManager {
         diseaseRepo.deleteById(id);
     }
 
-    public Long findLastId(Long patientId) {
+    public Disease findLastDisease(Long patientId) {
        Patient patient = patientRepo.findById(patientId).orElseThrow(()-> new RuntimeException("Patient doesnt exist."));
 //       Disease disease=  diseaseRepo.findDistinctByPatient(patient).orElseThrow(()-> new RuntimeException("Disease doesnt exist."));
         List<Disease> diseaseSet = diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
-       return diseaseSet.get(0).getId();
+       return diseaseSet.get(0);
     }
 
 //    @EventListener(ApplicationReadyE{

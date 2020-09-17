@@ -34,8 +34,8 @@ public class DiseaseApi {
     }
 
     @GetMapping("patient/{patientId}/findLast")
-    public Long findLastId(@PathVariable Long patientId) {
-        return diseaseManager.findLastId(patientId);
+    public Disease findLastId(@PathVariable Long patientId) {
+        return diseaseManager.findLastDisease(patientId);
     }
 
     @GetMapping("/all")

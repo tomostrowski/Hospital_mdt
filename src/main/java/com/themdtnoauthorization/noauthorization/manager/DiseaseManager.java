@@ -9,15 +9,21 @@ import com.themdtnoauthorization.noauthorization.entity.Disease;
 import com.themdtnoauthorization.noauthorization.entity.Patient;
 import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
 import javassist.NotFoundException;
+import javassist.runtime.Desc;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Filter;
+import java.util.logging.StreamHandler;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class DiseaseManager {
@@ -55,9 +61,12 @@ public class DiseaseManager {
        Patient patient = patientRepo.findById(patientId).orElseThrow(()-> new RuntimeException("Patient doesnt exist."));
 //       Disease disease=  diseaseRepo.findDistinctByPatient(patient).orElseThrow(()-> new RuntimeException("Disease doesnt exist."));
 //        List<Disease> diseaseSet = diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
-        List<Disease> diseaseList = diseaseRepo.findDiseasesByPatient(patient);
+        List<Disease> diseaseList = diseaseRepo.findAll().stream()
+                                            .filter(d->d.getPatient().equals(patient))
+                                            .sorted()
+                                            .collect(Collectors.toList());
 
-        return diseaseList.get(0);
+        return diseaseList.get(diseaseList.size()-1);
     }
 
 //    @EventListener(ApplicationReadyE{

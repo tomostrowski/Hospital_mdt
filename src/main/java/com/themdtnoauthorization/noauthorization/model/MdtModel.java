@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
@@ -22,14 +23,14 @@ import java.util.Set;
 
 public class MdtModel {
     private Long id;
-    private LocalDateTime DateOfReferralForMDT;
+    private LocalDate DateOfReferralForMDT;
     private String summary;
 //    private InstitutionModel locationOfTreatment;
     private String locationOfTreatment;
     private Date reviewDate;
     private String additionalComments;
-    private LocalDateTime startDate;  //and time
-    private LocalDateTime endDate;
+    private LocalDate startDate;  //and time
+    private LocalDate endDate;
     private Set<MedicalProfessionalModel> attendees;
     private Set<CommentModel> comments;
     private String affiliation;

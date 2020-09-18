@@ -52,8 +52,8 @@ public class CommentApi {
 
     @PatchMapping("{id}/author={authorId}")
     public ResponseEntity<String> setAuthor(@PathVariable Long id, @PathVariable Long authorId){
-        Comment comment = commentManager.findById(id).get();
-        MedicalProfessional author = medicalProfessionalManager.findById(id).get();
+        Comment comment = commentManager.findById(id).orElseThrow(()-> new RuntimeException("Comment does not exist."));
+        MedicalProfessional author = medicalProfessionalManager.findById(authorId).orElseThrow(()-> new RuntimeException("Author does not exist."));
 //        commentManager.setAuthor(id, authorId);
         comment.setAuthor(author);
         commentManager.save(comment);

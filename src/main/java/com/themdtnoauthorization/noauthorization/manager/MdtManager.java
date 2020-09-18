@@ -40,16 +40,17 @@ public class MdtManager {
     }
 
     public Set<CommentModel> getAllCommentsById(Long id) {
-        Optional<Mdt> mdt = mdtRepo.findById(id);
-        Set<Comment> commentSet = mdt.orElseThrow(() -> new RuntimeException("This MDT does not exist.")).getComments();
-        ;
+        Mdt mdt = mdtRepo.findById(id).orElseThrow(()->new RuntimeException("Mdt does not exist."));
+        Set<Comment> commentSet = mdt.getComments();
         Set<CommentModel> commentModelSet = new LinkedHashSet<>();
         if (commentSet.size() > 0) {
             for (Comment comment : commentSet) {
                 CommentModel model = new CommentModel();
                 model.setId(comment.getId());
                 model.setText(comment.getText());
+                if(comment.getAuthor() != null)
                 model.setAuthor(comment.getAuthor().getFirstName()+" "+comment.getAuthor().getLastName());
+                model.setWasEdited(comment.getWasEdited());
                 commentModelSet.add(model);
             }
             return commentModelSet;

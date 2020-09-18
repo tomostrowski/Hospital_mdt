@@ -19,5 +19,5 @@ public class CommentModel {
     private String author;
     private DiseaseModel disease;
     private MdtModel mdt;
-
+    private String wasEdited; //zmienic na Boolean
 }

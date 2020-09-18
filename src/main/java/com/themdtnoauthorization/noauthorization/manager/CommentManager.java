@@ -35,6 +35,13 @@ public class CommentManager {
         commentRepo.deleteById(id);
     }
 
+    public void changeCommentText(Long id, String text) {
+        Comment comment = findById(id).orElseThrow(()-> new RuntimeException("Comment does not exist."));
+        comment.setText(text);
+        comment.setWasEdited("true"); //zamień ta booleanowaskie true
+        save(comment);
+    }
+
 //    public void setAuthor(Long id, Long authorId) {
 //        Comment comment = commentRepo.findById(id).orElseThrow(()->new RuntimeException("Comment does not exist."));
 //        MedicalProfessional author = medicalProfessionalRepo.findById(authorId).orElseThrow(()->new RuntimeException("Author does not exist."));

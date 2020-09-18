@@ -42,7 +42,7 @@ public class CommentApi {
         return ResponseEntity.ok().body("Comment has been deleted.");
     }
 
-    @PatchMapping("{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<String> changeComment(@PathVariable Long id, @RequestBody String text){
         Comment commentObject = commentManager.findById(id).get();
         commentObject.setText(text);
@@ -50,7 +50,7 @@ public class CommentApi {
         return ResponseEntity.ok().body("Comment has been changed.");
     }
 
-    @PatchMapping("{id}/author={authorId}")
+    @PatchMapping("/{id}/author={authorId}")
     public ResponseEntity<String> setAuthor(@PathVariable Long id, @PathVariable Long authorId){
         Comment comment = commentManager.findById(id).orElseThrow(()-> new RuntimeException("Comment does not exist."));
         MedicalProfessional author = medicalProfessionalManager.findById(authorId).orElseThrow(()-> new RuntimeException("Author does not exist."));
@@ -58,5 +58,11 @@ public class CommentApi {
         comment.setAuthor(author);
         commentManager.save(comment);
         return ResponseEntity.ok().body("Author has been added to comment.");
+    }
+
+    @PatchMapping("/{id}/text")
+    public ResponseEntity<String> changeCommentText(@PathVariable Long id, @RequestBody String text){
+        commentManager.changeCommentText(id, text);
+        return ResponseEntity.ok().header("Comment edited").body("Comment has been edited.");
     }
 }

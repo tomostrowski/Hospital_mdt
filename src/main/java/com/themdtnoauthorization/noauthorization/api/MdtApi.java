@@ -115,6 +115,8 @@ public class MdtApi {
                 .orElseThrow(()-> new RuntimeException("Comment does not exist."));
         mdt.getComments().add(comment);
         mdtManager.save(mdt);
+        comment.setMdt(mdt);
+        commentManager.save(comment);
         return ResponseEntity.ok().body("Comment has been added.");
     }
 

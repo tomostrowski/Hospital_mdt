@@ -45,4 +45,10 @@ public class CommentApi {
         commentManager.save(commentObject);
         return ResponseEntity.ok().body("Comment has been changed.");
     }
+
+    @PatchMapping("{id}/author={authorId}")
+    public ResponseEntity<String> addAuthor(@PathVariable Long id, @PathVariable Long authorId){
+        commentManager.setAuthor(id, authorId);
+        return ResponseEntity.ok().body("Comment has been changed.");
+    }
 }

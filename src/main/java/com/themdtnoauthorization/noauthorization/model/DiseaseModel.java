@@ -28,6 +28,5 @@ public class DiseaseModel {
     private CancerInfoModel cancerInfo;
     private TreatmentHistoryModel treatmentHistory;
     private Set<MdtModel> mdts;
-    private String isOpen;
 
 }

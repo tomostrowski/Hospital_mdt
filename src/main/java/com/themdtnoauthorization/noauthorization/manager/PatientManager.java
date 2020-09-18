@@ -284,15 +284,15 @@ public class PatientManager {
         else return new LinkedHashSet<>();
     }
 
-    public MedicalProfessionalModel getAuthor(Comment comment){
-        MedicalProfessional author = comment.getAuthor();
-        if(author !=null){
-            MedicalProfessionalModel model = new MedicalProfessionalModel();
-            model.setId(model.getId());
-            model.setName(model.getName());
-            return model;
-        } else return null;
-}
+//    public MedicalProfessionalModel getAuthor(Comment comment){
+//        MedicalProfessional author = comment.getAuthor();
+//        if(author !=null){
+//            MedicalProfessionalModel model = new MedicalProfessionalModel();
+//            model.setId(model.getId());
+//            model.setName(model.getName());
+//            return model;
+//        } else return null;
+//    }
 
     public DiseaseModel findLastDisease(Long patientId) {
         Patient patient = patientRepo.findById(patientId).orElseThrow(()-> new RuntimeException("Patient doesnt exist."));

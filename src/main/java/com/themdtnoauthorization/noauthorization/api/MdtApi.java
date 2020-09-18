@@ -117,4 +117,13 @@ public class MdtApi {
         mdtManager.save(mdt);
         return ResponseEntity.ok().body("Comment has been added.");
     }
+
+    @PatchMapping("/{id}/setIOpen={status}")
+    public ResponseEntity<String> addComment(@PathVariable Long id, @PathVariable String status){
+        Mdt mdt = mdtManager.findById(id)
+                .orElseThrow(()-> new RuntimeException("MDT does not exist."));
+        mdt.setIsOpen(status);
+        mdtManager.save(mdt);
+        return ResponseEntity.ok().body("IsOpen has been changed.");
+    }
 }

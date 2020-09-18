@@ -7,6 +7,7 @@ import com.themdtnoauthorization.noauthorization.entity.Patient;
 import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
 import com.themdtnoauthorization.noauthorization.manager.MedicalHistoryManager;
 import com.themdtnoauthorization.noauthorization.manager.PatientManager;
+import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
 import com.themdtnoauthorization.noauthorization.model.PatientListModel;
 import com.themdtnoauthorization.noauthorization.model.PatientModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,6 +124,8 @@ public class PatientApi {
         Disease disease = diseaseManager.findById(diseaseId).get();
         patient.getDiseases().add(disease);
         patientManager.save(patient);
+        disease.setPatient(patient);
+        diseaseManager.save(disease);
         return ResponseEntity.ok().body("Disease has been added to patient "+ patient.getGivenName()+" "+patient.getSurname()+".");
     }
 
@@ -137,4 +140,8 @@ public class PatientApi {
         return ResponseEntity.ok().body("Medical History has been added to patient "+ patient.getGivenName()+" "+patient.getSurname()+".");
     }
 
+    @GetMapping("/{id}/findLastDisease")
+    public DiseaseModel findLastId(@PathVariable Long id) {
+        return patientManager.findLastDisease(id);
+    }
 }

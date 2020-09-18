@@ -49,7 +49,7 @@ public class MdtManager {
                 CommentModel model = new CommentModel();
                 model.setId(comment.getId());
                 model.setText(comment.getText());
-                model.setAuthor(getAuthor(comment));
+                model.setAuthor(comment.getAuthor().getFirstName()+" "+comment.getAuthor().getLastName());
                 commentModelSet.add(model);
             }
             return commentModelSet;

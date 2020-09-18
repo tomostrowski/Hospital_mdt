@@ -16,7 +16,7 @@ public class CommentModel {
     private Long id;
     private String text;
     private LocalDateTime date;
-    private MedicalProfessionalModel author;
+    private String author;
     private DiseaseModel disease;
     private MdtModel mdt;
 

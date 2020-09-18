@@ -8,6 +8,7 @@ import com.themdtnoauthorization.noauthorization.entity.CancerInfo;
 import com.themdtnoauthorization.noauthorization.entity.Disease;
 import com.themdtnoauthorization.noauthorization.entity.Patient;
 import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
+import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
 import javassist.NotFoundException;
 import javassist.runtime.Desc;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -57,18 +58,8 @@ public class DiseaseManager {
         diseaseRepo.deleteById(id);
     }
 
-    public Disease findLastDisease(Long patientId) {
-       Patient patient = patientRepo.findById(patientId).orElseThrow(()-> new RuntimeException("Patient doesnt exist."));
-//       Disease disease=  diseaseRepo.findDistinctByPatient(patient).orElseThrow(()-> new RuntimeException("Disease doesnt exist."));
-//        List<Disease> diseaseSet = diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
-        List<Disease> diseaseList = diseaseRepo.findAll().stream()
-                                            .filter(d->d.getPatient().equals(patient))
-                                            .sorted()
-                                            .collect(Collectors.toList());
 
-        if (diseaseList.size()>0) return diseaseList.get(0);
-        else return null;
-    }
+
 
 //    @EventListener(ApplicationReadyE{
 //    event.class)

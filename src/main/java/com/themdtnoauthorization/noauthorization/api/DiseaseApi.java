@@ -2,6 +2,7 @@ package com.themdtnoauthorization.noauthorization.api;
 
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.manager.*;
+import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,10 +34,6 @@ public class DiseaseApi {
         return diseaseManager.findById(id);
     }
 
-    @GetMapping("patient/{patientId}/findLast")
-    public Disease findLastId(@PathVariable Long patientId) {
-        return diseaseManager.findLastDisease(patientId);
-    }
 
     @GetMapping("/all")
     public Iterable<Disease> findAll() {

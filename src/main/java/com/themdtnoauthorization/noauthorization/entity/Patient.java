@@ -18,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
+@Table
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +36,7 @@ public class Patient {
     private String email;
     private String patientNumber;
 
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy="patient")
     @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 

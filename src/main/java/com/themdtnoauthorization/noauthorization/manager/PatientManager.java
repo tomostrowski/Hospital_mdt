@@ -47,6 +47,7 @@ public class PatientManager {
         patientRepo.deleteById(id);
     }
 
+
     public List<Disease> findAllDiseasesByPatientId(Long id) {
         Patient patient = patientRepo.findById(id).get();
         return diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
@@ -176,7 +177,7 @@ public class PatientManager {
                 model.setPlaceOfDiagnosis(disease.getPlaceOfDiagnosis());
                 model.setCancerInfo(getCancerInfoModel(disease));
                 model.setTreatmentHistory(getTreatmentHistoryModel(disease));
-                model.setMdts(getMdtSet(disease));
+                model.setMdts(getMdts(disease));
                 diseaseModelSet.add(model);
             }
             return diseaseModelSet;
@@ -238,7 +239,7 @@ public class PatientManager {
         } else return null;
     }
 
-    public Set<MdtModel> getMdtSet(Disease disease) {
+    public Set<MdtModel> getMdts(Disease disease) {
         Set<Mdt> mdtSet = new LinkedHashSet<>(disease.getMdts());
         if (mdtSet.size() > 0) {
             Set<MdtModel> mdtModelSet = new LinkedHashSet<>();
@@ -267,13 +268,14 @@ public class PatientManager {
 
     public Set<CommentModel> getComments(Mdt mdt) {
         Set<Comment> commentSet = new LinkedHashSet<>(mdt.getComments());
-        if (commentSet != null) {
+        if (commentSet.size()> 0) {
             Set<CommentModel> commentModelSet = new LinkedHashSet<>();
             for (Comment comment : commentSet) {
                 CommentModel model = new CommentModel();
                 model.setId(comment.getId());
                 model.setText(comment.getText());
-                model.setAuthor(getAuthor(comment));
+                if (comment.getAuthor()!=null)
+                model.setAuthor(comment.getAuthor().getFirstName()+" "+comment.getAuthor().getLastName());
                 model.setDate(comment.getDate());
                 commentModelSet.add(model);
             } return commentModelSet;
@@ -291,6 +293,33 @@ public class PatientManager {
         } else return null;
 }
 
+    public DiseaseModel findLastDisease(Long patientId) {
+        Patient patient = patientRepo.findById(patientId).orElseThrow(()-> new RuntimeException("Patient doesnt exist."));
+//       Disease disease=  diseaseRepo.findDistinctByPatient(patient).orElseThrow(()-> new RuntimeException("Disease doesnt exist."));
+//        List<Disease> diseaseSet = diseaseRepo.findAllByPatientOrderByDiagnosisDateDesc(patient);
+//        List<Disease> diseaseList = diseaseRepo.findAll().stream()
+//                                            .filter(d->d.getId()==1)
+////                                            .sorted()
+//                                            .collect(Collectors.toList());
+        Disease disease = diseaseRepo.findFirstByPatientOrderByIdDesc(patient).orElseThrow(()-> new RuntimeException("Disease does not exist."));
+        if (disease!=null) {
+            DiseaseModel model = new DiseaseModel();
+            model.setId(disease.getId());
+            model.setName(disease.getName());
+            model.setMdts(getMdts(disease));
+//            model.setCancerInfo(getCancerInfoModel(disease));
+//            model.setDiagnosingPhysician(model.getDiagnosingPhysician());
+//            model.setDiagnosisDate(disease.getDiagnosisDate());
+//            model.setPlaceOfDiagnosis(disease.getPlaceOfDiagnosis());
+//            model.setTreatmentHistory(getTreatmentHistoryModel(disease));
+//            model.setReferringPhysician(disease.getReferringPhysician().getName());
+            return model;
+        }
+        else return null;
+    }
+
+
+//    }
 //public InstitutionModel getLocationOfTreatment(Mdt mdt){
 //        Institution institution = mdt.getLocationOfTreatment();
 //        if(institution !=null){

@@ -30,7 +30,7 @@ public class Mdt {
     private LocalDateTime endDate;
     private String locationOfTreatment;
     private String affiliation;
-    private boolean isOpen;
+    private String isOpen; //zmienić na boolean
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Disease disease;

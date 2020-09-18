@@ -260,6 +260,7 @@ public class PatientManager {
                 model.setLocationOfTreatment(mdt.getLocationOfTreatment());
                 model.setDateOfReferralForMDT(mdt.getDateOfReferralForMDT());
                 model.setComments(getComments(mdt));
+                model.setIsOpen(mdt.getIsOpen());
                 mdtModelSet.add(model);
             }
             return mdtModelSet;
@@ -307,6 +308,7 @@ public class PatientManager {
             model.setId(disease.getId());
             model.setName(disease.getName());
             model.setMdts(getMdts(disease));
+
 //            model.setCancerInfo(getCancerInfoModel(disease));
 //            model.setDiagnosingPhysician(model.getDiagnosingPhysician());
 //            model.setDiagnosisDate(disease.getDiagnosisDate());

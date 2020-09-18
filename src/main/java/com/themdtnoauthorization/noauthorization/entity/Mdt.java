@@ -22,12 +22,12 @@ public class Mdt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime DateOfReferralForMDT;
+    private LocalDate DateOfReferralForMDT;
     private String summary;
-    private LocalDateTime reviewDate;
+    private LocalDate reviewDate;
     private String additionalComments;
-    private LocalDateTime startDate;  //and time
-    private LocalDateTime endDate;
+    private LocalDate startDate;  //and time
+    private LocalDate endDate;
     private String locationOfTreatment;
     private String affiliation;
     private String isOpen; //zmienić na boolean

@@ -22,7 +22,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
-    private LocalDateTime date;
+    private LocalDate date;
     private String wasEdited; //Boolean
 
     @ManyToOne

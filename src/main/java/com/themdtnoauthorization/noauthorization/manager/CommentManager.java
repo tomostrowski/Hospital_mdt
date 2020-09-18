@@ -35,12 +35,12 @@ public class CommentManager {
         commentRepo.deleteById(id);
     }
 
-    public void setAuthor(Long id, Long authorId) {
-        Comment comment = commentRepo.findById(id).orElseThrow(()->new RuntimeException("Comment does not exist."));
-        MedicalProfessional author = medicalProfessionalRepo.findById(authorId).orElseThrow(()->new RuntimeException("Author does not exist."));
-        comment.setAuthor(author);
-        commentRepo.save(comment);
-    }
+//    public void setAuthor(Long id, Long authorId) {
+//        Comment comment = commentRepo.findById(id).orElseThrow(()->new RuntimeException("Comment does not exist."));
+//        MedicalProfessional author = medicalProfessionalRepo.findById(authorId).orElseThrow(()->new RuntimeException("Author does not exist."));
+////        comment.setAuthor(author);
+////        commentRepo.save(comment);
+//    }
 
 
 //    @EventListener(ApplicationReadyEvent.class)

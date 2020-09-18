@@ -118,7 +118,7 @@ public class MdtApi {
         return ResponseEntity.ok().body("Comment has been added.");
     }
 
-    @PatchMapping("/{id}/iOpen={status}")
+    @PatchMapping("/{id}/isOpen={status}")
     public ResponseEntity<String> addComment(@PathVariable Long id, @PathVariable String status){
         Mdt mdt = mdtManager.findById(id)
                 .orElseThrow(()-> new RuntimeException("MDT does not exist."));

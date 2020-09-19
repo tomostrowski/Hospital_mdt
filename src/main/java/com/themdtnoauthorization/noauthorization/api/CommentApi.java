@@ -4,6 +4,7 @@ import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
 import com.themdtnoauthorization.noauthorization.manager.CommentManager;
 import com.themdtnoauthorization.noauthorization.manager.MedicalProfessionalManager;
+import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,11 @@ public class CommentApi {
     @GetMapping("/all")
     public Iterable<Comment> findAll(){
         return commentManager.findAll();
+    }
+
+    @GetMapping("/list")
+    public Iterable<CommentModel> list(){
+        return commentManager.list();
     }
 
     @PostMapping("/new")

@@ -4,11 +4,15 @@ import com.themdtnoauthorization.noauthorization.dao.CommentRepo;
 import com.themdtnoauthorization.noauthorization.dao.MedicalProfessionalRepo;
 import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
+import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CommentManager {
@@ -41,6 +45,26 @@ public class CommentManager {
         comment.setWasEdited("true"); //zamień ta booleanowaskie true
         save(comment);
     }
+
+    public Iterable<CommentModel> list() {
+        List<Comment> commentList = commentRepo.findAll();
+        if(commentList.size()>0){
+            Set<CommentModel> commentModelSet = new LinkedHashSet<>();
+            for (Comment comment:commentList){
+                CommentModel model = new CommentModel();
+                model.setId(comment.getId());
+                model.setText(comment.getText());
+                model.setDate(comment.getDate());
+                model.setWasEdited(comment.getWasEdited());
+                if (comment.getAuthor() != null)
+                model.setAuthor(comment.getAuthor().getName());
+                commentModelSet.add(model);
+            }
+            return commentModelSet;
+        }
+        else return new LinkedHashSet<>();
+    }
+
 
 //    public void setAuthor(Long id, Long authorId) {
 //        Comment comment = commentRepo.findById(id).orElseThrow(()->new RuntimeException("Comment does not exist."));

@@ -2,7 +2,6 @@ package com.themdtnoauthorization.noauthorization.api;
 
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.manager.*;
-import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +11,12 @@ import java.util.Optional;
 @RequestMapping("/api/disease")
 @CrossOrigin
 public class DiseaseApi {
-    private DiseaseManager diseaseManager;
-    private MedicalProfessionalManager medicalProfessionalManager;
-    private CancerInfoManager cancerInfoManager;
-    private TreatmentHistoryManager treatmentHistoryManager;
+    private final DiseaseManager diseaseManager;
+    private final MedicalProfessionalManager medicalProfessionalManager;
+    private final CancerInfoManager cancerInfoManager;
+    private final TreatmentHistoryManager treatmentHistoryManager;
     private MedicalHistoryManager medicalHistoryManager;
-    private MdtManager mdtManager;
+    private final MdtManager mdtManager;
 
     public DiseaseApi(DiseaseManager diseaseManager, MedicalProfessionalManager medicalProfessionalManager, CancerInfoManager cancerInfoManager,
                       TreatmentHistoryManager treatmentHistoryManager, MedicalHistoryManager medicalHistoryManager, MdtManager mdtManager) {
@@ -128,5 +127,11 @@ public class DiseaseApi {
         disease.getMdts().add(mdt);
         diseaseManager.save(disease);
         return ResponseEntity.ok().body("The MDT has been added.");
+    }
+
+    @PatchMapping("/{id}/addImaging={imagingId}")
+    public ResponseEntity<String> addImaging(@PathVariable Long id, @PathVariable Long imagingId){
+        diseaseManager.addImaging(id, imagingId);
+        return ResponseEntity.ok().body("Imaging has been set to disease.");
     }
 }

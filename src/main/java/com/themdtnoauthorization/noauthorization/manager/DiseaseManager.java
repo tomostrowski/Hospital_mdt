@@ -1,9 +1,6 @@
 package com.themdtnoauthorization.noauthorization.manager;
 
-import com.themdtnoauthorization.noauthorization.dao.CancerInfoRepo;
-import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
-import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
-import com.themdtnoauthorization.noauthorization.dao.TreatmentHistoryRepo;
+import com.themdtnoauthorization.noauthorization.dao.*;
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
 import javassist.NotFoundException;
@@ -25,14 +22,12 @@ import java.util.stream.Stream;
 
 @Service
 public class DiseaseManager {
-    private DiseaseRepo diseaseRepo;
-    private PatientRepo patientRepo;
-    private CancerInfoRepo cancerInfoRepo;
-    private TreatmentHistoryRepo treatmentHistoryRepo;
+    private final DiseaseRepo diseaseRepo;
+    private final ImagingRepo imagingRepo;
 
-    public DiseaseManager(DiseaseRepo diseaseRepo, PatientRepo patientRepo) {
+    public DiseaseManager(DiseaseRepo diseaseRepo, ImagingRepo imagingRepo) {
         this.diseaseRepo = diseaseRepo;
-        this.patientRepo = patientRepo;
+        this.imagingRepo = imagingRepo;
     }
 
     public Optional<Disease> findById(Long id){
@@ -55,10 +50,14 @@ public class DiseaseManager {
         diseaseRepo.deleteById(id);
     }
 
-//    public void addImaging(Long id, Long imagingId){
-//        Disease disease = findById(id).orElseThrow(()-> new RuntimeException("Disease does not exist."));
-//        Imaging imaging =
-//    }
+    public void addImaging(Long id, Long imagingId){
+        Disease disease = findById(id).orElseThrow(()-> new RuntimeException("Disease does not exist."));
+        Imaging imaging = imagingRepo.findById(imagingId).orElseThrow(()-> new RuntimeException("Imaging does not exist."));
+        disease.setImaging(imaging);
+        diseaseRepo.save(disease);
+        imaging.setDisease(disease);
+        imagingRepo.save(imaging);
+    }
 
 
 //    @EventListener(ApplicationReadyE{

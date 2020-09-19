@@ -12,7 +12,7 @@ import java.util.Optional;
 @CrossOrigin
 public class CancerInfoApi {
 
-    private CancerInfoManager cancerInfoManager;
+    private final CancerInfoManager cancerInfoManager;
 
     public CancerInfoApi(CancerInfoManager cancerInfoManager) {
         this.cancerInfoManager = cancerInfoManager;

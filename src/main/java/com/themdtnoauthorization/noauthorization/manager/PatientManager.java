@@ -144,20 +144,22 @@ public class PatientManager {
     }
 
 
-    public Optional<PatientModel> getPatient(Patient patient) {
+    public PatientModel getPatient(Long id) {
+        Patient patient = patientRepo.findById(id).orElseThrow(()-> new RuntimeException("Patient does not exist."));
         PatientModel model = new PatientModel();
         model.setId(patient.getId());
         model.setGivenName(patient.getGivenName());
         model.setSurname(patient.getSurname());
         model.setGender(patient.getGender());
         model.setDateOfBirth(patient.getDateOfBirth());
+        model.setAge(patient.getAge());
         model.setPatientNumber(patient.getPatientNumber());
         model.setEmail(patient.getEmail());
         model.setMobileNumber(patient.getMobileNumber());
         model.setIdNumber(patient.getIdNumber());
         model.setDiseases(getDiseaseSet(patient));
         model.setMedicalHistory(getMedicalHistoryModel(patient));
-        return Optional.of(model);
+        return model;
     }
 
     public Set<DiseaseModel> getDiseaseSet(Patient patient) {

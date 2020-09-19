@@ -35,9 +35,8 @@ public class PatientApi {
     }
 
     @GetMapping("/{id}")
-    public Optional<PatientModel> getPatientById(@PathVariable Long id){
-        Optional<Patient> patient= patientManager.findById(id);
-        return patientManager.getPatient(patient.get());
+    public PatientModel getPatientById(@PathVariable Long id){
+        return patientManager.getPatient(id);
     }
 
     @GetMapping("/findBySurname={surname}")
@@ -135,8 +134,8 @@ public class PatientApi {
         MedicalHistory medicalHistory = medicalHistoryManager.findById(medicalHistoryId).get();
         patient.setMedicalHistory(medicalHistory);
         patientManager.save(patient);
-//        disease.setPatient(patient);
-//        diseaseManager.save(disease);
+        medicalHistory.setPatient(patient);
+        medicalHistoryManager.save(medicalHistory);
         return ResponseEntity.ok().body("Medical History has been added to patient "+ patient.getGivenName()+" "+patient.getSurname()+".");
     }
 

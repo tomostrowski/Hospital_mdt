@@ -41,7 +41,7 @@ public class MdtManager {
 
     public Set<CommentModel> getAllCommentsById(Long id) {
         Mdt mdt = mdtRepo.findById(id).orElseThrow(()->new RuntimeException("Mdt does not exist."));
-        Set<Comment> commentSet = mdt.getComments();
+        Set<Comment> commentSet = new LinkedHashSet<>(mdt.getComments());
         Set<CommentModel> commentModelSet = new LinkedHashSet<>();
         if (commentSet.size() > 0) {
             for (Comment comment : commentSet) {

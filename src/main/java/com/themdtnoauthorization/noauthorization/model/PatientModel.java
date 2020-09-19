@@ -22,6 +22,7 @@ public class PatientModel {
     private String mobileNumber;
     private String email;
     private LocalDate dateOfBirth;
+    private Integer age;
     private String gender;
     private String patientNumber;
     private Set<DiseaseModel> diseases;

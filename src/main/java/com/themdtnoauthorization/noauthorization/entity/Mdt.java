@@ -10,6 +10,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -39,7 +41,7 @@ public class Mdt {
     private Set<MedicalProfessional> attendees;
 
     @OneToMany
-    private Set<Comment> comments;
+    private List<Comment> comments;
 
     public Mdt(String summary) {
         this.summary = summary;

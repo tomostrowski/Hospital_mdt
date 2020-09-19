@@ -18,9 +18,8 @@ public class ImagingApi {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<String> addNew(@RequestBody Imaging imaging){
-        imagingManager.save(imaging);
-        return ResponseEntity.ok().body("New imaging has been added.");
+    public Imaging addNew(@RequestBody Imaging imaging){
+        return imagingManager.save(imaging);
     }
 
     @GetMapping("/{id}")

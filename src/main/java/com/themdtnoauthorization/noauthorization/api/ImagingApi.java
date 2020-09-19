@@ -17,7 +17,7 @@ public class ImagingApi {
         this.imagingManager = imagingManager;
     }
 
-    @GetMapping("/new")
+    @PostMapping("/new")
     public ResponseEntity<String> addNew(@RequestBody Imaging imaging){
         imagingManager.save(imaging);
         return ResponseEntity.ok().body("New imaging has been added.");

@@ -18,6 +18,7 @@ public class PatientListModel {
     private String givenName;
     private String surname;
     private LocalDate dateOfBirth;
+    private int age;
     private String gender;
     private String patientNumber;
     private Set<DiseaseModelList> diseases;

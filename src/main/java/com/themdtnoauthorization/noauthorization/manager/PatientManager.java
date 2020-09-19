@@ -119,6 +119,7 @@ public class PatientManager {
                 model.setSurname(patient.getSurname());
                 model.setGender(patient.getGender());
                 model.setDateOfBirth(patient.getDateOfBirth());
+                model.setAge(patient.getAge());
                 model.setPatientNumber(patient.getPatientNumber());
                 model.setDiseases(getDiseaseListSet(patient));
                 patientListModels.add(model);

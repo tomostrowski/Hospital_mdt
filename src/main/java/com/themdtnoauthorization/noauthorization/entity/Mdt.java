@@ -20,6 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
+@Table(name="mdt")
 public class Mdt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +41,7 @@ public class Mdt {
     @OneToMany
     private Set<MedicalProfessional> attendees;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy="mdt")
     private List<Comment> comments;
 
     public Mdt(String summary) {

@@ -31,7 +31,7 @@ public class Comment {
     @ManyToOne
     private Disease disease;
 
-    @OneToOne
+    @ManyToOne
     private Mdt mdt;
 
 }

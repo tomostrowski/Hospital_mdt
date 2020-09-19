@@ -40,7 +40,7 @@ public class Patient {
     @OrderBy("diagnosisDate DESC")
     private Set<Disease> diseases;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL}, mappedBy="patient")
     private MedicalHistory medicalHistory;
 
     public Patient(String givenName, String surname) {

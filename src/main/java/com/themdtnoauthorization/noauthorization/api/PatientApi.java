@@ -65,9 +65,8 @@ public class PatientApi {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<String> addNewPatient(@RequestBody Patient patient){
-        patientManager.save(patient);
-        return ResponseEntity.ok().body("New patient has been added.");
+    public Patient addNewPatient(@RequestBody Patient patient){
+        return patientManager.save(patient);
     }
 
     @PutMapping("/{id}")

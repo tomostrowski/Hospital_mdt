@@ -39,9 +39,8 @@ public class MedicalHistoryApi {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<String> addNew(@RequestBody MedicalHistory medicalHistory){
-        medicalHistoryManager.save(medicalHistory);
-        return ResponseEntity.ok().body("Medical History has been added.");
+    public MedicalHistory addNew(@RequestBody MedicalHistory medicalHistory){
+        return medicalHistoryManager.save(medicalHistory);
     }
 
     @PutMapping("/{id}")

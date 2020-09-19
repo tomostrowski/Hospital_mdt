@@ -211,6 +211,7 @@ public class PatientManager {
             model.setGrade(cancerInfo.getGrade());
             model.setDcis(cancerInfo.getDcis());
             model.setKi67(cancerInfo.getKi67());
+            model.setUpTen(cancerInfo.getUpTen());
             model.setSuperior(cancerInfo.getSuperior());
             model.setInferior(cancerInfo.getInferior());
             model.setMedial(cancerInfo.getMedial());

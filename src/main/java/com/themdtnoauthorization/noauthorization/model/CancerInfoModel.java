@@ -29,6 +29,7 @@ public class CancerInfoModel {
     private String grade;
     private String biomarkers;
     private String ki67;
+    private int upTen;
     private String typeOther;
     private int size;
     private String positiveLymphNodes;

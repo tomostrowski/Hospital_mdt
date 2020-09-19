@@ -94,14 +94,14 @@ public class CancerInfoApi {
         cancerInfoManager.save(cancerInfo);
         return ResponseEntity.ok().body("size has been changed to "+size+" mm.");
     }
-
-    @PatchMapping("/{id}/margins={margins}")
-    public ResponseEntity<String> changeMargins(@PathVariable Long id, @PathVariable String margins){
-        CancerInfo cancerInfo = findById(id).get();
-        cancerInfo.setMargins(margins);
-        cancerInfoManager.save(cancerInfo);
-        return ResponseEntity.ok().body("Margins has been changed to "+margins);
-    }
+//
+//    @PatchMapping("/{id}/margins={margins}")
+//    public ResponseEntity<String> changeMargins(@PathVariable Long id, @PathVariable String margins){
+//        CancerInfo cancerInfo = findById(id).get();
+//        cancerInfo.setMargins(margins);
+//        cancerInfoManager.save(cancerInfo);
+//        return ResponseEntity.ok().body("Margins has been changed to "+margins);
+//    }
 
     @PatchMapping("/{id}/positiveLymphNodes={positiveLymphNodes}")
     public ResponseEntity<String> changePositiveLymphNodes(@PathVariable Long id, @PathVariable String positiveLymphNodes){
@@ -159,11 +159,11 @@ public class CancerInfoApi {
         return ResponseEntity.ok().body("M-pathology has been changed to "+mp);
     }
 
-    @PatchMapping("/{id}/marginNumber={marginNumber}")
-    public ResponseEntity<String> changeMarginNumber(@PathVariable Long id, @PathVariable double marginNumber){
-        CancerInfo cancerInfo = findById(id).get();
-        cancerInfo.setMarginNumber(marginNumber);
-        cancerInfoManager.save(cancerInfo);
-        return ResponseEntity.ok().body("Margin number has been changed to "+marginNumber+" mm.");
-    }
+//    @PatchMapping("/{id}/marginNumber={marginNumber}")
+//    public ResponseEntity<String> changeMarginNumber(@PathVariable Long id, @PathVariable double marginNumber){
+//        CancerInfo cancerInfo = findById(id).get();
+//        cancerInfo.setMarginNumber(marginNumber);
+//        cancerInfoManager.save(cancerInfo);
+//        return ResponseEntity.ok().body("Margin number has been changed to "+marginNumber+" mm.");
+//    }
 }

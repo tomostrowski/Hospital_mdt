@@ -16,6 +16,7 @@ public class MedicalHistory {
     @Id
     private Long id;
     private String familyHistory;
+    private String medicalHistory;
     private String medication;
     private String allergies;
     private String performanceStatus;

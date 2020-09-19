@@ -23,7 +23,7 @@ public class Comment {
     private Long id;
     private String text;
     private LocalDate date;
-    private String wasEdited; //Boolean
+    private LocalDate dateOfEditing;
 
     @ManyToOne
     private MedicalProfessional author;

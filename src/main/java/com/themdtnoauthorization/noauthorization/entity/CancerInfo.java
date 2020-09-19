@@ -29,9 +29,12 @@ public class CancerInfo {
     private String ki67;
     private String typeOther;
     private int size;
-    private String margins;
-    private double MarginNumber;
+    private double superior;
+    private double inferior;
+    private double lateral;
+    private double medial;
     private String positiveLymphNodes;
+    private String dcis;
 
     @OneToOne
     private Disease disease;

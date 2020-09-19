@@ -50,7 +50,7 @@ public class MdtManager {
                 model.setText(comment.getText());
                 if(comment.getAuthor() != null)
                 model.setAuthor(comment.getAuthor().getFirstName()+" "+comment.getAuthor().getLastName());
-                model.setWasEdited(comment.getWasEdited());
+                model.setDateOfEditing(comment.getDateOfEditing());
                 commentModelSet.add(model);
             }
             return commentModelSet;

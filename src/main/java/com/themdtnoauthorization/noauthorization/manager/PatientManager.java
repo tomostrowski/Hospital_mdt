@@ -194,6 +194,7 @@ public class PatientManager {
             MedicalHistoryModel model = new MedicalHistoryModel();
             model.setId(medicalHistory.getId());
             model.setFamilyHistory(medicalHistory.getFamilyHistory());
+            model.setMedicalHistory(medicalHistory.getMedicalHistory());
             model.setMedication(medicalHistory.getMedication());
             model.setAllergies(medicalHistory.getAllergies());
             model.setPerformanceStatus(medicalHistory.getPerformanceStatus());
@@ -208,8 +209,12 @@ public class PatientManager {
             model.setId(cancerInfo.getId());
             model.setBiomarkers(cancerInfo.getBiomarkers());
             model.setGrade(cancerInfo.getGrade());
+            model.setDcis(cancerInfo.getDcis());
             model.setKi67(cancerInfo.getKi67());
-            model.setMarginNumber(cancerInfo.getMarginNumber());
+            model.setSuperior(cancerInfo.getSuperior());
+            model.setInferior(cancerInfo.getInferior());
+            model.setMedial(cancerInfo.getMedial());
+            model.setLateral(cancerInfo.getLateral());
             model.setMc(cancerInfo.getMc());
             model.setMp(cancerInfo.getMp());
             model.setNc(cancerInfo.getNc());
@@ -281,6 +286,7 @@ public class PatientManager {
                 if (comment.getAuthor()!=null)
                 model.setAuthor(comment.getAuthor().getFirstName()+" "+comment.getAuthor().getLastName());
                 model.setDate(comment.getDate());
+                model.setDateOfEditing(comment.getDateOfEditing());
                 commentModelSet.add(model);
             } return commentModelSet;
         }

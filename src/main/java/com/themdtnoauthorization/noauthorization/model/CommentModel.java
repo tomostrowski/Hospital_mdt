@@ -21,4 +21,5 @@ public class CommentModel {
 //    private DiseaseModel disease;
 //    private MdtModel mdt;
     private String wasEdited; //zmienic na Boolean
+    private LocalDate dateOfEditing;
 }

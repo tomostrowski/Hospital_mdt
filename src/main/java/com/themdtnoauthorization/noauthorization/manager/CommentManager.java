@@ -9,6 +9,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,7 @@ public class CommentManager {
     public void changeCommentText(Long id, String text) {
         Comment comment = findById(id).orElseThrow(()-> new RuntimeException("Comment does not exist."));
         comment.setText(text);
-        comment.setWasEdited("true"); //zamień ta booleanowaskie true
+        comment.setDateOfEditing(LocalDate.now());
         save(comment);
     }
 
@@ -55,7 +56,7 @@ public class CommentManager {
                 model.setId(comment.getId());
                 model.setText(comment.getText());
                 model.setDate(comment.getDate());
-                model.setWasEdited(comment.getWasEdited());
+                model.setDateOfEditing(comment.getDateOfEditing());
                 if (comment.getAuthor() != null)
                 model.setAuthor(comment.getAuthor().getName());
                 commentModelSet.add(model);

@@ -18,7 +18,7 @@ public class CommentModel {
     private String text;
     private LocalDate date;   //z mienić na LocalDateTime  z czasem
     private String author;
-    private DiseaseModel disease;
-    private MdtModel mdt;
+//    private DiseaseModel disease;
+//    private MdtModel mdt;
     private String wasEdited; //zmienic na Boolean
 }

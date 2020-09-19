@@ -4,10 +4,7 @@ import com.themdtnoauthorization.noauthorization.dao.CancerInfoRepo;
 import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
 import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
 import com.themdtnoauthorization.noauthorization.dao.TreatmentHistoryRepo;
-import com.themdtnoauthorization.noauthorization.entity.CancerInfo;
-import com.themdtnoauthorization.noauthorization.entity.Disease;
-import com.themdtnoauthorization.noauthorization.entity.Patient;
-import com.themdtnoauthorization.noauthorization.entity.TreatmentHistory;
+import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
 import javassist.NotFoundException;
 import javassist.runtime.Desc;
@@ -58,7 +55,10 @@ public class DiseaseManager {
         diseaseRepo.deleteById(id);
     }
 
-
+//    public void addImaging(Long id, Long imagingId){
+//        Disease disease = findById(id).orElseThrow(()-> new RuntimeException("Disease does not exist."));
+//        Imaging imaging =
+//    }
 
 
 //    @EventListener(ApplicationReadyE{

@@ -8,8 +8,10 @@ import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalModel;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -66,6 +68,31 @@ public class MdtManager {
             model.setLastName(author.getLastName());
             return model;
         } else return null;
+    }
+
+    public ResponseEntity<String> setEndDate(Long id, LocalDate endDate) {
+        Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
+        mdt.setEndDate(endDate);
+        return ResponseEntity.ok().body("End Date of the MDT has been set to "+endDate);
+    }
+
+    public ResponseEntity<String> setSummary(Long id, String summary) {
+        Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
+        mdt.setSummary(summary);
+        return ResponseEntity.ok().body("Summary has been set.");
+    }
+
+    public ResponseEntity<String> setSummaryAdnEndDateNow(Long id, String summary) {
+        Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
+        mdt.setSummary(summary);
+        mdt.setEndDate(LocalDate.now());
+        return ResponseEntity.ok().body("Summary has been set and the MDT has been closed today.");
+    }
+
+    public ResponseEntity<String> setReviewDate(Long id, LocalDate reviewDate) {
+        Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
+        mdt.setReviewDate(reviewDate);
+        return ResponseEntity.ok().body("End Date of the MDT has been set to "+reviewDate);
     }
 
 //    @EventListener(ApplicationReadyEvent.class)

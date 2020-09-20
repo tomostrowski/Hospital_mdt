@@ -9,9 +9,11 @@ import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
 import com.themdtnoauthorization.noauthorization.manager.InstitutionManager;
 import com.themdtnoauthorization.noauthorization.manager.MdtManager;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @RestController
@@ -128,4 +130,26 @@ public class MdtApi {
         mdtManager.save(mdt);
         return ResponseEntity.ok().body("IsOpen has been changed.");
     }
+
+    @PatchMapping("/{id}/endDate={endDate}")
+    public ResponseEntity<String> setEndDate(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+        return  mdtManager.setEndDate(id, endDate);
+    }
+
+    @PatchMapping("{id}/summary={summary}")
+    public ResponseEntity<String> setSummary(@PathVariable Long id, @RequestBody String summary){
+        return mdtManager.setSummary(id, summary);
+    }
+
+    @PatchMapping("{id}/summaryAndEndDateNow={summary}")
+    public ResponseEntity<String> setSummaryAndEndDateNow(@PathVariable Long id, @RequestBody String summary){
+        return mdtManager.setSummaryAdnEndDateNow(id, summary);
+    }
+
+    @PatchMapping("/{id}/reviewDate={reviewDate}")
+    public ResponseEntity<String> setReviewDate(@PathVariable Long id, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate reviewDate) {
+        return  mdtManager.setEndDate(id, reviewDate);
+    }
+
+
 }

@@ -3,6 +3,7 @@ package com.themdtnoauthorization.noauthorization.manager;
 
 import com.themdtnoauthorization.noauthorization.dao.ImagingRepo;
 import com.themdtnoauthorization.noauthorization.entity.Imaging;
+import com.themdtnoauthorization.noauthorization.entity.Patient;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -26,5 +27,10 @@ public class ImagingManager {
 
     public void delete(Imaging imaging){
         imagingRepo.delete(imaging);
+    }
+
+    public Imaging update(Long id, Imaging imagingToUpdate) {
+        imagingToUpdate.setId(id);
+        return imagingRepo.save(imagingToUpdate);
     }
 }

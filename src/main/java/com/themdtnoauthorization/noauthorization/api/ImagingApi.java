@@ -1,6 +1,7 @@
 package com.themdtnoauthorization.noauthorization.api;
 
 import com.themdtnoauthorization.noauthorization.entity.Imaging;
+import com.themdtnoauthorization.noauthorization.entity.Patient;
 import com.themdtnoauthorization.noauthorization.manager.ImagingManager;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -25,5 +26,11 @@ public class ImagingApi {
     @GetMapping("/{id}")
     public Imaging findById(Long id){
         return imagingManager.findById(id).orElseThrow(()-> new RuntimeException("Imaging does not exist."));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateImaging(@RequestBody Imaging imagingToUpdate, @PathVariable Long id) {
+        imagingManager.update(id, imagingToUpdate);
+        return ResponseEntity.ok("Imaging has been updated.");
     }
 }

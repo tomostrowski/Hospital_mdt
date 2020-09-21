@@ -28,6 +28,7 @@ public class PatientModel {
     private Set<DiseaseModel> diseases;
     private MedicalHistoryModel medicalHistory;
 
+
     public PatientModel(String givenName, String surname) {
         this.givenName = givenName;
         this.surname = surname;

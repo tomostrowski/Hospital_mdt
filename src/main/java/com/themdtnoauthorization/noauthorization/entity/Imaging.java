@@ -15,7 +15,6 @@ import javax.persistence.*;
 @Entity
 public class Imaging {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String mammogram;
     private String ultrasound;

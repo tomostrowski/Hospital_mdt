@@ -1,14 +1,13 @@
 package com.themdtnoauthorization.noauthorization.manager;
 
 import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
+import com.themdtnoauthorization.noauthorization.dao.ImagingRepo;
 import com.themdtnoauthorization.noauthorization.dao.InstitutionRepo;
 import com.themdtnoauthorization.noauthorization.dao.PatientRepo;
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.*;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
 
 
@@ -18,12 +17,14 @@ public class PatientManager {
     private final PatientRepo patientRepo;
     private final DiseaseRepo diseaseRepo;
     private final InstitutionRepo institutionRepo;
+    private final ImagingRepo imagingRepo;
 
 
-    public PatientManager(PatientRepo patientRepo, DiseaseRepo diseaseRepo, InstitutionRepo institutionRepo) {
+    public PatientManager(PatientRepo patientRepo, DiseaseRepo diseaseRepo, InstitutionRepo institutionRepo, ImagingRepo imagingRepo) {
         this.patientRepo = patientRepo;
         this.diseaseRepo = diseaseRepo;
         this.institutionRepo = institutionRepo;
+        this.imagingRepo = imagingRepo;
     }
 
     public Patient save(Patient patient) {
@@ -181,12 +182,25 @@ public class PatientManager {
                 model.setCancerInfo(getCancerInfoModel(disease));
                 model.setTreatmentHistory(getTreatmentHistoryModel(disease));
                 model.setMdts(getMdts(disease));
+                model.setImaging(getImaging(disease));
                 diseaseModelSet.add(model);
             }
             return diseaseModelSet;
         } else return new LinkedHashSet<DiseaseModel>();
     }
-
+    public ImagingModel getImaging(Disease disease) {
+        Imaging imaging = disease.getImaging();
+        if (imaging != null) {
+            ImagingModel model = new ImagingModel();
+            model.setId(imaging.getId());
+            model.setMammogram(imaging.getMammogram());
+            model.setUltrasound(imaging.getUltrasound());
+            model.setCt(imaging.getCt());
+            model.setMri(imaging.getMri());
+            model.setOther(imaging.getOther());
+            return model;
+        } else return null;
+    }
 
     public MedicalHistoryModel getMedicalHistoryModel(Patient patient) {
         MedicalHistory medicalHistory = patient.getMedicalHistory();

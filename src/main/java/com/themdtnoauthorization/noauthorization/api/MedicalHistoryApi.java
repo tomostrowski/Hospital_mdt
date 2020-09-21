@@ -44,9 +44,8 @@ public class MedicalHistoryApi {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody MedicalHistory update){
-        medicalHistoryManager.update(id, update);
-        return ResponseEntity.ok("Medical History has been updated.");
+    public MedicalHistory update(@PathVariable Long id, @RequestBody MedicalHistory update){
+        return medicalHistoryManager.update(id, update);
     }
 
     @DeleteMapping("/{id}")

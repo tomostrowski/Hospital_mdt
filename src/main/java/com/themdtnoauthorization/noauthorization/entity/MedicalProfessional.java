@@ -28,8 +28,8 @@ public class MedicalProfessional {
     private String professionalNumber;
     private String specialisation;
 
-    @OneToMany
-    private Set<Comment> commments;
+    @OneToMany(cascade = {CascadeType.ALL})
+    private Set<Comment> comments;
 
     public MedicalProfessional(String firstName, String lastName) {
         this.firstName = firstName;

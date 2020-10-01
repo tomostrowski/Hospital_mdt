@@ -5,10 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Collections;
 
 @SpringBootApplication
+//@ComponentScan({"com.themdtnoauthorization.noauthorization.dao"})
 public class NoauthorizationApplication {
 
     public static void main(String[] args) {

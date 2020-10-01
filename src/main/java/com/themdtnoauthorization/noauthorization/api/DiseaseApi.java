@@ -56,7 +56,7 @@ public class DiseaseApi {
     return ResponseEntity.ok("Disease has been updated.");
     }
 
-    @PatchMapping("{id}/name={name}")
+   @PatchMapping("{id}/name={name}")
     public ResponseEntity<String> changeName(@PathVariable Long id, @PathVariable String name) {
         Disease disease = diseaseManager.findById(id).get();
         disease.setName(name);

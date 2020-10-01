@@ -1,5 +1,6 @@
 package com.themdtnoauthorization.noauthorization.api;
 
+import com.themdtnoauthorization.noauthorization.entity.Mdt;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
 import com.themdtnoauthorization.noauthorization.manager.MedicalProfessionalManager;
 import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalListModel;
@@ -51,6 +52,7 @@ public class MedicalProfessionalApi {
     public MedicalProfessional addNewMedicalProfessional(@RequestBody MedicalProfessional medicalProfessional){
         return medicalProfessionalManager.save(medicalProfessional);
     }
+
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){

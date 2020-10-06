@@ -141,7 +141,7 @@ public class MdtApi {
         return mdtManager.setSummary(id, summary);
     }
 
-    @PatchMapping("{id}/summaryAndEndDateNow={summary}")
+    @PatchMapping("{id}/summaryAndEndDateNow")
     public ResponseEntity<String> setSummaryAndEndDateNow(@PathVariable Long id, @RequestBody String summary){
         return mdtManager.setSummaryAdnEndDateNow(id, summary);
     }

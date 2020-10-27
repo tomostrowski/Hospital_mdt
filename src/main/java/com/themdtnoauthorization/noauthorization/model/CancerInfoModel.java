@@ -36,7 +36,7 @@ public class CancerInfoModel {
     private String dcis;
     private double superior;
     private double inferior;
-    private double lateral;
+    private double lateralMargin;
     private double medial;
 
     private Disease disease;

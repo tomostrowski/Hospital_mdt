@@ -34,6 +34,6 @@ public class MdtModel {
     private Set<MedicalProfessionalModel> attendees;
     private Set<CommentModel> comments;
     private String affiliation;
-    private String isOpen;
+//    private String isOpen;
 //    private InstitutionModel affiliation;
 }

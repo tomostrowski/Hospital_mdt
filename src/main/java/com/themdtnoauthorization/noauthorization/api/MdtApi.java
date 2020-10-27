@@ -1,8 +1,8 @@
 package com.themdtnoauthorization.noauthorization.api;
 
+import com.fasterxml.jackson.databind.node.TextNode;
 import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.Disease;
-import com.themdtnoauthorization.noauthorization.entity.Institution;
 import com.themdtnoauthorization.noauthorization.entity.Mdt;
 import com.themdtnoauthorization.noauthorization.manager.CommentManager;
 import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
@@ -126,7 +126,6 @@ public class MdtApi {
     public ResponseEntity<String> addComment(@PathVariable Long id, @PathVariable String status){
         Mdt mdt = mdtManager.findById(id)
                 .orElseThrow(()-> new RuntimeException("MDT does not exist."));
-        mdt.setIsOpen(status);
         mdtManager.save(mdt);
         return ResponseEntity.ok().body("IsOpen has been changed.");
     }
@@ -136,13 +135,13 @@ public class MdtApi {
         return  mdtManager.setEndDate(id, endDate);
     }
 
-    @PatchMapping("{id}/summary={summary}")
-    public ResponseEntity<String> setSummary(@PathVariable Long id, @RequestBody String summary){
+    @PatchMapping("{id}/setSummary")
+    public ResponseEntity<String> setSummary(@PathVariable Long id, @RequestBody TextNode summary){
         return mdtManager.setSummary(id, summary);
     }
 
-    @PatchMapping("{id}/summaryAndEndDateNow")
-    public ResponseEntity<String> setSummaryAndEndDateNow(@PathVariable Long id, @RequestBody String summary){
+    @PatchMapping("/{id}/summaryAndEndDateNow")
+    public ResponseEntity<String> setSummaryAndEndDateNow(@PathVariable Long id, @RequestBody TextNode summary){
         return mdtManager.setSummaryAdnEndDateNow(id, summary);
     }
 

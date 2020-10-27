@@ -1,13 +1,12 @@
 package com.themdtnoauthorization.noauthorization.manager;
 
+import com.fasterxml.jackson.databind.node.TextNode;
 import com.themdtnoauthorization.noauthorization.dao.MdtRepo;
 import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.Mdt;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalModel;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +14,7 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
+
 
 @Service
 public class MdtManager {
@@ -73,25 +73,29 @@ public class MdtManager {
     public ResponseEntity<String> setEndDate(Long id, LocalDate endDate) {
         Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
         mdt.setEndDate(endDate);
+        mdtRepo.save(mdt);
         return ResponseEntity.ok().body("End Date of the MDT has been set to "+endDate);
     }
 
-    public ResponseEntity<String> setSummary(Long id, String summary) {
+    public ResponseEntity<String> setSummary(Long id, TextNode summary) {
         Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
-        mdt.setSummary(summary);
+        mdt.setSummary(summary.asText());
+        mdtRepo.save(mdt);
         return ResponseEntity.ok().body("Summary has been set.");
     }
 
-    public ResponseEntity<String> setSummaryAdnEndDateNow(Long id, String summary) {
+    public ResponseEntity<String> setSummaryAdnEndDateNow(Long id, TextNode nodeSummary) {
         Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
-        mdt.setSummary(summary);
+        mdt.setSummary(nodeSummary.asText());
         mdt.setEndDate(LocalDate.now());
+        mdtRepo.save(mdt);
         return ResponseEntity.ok().body("Summary has been set and the MDT has been closed today.");
     }
 
     public ResponseEntity<String> setReviewDate(Long id, LocalDate reviewDate) {
         Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
         mdt.setReviewDate(reviewDate);
+        mdtRepo.save(mdt);
         return ResponseEntity.ok().body("End Date of the MDT has been set to "+reviewDate);
     }
 

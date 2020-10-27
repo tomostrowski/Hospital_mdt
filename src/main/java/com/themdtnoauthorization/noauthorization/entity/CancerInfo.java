@@ -13,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 @Entity
+
 public class CancerInfo {
     @Id
     private Long id;
@@ -32,19 +33,11 @@ public class CancerInfo {
     private int size;
     private double superior;
     private double inferior;
-    private double lateral;
+    private double lateralMargin; // poprzednia nazwa lateral jest słowem kluczowym w MySQL
     private double medial;
     private String positiveLymphNodes;
     private String dcis;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Disease disease;
-
-    public CancerInfo(String summary) {
-        this.summary = summary;
-    }
-
-    public CancerInfo(Long id) {
-        this.id = id;
-    }
 }

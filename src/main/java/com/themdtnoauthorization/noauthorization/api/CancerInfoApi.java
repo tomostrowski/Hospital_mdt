@@ -89,7 +89,7 @@ public class CancerInfoApi {
     @PatchMapping("/{id}/size={size}")
     public ResponseEntity<String> changeSize(@PathVariable Long id, @PathVariable int size){
         CancerInfo cancerInfo = findById(id).get();
-        cancerInfo.setSize(size);
+//        cancerInfo.setSize(size);
         cancerInfoManager.save(cancerInfo);
         return ResponseEntity.ok().body("size has been changed to "+size+" mm.");
     }

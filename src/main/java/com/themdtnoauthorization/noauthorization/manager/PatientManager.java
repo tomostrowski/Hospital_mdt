@@ -32,7 +32,9 @@ public class PatientManager {
     }
 
     public Patient update(Long id, Patient updatedPatient) {
+        Patient before = findById(id).orElseThrow(()-> new RuntimeException("Patient with this id not found."));
         updatedPatient.setId(id);
+        updatedPatient.setDiseases(before.getDiseases());
         return patientRepo.save(updatedPatient);
     }
 
@@ -229,7 +231,7 @@ public class PatientManager {
             model.setSuperior(cancerInfo.getSuperior());
             model.setInferior(cancerInfo.getInferior());
             model.setMedial(cancerInfo.getMedial());
-            model.setLateral(cancerInfo.getLateral());
+            model.setLateralMargin(cancerInfo.getLateralMargin());
             model.setMc(cancerInfo.getMc());
             model.setMp(cancerInfo.getMp());
             model.setNc(cancerInfo.getNc());
@@ -283,7 +285,7 @@ public class PatientManager {
                 model.setLocationOfTreatment(mdt.getLocationOfTreatment());
                 model.setDateOfReferralForMDT(mdt.getDateOfReferralForMDT());
                 model.setComments(getComments(mdt));
-                model.setIsOpen(mdt.getIsOpen());
+//                model.setIsOpen(mdt.getIsOpen());
                 mdtModelSet.add(model);
             }
             return mdtModelSet;

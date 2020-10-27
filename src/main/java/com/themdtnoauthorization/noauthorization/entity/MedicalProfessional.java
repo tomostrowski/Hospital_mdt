@@ -31,6 +31,9 @@ public class MedicalProfessional {
     @OneToMany(cascade = {CascadeType.ALL})
     private Set<Comment> comments;
 
+    @OneToOne
+    private User user;
+
     public MedicalProfessional(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;

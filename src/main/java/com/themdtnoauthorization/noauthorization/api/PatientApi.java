@@ -10,6 +10,8 @@ import com.themdtnoauthorization.noauthorization.manager.PatientManager;
 import com.themdtnoauthorization.noauthorization.model.DiseaseModel;
 import com.themdtnoauthorization.noauthorization.model.PatientListModel;
 import com.themdtnoauthorization.noauthorization.model.PatientModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +38,8 @@ public class PatientApi {
 
     @GetMapping("/{id}")
     public PatientModel getPatientById(@PathVariable Long id){
+        final Logger logger = LoggerFactory.getLogger(PatientApi.class);
+        logger.info(">>>>>>> Pobrany pacjent z id "+id);
         return patientManager.getPatient(id);
     }
 
@@ -53,8 +57,17 @@ public class PatientApi {
     public Set<PatientListModel> findByIdNumber(@PathVariable String idNumber){
         return patientManager.findByIdNumber(idNumber);
     }
+    @RequestMapping(value="/options", method=RequestMethod.OPTIONS)
+    public Set<PatientListModel> getPatientListOptions(){
+        final Logger logger = LoggerFactory.getLogger(PatientApi.class);
+        logger.info(">>>>>>> Pobrani wszyscy pacjenci. ");
+        return patientManager.getPatientList();
+    }
+
     @GetMapping("/all")
     public Set<PatientListModel> getPatientList(){
+        final Logger logger = LoggerFactory.getLogger(PatientApi.class);
+        logger.info(">>>>>>> Pobrani wszyscy pacjenci. ");
         return patientManager.getPatientList();
     }
 

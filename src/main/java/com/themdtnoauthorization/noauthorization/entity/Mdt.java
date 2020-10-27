@@ -20,7 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Entity
-@Table(name="mdt")
+@Table()
 public class Mdt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Mdt {
     private LocalDate endDate;
     private String locationOfTreatment;
     private String affiliation;
-    private String isOpen; //zmienić na boolean
+//    private String isOpen; //zmienić na boolean
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Disease disease;

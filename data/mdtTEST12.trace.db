@@ -26,3 +26,15 @@ DELETE * FROM MEDICAL_HISTORY WHERE ID =1 [42001-200]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DELETE FROM MEDICAL_HISTORY WHRE ID[*]=97"
 Syntax error in SQL statement "DELETE FROM MEDICAL_HISTORY WHRE ID[*]=97"; SQL statement:
 DELETE FROM MEDICAL_HISTORY WHRE ID=97 [42000-200]
+2020-10-28 12:01:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "CT VARCHAR(255)": "' fd asdf dsf dafdasf asdfasdfasdf fasdf dsafa fsdf adfad fdasf fdfafdafadsf adfaa sdf asdff fas fdsafa sdfa fasdf adfsa dsffdas... (447)"
+Value too long for column "CT VARCHAR(255)": "' fd asdf dsf dafdasf asdfasdfasdf fasdf dsafa fsdf adfad fdasf fdfafdafadsf adfaa sdf asdff fas fdsafa sdfa fasdf adfsa dsffdas... (447)"; SQL statement:
+update imaging set ct=?, mammogram=?, mri=?, other=?, ultrasound=? where id=? [22001-200]
+2020-10-28 12:02:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OTHER VARCHAR(255)": "'fdasf asdfasdfasdf fasdf dsafa fsdf adfad fdasf fdfafdafadsf adfaa sdf asdff fas fdsafa sdfa fasdf adfsa dsf fdasf asdfasdfasdf... (433)"
+Value too long for column "OTHER VARCHAR(255)": "'fdasf asdfasdfasdf fasdf dsafa fsdf adfad fdasf fdfafdafadsf adfaa sdf asdff fas fdsafa sdfa fasdf adfsa dsf fdasf asdfasdfasdf... (433)"; SQL statement:
+update imaging set ct=?, mammogram=?, mri=?, other=?, ultrasound=? where id=? [22001-200]
+2020-10-28 12:03:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "OTHER VARCHAR(255)": "'fdasf asdfasdfasdf fasdf dsafa fsdf adfad fdasf fdfafdafadsf adfaa sdf asdff fas fdsafa sdfa fasdf adfsa dsf fdasf asdfasdfasdf... (433)"
+Value too long for column "OTHER VARCHAR(255)": "'fdasf asdfasdfasdf fasdf dsafa fsdf adfad fdasf fdfafdafadsf adfaa sdf asdff fas fdsafa sdfa fasdf adfsa dsf fdasf asdfasdfasdf... (433)"; SQL statement:
+update imaging set ct=?, mammogram=?, mri=?, other=?, ultrasound=? where id=? [22001-200]

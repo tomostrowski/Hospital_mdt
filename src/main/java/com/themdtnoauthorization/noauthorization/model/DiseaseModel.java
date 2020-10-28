@@ -30,4 +30,7 @@ public class DiseaseModel {
     private Set<MdtModel> mdts;
     private ImagingModel imaging;
 
+    public DiseaseModel(Long id) {
+        this.id = id;
+    }
 }

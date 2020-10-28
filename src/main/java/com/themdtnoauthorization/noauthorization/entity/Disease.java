@@ -21,6 +21,7 @@ public class Disease {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length=1000)
     private String name;
     private LocalDate diagnosisDate;
     private String placeOfDiagnosis;
@@ -52,7 +53,7 @@ public class Disease {
     @OneToOne
     private TreatmentHistory treatmentHistory;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy="disease")
     private Set<Mdt> mdts;
 
     @OneToOne

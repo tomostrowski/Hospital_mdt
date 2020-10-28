@@ -1,0 +1,8 @@
+2020-10-28 15:12:52 jdbc[73]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "SELECT * MDT[*]"
+Syntax error in SQL statement "SELECT * MDT[*]"; SQL statement:
+SELECT * MDT [42000-200]
+2020-10-28 15:45:54 jdbc[73]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "DESEASE" nie istnieje
+Table "DESEASE" not found; SQL statement:
+SELECT * FROM DESEASE [42102-200]

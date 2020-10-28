@@ -120,7 +120,9 @@ public class DiseaseApi {
         Mdt mdt = mdtManager.findById(mdtId)
                 .orElseThrow(()->new RuntimeException("The MDT does't exist"));
         disease.getMdts().add(mdt);
+        mdt.setDisease(disease);
         diseaseManager.save(disease);
+        mdtManager.save(mdt);
         return ResponseEntity.ok().body("The MDT has been added.");
     }
 

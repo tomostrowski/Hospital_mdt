@@ -343,7 +343,7 @@ public class PatientManager {
 //            model.setReferringPhysician(disease.getReferringPhysician().getName());
             return model;
         }
-        else return null;
+        else return new DiseaseModel(0L);
     }
 
 

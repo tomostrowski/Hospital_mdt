@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
                 .cors().and()
-                .authorizeRequests().antMatchers("/login" ,"/api/user/new", "/api/patient/no", "/console/", "/api/hello/test0").permitAll()
+                .authorizeRequests().antMatchers("/login" ,"/api/user/new", "/api/patient/no", "/console/**", "/api/hello/test0").permitAll()
                 .antMatchers("/api/user/all").hasRole("ADMIN")
                 // all other requests need to be authenticated
                         .anyRequest().authenticated().and()
@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // store user's state.
                         .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+        httpSecurity.headers().frameOptions().disable();
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }

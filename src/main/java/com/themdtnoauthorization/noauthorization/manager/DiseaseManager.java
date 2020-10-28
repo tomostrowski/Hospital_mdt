@@ -44,6 +44,11 @@ public class DiseaseManager {
     public Disease update(Long id, Disease update) {
         Disease disease = diseaseRepo.findById(id).orElseThrow(()-> new RuntimeException("Disease not found"));
         update.setPatient(disease.getPatient());
+        update.setImaging(disease.getImaging());
+        update.setCancerInfo(disease.getCancerInfo());
+        update.setReferringPhysician(disease.getReferringPhysician());
+        update.setDiagnosingPhysician(disease.getDiagnosingPhysician());
+        update.setTreatmentHistory(disease.getTreatmentHistory());
         update.setId(id);
         return diseaseRepo.save(update);
     }

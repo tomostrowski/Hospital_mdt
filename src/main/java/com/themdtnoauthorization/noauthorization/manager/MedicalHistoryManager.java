@@ -24,7 +24,9 @@ public class MedicalHistoryManager {
     }
 
     public MedicalHistory update(Long id, MedicalHistory update){
+        MedicalHistory medicalHistory = medicalHistoryRepo.findById(id).orElseThrow(()-> new RuntimeException("Medical History not found."));
         update.setId(id);
+        update.setPatient(medicalHistory.getPatient());
        return medicalHistoryRepo.save(update);
     }
 

@@ -29,17 +29,4 @@ public class TreatmentHistory {
     @OneToOne
     private Disease disease;
 
-    public TreatmentHistory(Long id) {
-        this.id = id;
-    }
-    public TreatmentHistory(String biopsy, String surgery, String radiotherapy, String endocrineTreatment, String chemotherapy, String immunotherapy, String physiotherapy, String other) {
-        this.biopsy = biopsy;
-        this.surgery = surgery;
-        this.radiotherapy = radiotherapy;
-        this.endocrineTreatment = endocrineTreatment;
-        this.chemotherapy = chemotherapy;
-        this.immunotherapy = immunotherapy;
-        this.physiotherapy = physiotherapy;
-        this.other = other;
-    }
 }

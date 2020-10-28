@@ -21,13 +21,8 @@ public class MedicalHistory {
     private String allergies;
     private String performanceStatus;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Patient patient;
 
-    public MedicalHistory(String familyHistory, String medication, String allergies, String performanceStatus) {
-        this.familyHistory = familyHistory;
-        this.medication = medication;
-        this.allergies = allergies;
-        this.performanceStatus = performanceStatus;
-    }
+
 }

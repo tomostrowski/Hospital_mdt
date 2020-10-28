@@ -27,7 +27,7 @@ public class Comment {
     private LocalDate dateOfEditing;
 
     @ManyToOne
-    private MedicalProfessional author;
+    private User author;
 
     @ManyToOne
     private Disease disease;

@@ -5,6 +5,7 @@ import com.themdtnoauthorization.noauthorization.dao.MdtRepo;
 import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.Mdt;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
+import com.themdtnoauthorization.noauthorization.entity.User;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalModel;
 import org.springframework.http.ResponseEntity;
@@ -59,16 +60,16 @@ public class MdtManager {
         } else return new LinkedHashSet<>();
     }
 
-    public MedicalProfessionalModel getAuthor(Comment comment){
-        MedicalProfessional author = comment.getAuthor();
-        if (author != null){
-            MedicalProfessionalModel model = new MedicalProfessionalModel();
-            model.setId(author.getId());
-            model.setFirstName(author.getFirstName());
-            model.setLastName(author.getLastName());
-            return model;
-        } else return null;
-    }
+//    public MedicalProfessionalModel getAuthor(Comment comment){
+//        User author = comment.getAuthor();
+//        if (author != null){
+//            MedicalProfessionalModel model = new MedicalProfessionalModel();
+//            model.setId(author.getId());
+//            model.setFirstName(author.getFirstName());
+//            model.setLastName(author.getLastName());
+//            return model;
+//        } else return null;
+//    }
 
     public ResponseEntity<String> setEndDate(Long id, LocalDate endDate) {
         Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));

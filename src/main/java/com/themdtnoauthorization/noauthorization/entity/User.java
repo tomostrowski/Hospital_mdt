@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -22,12 +24,16 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
     private String password;
-
+    @Formula("concat(LAST_NAME,' ',FIRST_NAME)")
+    private String name;
     private String username;
     private String role;
 
     @OneToOne(cascade = {CascadeType.ALL}, mappedBy="user")
     private MedicalProfessional medicalProfessional;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    private Set<Comment> comments;
 
 }
 

@@ -2,8 +2,10 @@ package com.themdtnoauthorization.noauthorization.api;
 
 import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
+import com.themdtnoauthorization.noauthorization.entity.User;
 import com.themdtnoauthorization.noauthorization.manager.CommentManager;
 import com.themdtnoauthorization.noauthorization.manager.MedicalProfessionalManager;
+import com.themdtnoauthorization.noauthorization.manager.UserManager;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +16,12 @@ import java.util.Optional;
 @RequestMapping("/api/comment")
 @CrossOrigin
 public class CommentApi {
-    private CommentManager commentManager;
-    private MedicalProfessionalManager medicalProfessionalManager;
+    private final CommentManager commentManager;
+    private final UserManager userManager;
 
-    public CommentApi(CommentManager commentManager, MedicalProfessionalManager medicalProfessionalManager) {
+    public CommentApi(CommentManager commentManager, UserManager userManager) {
         this.commentManager = commentManager;
-        this.medicalProfessionalManager = medicalProfessionalManager;
+        this.userManager = userManager;
     }
 
     @GetMapping("/{id}")
@@ -39,7 +41,7 @@ public class CommentApi {
 
     @PostMapping("/new")
     public Comment addNew(@RequestBody Comment comment){
-        return commentManager.save(comment);
+        return commentManager.create(comment);
     }
 
     @DeleteMapping("/{id}")
@@ -59,8 +61,7 @@ public class CommentApi {
     @PatchMapping("/{id}/author={authorId}")
     public ResponseEntity<String> setAuthor(@PathVariable Long id, @PathVariable Long authorId){
         Comment comment = commentManager.findById(id).orElseThrow(()-> new RuntimeException("Comment does not exist."));
-        MedicalProfessional author = medicalProfessionalManager.findById(authorId).orElseThrow(()-> new RuntimeException("Author does not exist."));
-//        commentManager.setAuthor(id, authorId);
+        User author = userManager.findById(authorId);
         comment.setAuthor(author);
         commentManager.save(comment);
         return ResponseEntity.ok().body("Author has been added to comment.");

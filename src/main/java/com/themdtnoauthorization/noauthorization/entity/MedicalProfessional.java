@@ -28,9 +28,6 @@ public class MedicalProfessional {
     private String professionalNumber;
     private String specialisation;
 
-    @OneToMany(cascade = {CascadeType.ALL})
-    private Set<Comment> comments;
-
     @OneToOne
     private User user;
 

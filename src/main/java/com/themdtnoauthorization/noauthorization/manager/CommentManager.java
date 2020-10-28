@@ -2,11 +2,15 @@ package com.themdtnoauthorization.noauthorization.manager;
 
 import com.themdtnoauthorization.noauthorization.dao.CommentRepo;
 import com.themdtnoauthorization.noauthorization.dao.MedicalProfessionalRepo;
+import com.themdtnoauthorization.noauthorization.dao.UserRepo;
 import com.themdtnoauthorization.noauthorization.entity.Comment;
 import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
+import com.themdtnoauthorization.noauthorization.entity.User;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,16 +21,29 @@ import java.util.Set;
 
 @Service
 public class CommentManager {
-    private CommentRepo commentRepo;
-    private MedicalProfessionalRepo medicalProfessionalRepo;
+    private final CommentRepo commentRepo;
+    private final UserRepo userRepo;
 
-    public CommentManager(CommentRepo commentRepo) {
+//    public CommentManager(CommentRepo commentRepo) {
+//        this.commentRepo = commentRepo;
+//    }
+
+    public CommentManager(CommentRepo commentRepo, UserRepo userRepo) {
         this.commentRepo = commentRepo;
+        this.userRepo = userRepo;
     }
 
     public Comment save(Comment comment){
         return commentRepo.save(comment);
     }
+
+    public Comment create(Comment comment){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userRepo.findUserByEmail(auth.getName()).orElseThrow(()-> new RuntimeException("User not found."));
+        comment.setAuthor(user);
+        return commentRepo.save(comment);
+    }
+
 
     public Optional<Comment> findById(Long id){
         return commentRepo.findById(id);

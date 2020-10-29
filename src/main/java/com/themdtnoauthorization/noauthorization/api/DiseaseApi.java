@@ -41,7 +41,7 @@ public class DiseaseApi {
     }
 
     @GetMapping("/{id}/all")
-    public Iterable<MdtListModel> getListForDisease(Long id){
+    public Iterable<MdtListModel> getListForDisease(@PathVariable Long id){
         return mdtManager.getMdtListForDisease(id);
     }
 

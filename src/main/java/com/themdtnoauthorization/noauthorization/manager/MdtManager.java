@@ -2,12 +2,11 @@ package com.themdtnoauthorization.noauthorization.manager;
 
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.themdtnoauthorization.noauthorization.dao.MdtRepo;
-import com.themdtnoauthorization.noauthorization.entity.Comment;
-import com.themdtnoauthorization.noauthorization.entity.Mdt;
-import com.themdtnoauthorization.noauthorization.entity.MedicalProfessional;
-import com.themdtnoauthorization.noauthorization.entity.User;
+import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
+import com.themdtnoauthorization.noauthorization.model.MdtListModel;
 import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalModel;
+import com.themdtnoauthorization.noauthorization.model.PatientListModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -99,6 +98,29 @@ public class MdtManager {
         mdtRepo.save(mdt);
         return ResponseEntity.ok().body("End Date of the MDT has been set to "+reviewDate);
     }
+
+    public Iterable<MdtListModel> getMdtList() {
+            Set<Mdt> mdtSet = new LinkedHashSet<>(mdtRepo.findAll());
+            if (mdtSet.size() > 0) {
+                Set<MdtListModel> mdtListModels = new LinkedHashSet<>();
+                for (Mdt mdt : mdtSet) {
+                    MdtListModel model = new MdtListModel();
+                    model.setId(mdt.getId());
+                    model.setSummary(mdt.getSummary());
+                    model.setAdditionalComments(mdt.getAdditionalComments());
+                    model.setAffiliation(mdt.getAffiliation());
+                    model.setDateOfReferralForMDT(mdt.getDateOfReferralForMDT());
+                    model.setEndDate(mdt.getEndDate());
+                    model.setLocationOfTreatment(mdt.getLocationOfTreatment());
+                    model.setReviewDate(mdt.getReviewDate());
+                    model.setStartDate(mdt.getStartDate());
+
+                    mdtListModels.add(model);
+                }
+                return mdtListModels;
+            } else return new LinkedHashSet<MdtListModel>();
+        }
+
 
 //    @EventListener(ApplicationReadyEvent.class)
 //     void fillDB(){

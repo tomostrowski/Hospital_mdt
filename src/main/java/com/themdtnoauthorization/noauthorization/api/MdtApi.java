@@ -9,6 +9,8 @@ import com.themdtnoauthorization.noauthorization.manager.DiseaseManager;
 import com.themdtnoauthorization.noauthorization.manager.InstitutionManager;
 import com.themdtnoauthorization.noauthorization.manager.MdtManager;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
+import com.themdtnoauthorization.noauthorization.model.MdtListModel;
+import com.themdtnoauthorization.noauthorization.model.PatientListModel;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +41,8 @@ public class MdtApi {
     }
 
     @GetMapping("/all")
-    public Iterable<Mdt> findAll(){
-        return mdtManager.findAll();
+    public Iterable<MdtListModel> findAll(){
+        return mdtManager.getMdtList();
     }
 
     @GetMapping("{id}/comments")

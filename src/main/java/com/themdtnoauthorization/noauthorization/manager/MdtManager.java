@@ -141,7 +141,7 @@ public class MdtManager {
                 model.setLocationOfTreatment(mdt.getLocationOfTreatment());
                 model.setReviewDate(mdt.getReviewDate());
                 model.setStartDate(mdt.getStartDate());
-
+                model.setComments(getCommentsForMdt(mdt));
                 mdtListModels.add(model);
             }
             return mdtListModels;
@@ -149,6 +149,22 @@ public class MdtManager {
 
     }
 
+    public Set<CommentModel> getCommentsForMdt(Mdt mdt) {
+        if (mdt.getComments().size() > 0) {
+            Set<CommentModel> commentListModels = new LinkedHashSet<>();
+            for (Comment comment : mdt.getComments()) {
+                CommentModel model = new CommentModel();
+                model.setId(comment.getId());
+                model.setDate(comment.getDate());
+                model.setDateOfEditing(comment.getDateOfEditing());
+                model.setAuthor(comment.getAuthor().getName());
+                model.setText(comment.getText());
+                commentListModels.add(model);
+            }
+            return commentListModels;
+        } else return new LinkedHashSet<CommentModel>();
+
+    }
 
 //    @EventListener(ApplicationReadyEvent.class)
 //     void fillDB(){

@@ -40,7 +40,7 @@ public class DiseaseApi {
         return diseaseManager.findAll();
     }
 
-    @GetMapping("/{id}/all")
+    @GetMapping("/{id}/mdts")
     public Iterable<MdtListModel> getListForDisease(@PathVariable Long id){
         return mdtManager.getMdtListForDisease(id);
     }

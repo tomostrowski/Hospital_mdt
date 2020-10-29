@@ -22,6 +22,7 @@ public class MdtListModel {
         private String additionalComments;
         private LocalDate startDate;  //and time
         private LocalDate endDate;
+        private Set<CommentModel> comments;
 //        private Set<MedicalProfessionalModel> attendees;
 //        private Set<CommentModel> comments;
         private String affiliation;

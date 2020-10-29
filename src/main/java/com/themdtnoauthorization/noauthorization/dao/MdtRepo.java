@@ -9,5 +9,5 @@ import java.util.Set;
 
 @Repository
 public interface MdtRepo extends JpaRepository<Mdt, Long> {
-    Set<Mdt> findMdtByDisease(Disease disease);
+    Set<Mdt> findMdtsByDisease(Disease disease);
 }

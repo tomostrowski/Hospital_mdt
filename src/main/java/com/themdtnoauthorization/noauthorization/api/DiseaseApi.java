@@ -2,6 +2,7 @@ package com.themdtnoauthorization.noauthorization.api;
 
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.manager.*;
+import com.themdtnoauthorization.noauthorization.model.MdtListModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,11 @@ public class DiseaseApi {
     @GetMapping("/all")
     public Iterable<Disease> findAll() {
         return diseaseManager.findAll();
+    }
+
+    @GetMapping("/{id}/all")
+    public Iterable<MdtListModel> getListForDisease(Long id){
+        return mdtManager.getMdtListForDisease(id);
     }
 
     @DeleteMapping("{id}")

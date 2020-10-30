@@ -1,0 +1,4 @@
+2020-10-30 14:58:00 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "SUMMARY VARCHAR(255)": "STRINGDECODE(' For the best diagnostic results, you need an MRI second opinion. Studies have found that not every radiologist wi... (1000)"
+Value too long for column "SUMMARY VARCHAR(255)": "STRINGDECODE(' For the best diagnostic results, you need an MRI second opinion. Studies have found that not every radiologist wi... (1000)"; SQL statement:
+update cancer_info set mc=?, mp=?, nc=?, np=?, tc=?, tp=?, biomarkers=?, dcis=?, disease_id=?, grade=?, inferior=?, ki67=?, lateral_margin=?, medial=?, positive_lymph_nodes=?, size=?, summary=?, superior=?, type=?, type_other=?, up_ten=? where id=? [22001-200]

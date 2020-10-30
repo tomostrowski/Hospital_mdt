@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
 import com.themdtnoauthorization.noauthorization.dao.MdtRepo;
 import com.themdtnoauthorization.noauthorization.entity.*;
-import com.themdtnoauthorization.noauthorization.model.CommentModel;
-import com.themdtnoauthorization.noauthorization.model.MdtListModel;
-import com.themdtnoauthorization.noauthorization.model.MedicalProfessionalModel;
-import com.themdtnoauthorization.noauthorization.model.PatientListModel;
+import com.themdtnoauthorization.noauthorization.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -87,9 +84,9 @@ public class MdtManager {
         return ResponseEntity.ok().body("Summary has been set.");
     }
 
-    public ResponseEntity<String> setSummaryAdnEndDateNow(Long id, TextNode nodeSummary) {
+    public ResponseEntity<String> setSummaryAdnEndDateNow(Long id, SummarySingleModel summary) {
         Mdt mdt =findById(id).orElseThrow(()-> new RuntimeException("Mdt does not exist."));
-        mdt.setSummary(nodeSummary.asText());
+        mdt.setSummary(summary.getSummary());
         mdt.setEndDate(LocalDate.now());
         mdtRepo.save(mdt);
         return ResponseEntity.ok().body("Summary has been set and the MDT has been closed today.");

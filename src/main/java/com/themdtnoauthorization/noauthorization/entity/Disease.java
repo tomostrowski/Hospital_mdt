@@ -7,9 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -54,7 +52,7 @@ public class Disease {
     private TreatmentHistory treatmentHistory;
 
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy="disease")
-    private Set<Mdt> mdts;
+    private List<Mdt> mdts;
 
     @OneToOne
     private Imaging imaging;

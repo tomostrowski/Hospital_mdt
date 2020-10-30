@@ -23,9 +23,7 @@ public class Comment {
     private Long id;
     @Column(length=1000)
     private String text;
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime date;
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateOfEditing;
 
     @ManyToOne

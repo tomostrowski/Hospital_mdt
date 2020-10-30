@@ -11,6 +11,7 @@ import com.themdtnoauthorization.noauthorization.manager.MdtManager;
 import com.themdtnoauthorization.noauthorization.model.CommentModel;
 import com.themdtnoauthorization.noauthorization.model.MdtListModel;
 import com.themdtnoauthorization.noauthorization.model.PatientListModel;
+import com.themdtnoauthorization.noauthorization.model.SummarySingleModel;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -143,7 +144,7 @@ public class MdtApi {
     }
 
     @PatchMapping("/{id}/summaryAndEndDateNow")
-    public ResponseEntity<String> setSummaryAndEndDateNow(@PathVariable Long id, @RequestBody TextNode summary){
+    public ResponseEntity<String> setSummaryAndEndDateNow(@PathVariable Long id, @RequestBody SummarySingleModel summary){
         return mdtManager.setSummaryAdnEndDateNow(id, summary);
     }
 

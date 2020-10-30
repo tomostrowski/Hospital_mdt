@@ -93,7 +93,6 @@ public class CancerInfoApi {
         cancerInfoManager.save(cancerInfo);
         return ResponseEntity.ok().body("size has been changed to "+size+" mm.");
     }
-//
 //    @PatchMapping("/{id}/margins={margins}")
 //    public ResponseEntity<String> changeMargins(@PathVariable Long id, @PathVariable String margins){
 //        CancerInfo cancerInfo = findById(id).get();

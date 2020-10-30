@@ -24,3 +24,7 @@ The connection was not closed by the application and is garbage collected [90018
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 18 more
+2020-10-29 23:15:44 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Wartość za długa dla kolumny "CT VARCHAR(1000)": "' gfds sdfg fdsg sdfg sdfgsdffsd fadsfasdfadfasdfasdfasdfafadsfasdfadfasdfasdfasdfafadsfasdfadfasdfasdfasdfafadsfasdfadfasdfasdf... (2769)"
+Value too long for column "CT VARCHAR(1000)": "' gfds sdfg fdsg sdfg sdfgsdffsd fadsfasdfadfasdfasdfasdfafadsfasdfadfasdfasdfasdfafadsfasdfadfasdfasdfasdfafadsfasdfadfasdfasdf... (2769)"; SQL statement:
+update imaging set ct=?, mammogram=?, mri=?, other=?, ultrasound=? where id=? [22001-200]

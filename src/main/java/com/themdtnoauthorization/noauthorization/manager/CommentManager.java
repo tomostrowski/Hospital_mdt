@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +42,7 @@ public class CommentManager {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepo.findUserByEmail(auth.getName()).orElseThrow(()-> new RuntimeException("User not found."));
         comment.setAuthor(user);
+        comment.setDate(LocalDateTime.now());
         return commentRepo.save(comment);
     }
 
@@ -60,7 +62,7 @@ public class CommentManager {
     public void changeCommentText(Long id, String text) {
         Comment comment = findById(id).orElseThrow(()-> new RuntimeException("Comment does not exist."));
         comment.setText(text);
-        comment.setDateOfEditing(LocalDate.now());
+        comment.setDateOfEditing(LocalDateTime.now());
         save(comment);
     }
 

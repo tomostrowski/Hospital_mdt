@@ -1,14 +1,14 @@
 package com.themdtnoauthorization.noauthorization.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -23,8 +23,10 @@ public class Comment {
     private Long id;
     @Column(length=1000)
     private String text;
-    private LocalDate date;
-    private LocalDate dateOfEditing;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime date;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dateOfEditing;
 
     @ManyToOne
     private User author;

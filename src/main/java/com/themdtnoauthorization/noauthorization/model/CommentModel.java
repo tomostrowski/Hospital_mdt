@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
 public class CommentModel {
     private Long id;
     private String text;
-    private LocalDate date;   //z mienić na LocalDateTime  z czasem
+    private LocalDateTime date;   //z mienić na LocalDateTime  z czasem
     private String author;
 //    private DiseaseModel disease;
 //    private MdtModel mdt;
     private String wasEdited; //zmienic na Boolean
-    private LocalDate dateOfEditing;
+    private LocalDateTime dateOfEditing;
 }

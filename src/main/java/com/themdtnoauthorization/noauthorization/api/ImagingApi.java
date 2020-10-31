@@ -31,6 +31,6 @@ public class ImagingApi {
     @PutMapping("/{id}")
     public ResponseEntity<String> updateImaging(@RequestBody Imaging imagingToUpdate, @PathVariable Long id) {
         imagingManager.update(id, imagingToUpdate);
-        return ResponseEntity.ok("Imaging has been updated.");
+        return ResponseEntity.ok().body("Imaging has been updated.");
     }
 }

@@ -56,6 +56,15 @@ public class MdtApi {
         return mdtManager.save(mdt);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Mdt update){
+        Mdt mdt = mdtManager.findById(id).orElseThrow(()-> new RuntimeException("Mdt not found."));
+        update.setId(mdt.getId());
+        update.setDisease(mdt.getDisease());
+        mdtManager.save(update);
+        return ResponseEntity.ok().body("Imaging has been updated.");
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         mdtManager.deleteById(id);

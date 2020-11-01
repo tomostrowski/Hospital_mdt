@@ -16,8 +16,10 @@ import javax.persistence.*;
 public class Imaging {
     @Id
     private Long id;
+
     @Column(length=1000)
     private String mammogram;
+
     @Column(length=1000)
     private String ultrasound;
     @Column(length=1000)

@@ -28,7 +28,7 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "api/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         final Logger logger = LoggerFactory.getLogger(JwtAuthenticationController.class);
         logger.info(">>>>>>> Próba logowania username = "+authenticationRequest.getUsername());

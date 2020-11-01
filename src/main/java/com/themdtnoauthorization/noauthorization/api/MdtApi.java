@@ -62,7 +62,7 @@ public class MdtApi {
         update.setId(mdt.getId());
         update.setDisease(mdt.getDisease());
         mdtManager.save(update);
-        return ResponseEntity.ok().body("Imaging has been updated.");
+        return ResponseEntity.ok().body("MDT has been updated.");
     }
 
     @DeleteMapping("/{id}")

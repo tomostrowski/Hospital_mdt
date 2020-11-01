@@ -24,7 +24,7 @@ public class ImagingApi {
     }
 
     @GetMapping("/{id}")
-    public Imaging findById(Long id){
+    public Imaging findById(@PathVariable Long id){
         return imagingManager.findById(id).orElseThrow(()-> new RuntimeException("Imaging does not exist."));
     }
 

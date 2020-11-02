@@ -17,21 +17,21 @@ public class TreatmentHistory {
 
     @Id
     private Long id;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String biopsy;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String surgery;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String radiotherapy;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String endocrineTreatment;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String chemotherapy;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String immunotherapy;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String physiotherapy;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String other;
 
     @OneToOne

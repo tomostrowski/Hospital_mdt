@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
@@ -15,15 +16,16 @@ import javax.persistence.*;
 public class MedicalHistory {
     @Id
     private Long id;
-    @Column(length=1000)
+
+    @Column(columnDefinition="TEXT")
     private String familyHistory;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String medicalHistory;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String medication;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String allergies;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String performanceStatus;
 
     @OneToOne

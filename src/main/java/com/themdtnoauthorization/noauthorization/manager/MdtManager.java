@@ -5,6 +5,7 @@ import com.themdtnoauthorization.noauthorization.dao.DiseaseRepo;
 import com.themdtnoauthorization.noauthorization.dao.MdtRepo;
 import com.themdtnoauthorization.noauthorization.entity.*;
 import com.themdtnoauthorization.noauthorization.model.*;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -100,7 +101,7 @@ public class MdtManager {
     }
 
     public Iterable<MdtListModel> getMdtList() {
-            Set<Mdt> mdtSet = new LinkedHashSet<>(mdtRepo.findAll());
+            Set<Mdt> mdtSet = new LinkedHashSet<>(mdtRepo.findAll(Sort.by(Sort.Direction.ASC, "endDate")));
             if (mdtSet.size() > 0) {
                 Set<MdtListModel> mdtListModels = new LinkedHashSet<>();
                 for (Mdt mdt : mdtSet) {
@@ -114,7 +115,8 @@ public class MdtManager {
                     model.setLocationOfTreatment(mdt.getLocationOfTreatment());
                     model.setReviewDate(mdt.getReviewDate());
                     model.setStartDate(mdt.getStartDate());
-
+                    if(mdt.getDisease() != null) model.setDiseaseName(mdt.getDisease().getName());
+                    if(mdt.getDisease() != null) model.setPatientName(mdt.getDisease().getPatient().getGivenName()+" "+mdt.getDisease().getPatient().getSurname());
                     mdtListModels.add(model);
                 }
                 return mdtListModels;

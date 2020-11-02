@@ -19,7 +19,7 @@ public class Disease {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String name;
     private LocalDate diagnosisDate;
     private String placeOfDiagnosis;

@@ -26,10 +26,10 @@ public class Mdt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate dateOfReferralForMDT;
-    @Column(length = 1000)
+    @Column(columnDefinition="TEXT")
     private String summary;
     private LocalDate reviewDate;
-    @Column(length = 1000)
+    @Column(columnDefinition="TEXT")
     private String additionalComments;
     private LocalDate startDate;  //and time
     private LocalDate endDate;

@@ -17,16 +17,16 @@ public class Imaging {
     @Id
     private Long id;
 
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String mammogram;
 
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String ultrasound;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String ct;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String mri;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String other;
 
     @OneToOne(mappedBy = "imaging")

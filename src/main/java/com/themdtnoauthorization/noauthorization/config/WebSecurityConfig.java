@@ -55,12 +55,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
                 .cors().and()
-                .authorizeRequests().antMatchers("/api/login" ,"/api/user/new", "/api/patient/no", "/console/**", "/api/hello/test0", "/v2/api-docs",
-                "/configuration/ui",
-                "/swagger-resources/**",
-                "/configuration/security",
-                "/swagger-ui.html",
-                "/webjars/**").permitAll()
+                .authorizeRequests().antMatchers("/api/login" ,"/api/user/new", "/api/patient/no", "/console/**", "/api/hello/test0", "/api/v2/api-docs",
+                "/api/configuration/ui",
+                "/api/swagger-resources/**",
+                "/api/configuration/security",
+                "/api/swagger*/**",
+                "/api/webjars/**").permitAll()
                 .antMatchers("/api/user/all").hasRole("ADMIN")
                 // all other requests need to be authenticated
                         .anyRequest().authenticated().and()

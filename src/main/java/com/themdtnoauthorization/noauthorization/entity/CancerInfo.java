@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class CancerInfo {
     @Id
     private Long id;
-    @Column(length=1000)
+    @Column(columnDefinition="TEXT")
     private String summary;
     private String Tc;   //c for clinical
     private String Nc;

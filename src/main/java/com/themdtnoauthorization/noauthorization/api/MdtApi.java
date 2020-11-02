@@ -46,6 +46,11 @@ public class MdtApi {
         return mdtManager.getMdtList();
     }
 
+    @GetMapping("/list")
+    public Iterable<MdtListModel> listOfAll(){
+        return mdtManager.getMdtList();
+    }
+
     @GetMapping("{id}/comments")
     public Set<CommentModel> getAllCommentsById(@PathVariable Long id){
         return mdtManager.getAllCommentsById(id);

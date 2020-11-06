@@ -32,13 +32,15 @@ public class JwtUserDetailsService implements UserDetailsService {
 
         User user = userManager.findUserByUsername(username).orElseThrow(() -> new RuntimeException("User not found.")); //zmieniłem email
         final Logger logger = LoggerFactory.getLogger(JwtUserDetailsService.class);
-        logger.info(">>>>>>> user email = "+user.getEmail() + " , username = "+user.getUsername() + " , password = " +user.getPassword()+ " , role = "+user.getRole());
+        logger.info(">>>>>>> user email = "+user.getEmail() + " , username = "+user.getUsername() + " , password = " +user.getPassword()+ " , isEnabled = "+user.isEnabled()+", role = "+user.getRole());
         List<GrantedAuthority> roleList = new ArrayList<GrantedAuthority>();
 
         roleList.add(new SimpleGrantedAuthority("ROLE_"+user.getRole()));
 
 //        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), roleList);
-        return new CustomUser(user.getUsername(), user.getPassword(), roleList, user.getId());
+
+//        (String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities, Long id)
+        return new CustomUser(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, roleList, user.getId());
 
     }
 }

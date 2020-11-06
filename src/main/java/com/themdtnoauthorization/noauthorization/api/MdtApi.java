@@ -66,6 +66,7 @@ public class MdtApi {
         Mdt mdt = mdtManager.findById(id).orElseThrow(()-> new RuntimeException("Mdt not found."));
         update.setId(mdt.getId());
         update.setDisease(mdt.getDisease());
+        update.setComments(mdt.getComments());
         mdtManager.save(update);
         return ResponseEntity.ok().body("MDT has been updated.");
     }

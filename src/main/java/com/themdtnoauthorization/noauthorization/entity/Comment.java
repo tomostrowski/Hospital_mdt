@@ -30,9 +30,6 @@ public class Comment {
     private User author;
 
     @ManyToOne
-    private Disease disease;
-
-    @ManyToOne
     private Mdt mdt;
 
 }

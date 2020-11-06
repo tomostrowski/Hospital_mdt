@@ -14,6 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 
 @RestController
@@ -29,9 +30,7 @@ public class UserApi {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<String> addNewUser(@RequestBody User user){
-        return userManager.createNewUser(user);
-    }
+    public ResponseEntity<String> addNewUser(HttpServletRequest request, @RequestBody User user) { return userManager.createNewUser(request, user); }
 
     @GetMapping("/findByEmail={email}")
     public User findByEmail(@PathVariable String email){
@@ -43,6 +42,19 @@ public class UserApi {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return userManager.findUserByUsername(auth.getName()).orElseThrow(()->new RuntimeException("No user found."));
     }
+
+    @GetMapping("/resetPassword")
+    public ResponseEntity<String> remindPassword(@RequestParam String email){
+        userManager.resetPassword(email);
+        return ResponseEntity.ok().body("Your account has been activated. Please visit the MDT page.");
+    }
+
+    @PostMapping("/confirm")
+    public ResponseEntity<String> confirmAccount(@RequestParam String token){
+        userManager.confirmAccount(token);
+        return ResponseEntity.ok().body("Your password has been sent to you. Please check your email.");
+    }
+
 //    @PreAuthorize("hasRole('USER')")
     @GetMapping("/all")
     public Collection<User> findAll(){
@@ -64,6 +76,15 @@ public class UserApi {
         userManager.save(user);
         return ResponseEntity.ok().body("Role of user "+user.getFirstName()+" "+user.getLastName()+" email:"+user.getUsername()+ " has been changed to "+role);
     }
+
+    @PatchMapping("/{id}/activate")
+    public ResponseEntity<String> setEnabledTrue(@PathVariable Long id){
+        User user = userManager.findById(id);
+        user.setEnabled(true);
+        userManager.save(user);
+        return ResponseEntity.ok().body("Account of user "+user.getFirstName()+" "+user.getLastName()+" has been activated");
+    }
+
 
     @PreAuthorize("hasRole('ADMIN') or authentication.principal.id == #id")
     @PatchMapping("/{id}/setFirstName={firstName}")

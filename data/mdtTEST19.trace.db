@@ -1,0 +1,16 @@
+2020-11-06 14:56:27 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "CONFIRMATION_USER" nie istnieje
+Table "CONFIRMATION_USER" not found; SQL statement:
+SELECT * FROM CONFIRMATION_USER [42102-200]
+2020-11-06 14:56:33 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "CONFIRMATION_USER" nie istnieje
+Table "CONFIRMATION_USER" not found; SQL statement:
+SELECT * FROM CONFIRMATION_USER [42102-200]
+2020-11-06 14:56:35 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "CONFIRMATION_USER" nie istnieje
+Table "CONFIRMATION_USER" not found; SQL statement:
+SELECT * FROM CONFIRMATION_USER [42102-200]
+2020-11-06 15:52:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "SELECT * USER[*]"
+Syntax error in SQL statement "SELECT * USER[*]"; SQL statement:
+SELECT * USER [42000-200]

@@ -28,6 +28,7 @@ public class User {
     private String name;
     private String username;
     private String role;
+    private boolean isEnabled;
 
     @OneToOne(cascade = {CascadeType.ALL}, mappedBy="user")
     private MedicalProfessional medicalProfessional;

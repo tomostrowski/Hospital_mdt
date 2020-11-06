@@ -40,8 +40,10 @@ public class CommentApi {
     }
 
     @PostMapping("/new")
-    public Comment addNew(@RequestBody Comment comment){
-        return commentManager.create(comment);
+    public ResponseEntity<String> addNew(@RequestBody Comment comment){
+
+        commentManager.create(comment);
+        return ResponseEntity.ok().body("Comment has been created");
     }
 
     @DeleteMapping("/{id}")

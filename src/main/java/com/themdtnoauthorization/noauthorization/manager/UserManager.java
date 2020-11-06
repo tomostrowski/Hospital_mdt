@@ -4,6 +4,7 @@ import com.themdtnoauthorization.noauthorization.dao.ConfirmationTokenRepo;
 import com.themdtnoauthorization.noauthorization.dao.UserRepo;
 import com.themdtnoauthorization.noauthorization.entity.ConfirmationToken;
 import com.themdtnoauthorization.noauthorization.entity.User;
+import com.themdtnoauthorization.noauthorization.model.UserModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
@@ -98,5 +99,17 @@ public class UserManager {
             log.info("Error sending email:  "+e.getMessage());
         }
 
+    }
+
+    public UserModel getloggedUserInfo(User user) {
+        UserModel userModel = new UserModel();
+        userModel.setEmail(user.getEmail());
+        userModel.setEnabled(user.isEnabled());
+        userModel.setFirstName(user.getFirstName());
+        userModel.setLastName(user.getLastName());
+        userModel.setUsername(user.getUsername());
+        userModel.setName(user.getName());
+        userModel.setRole(user.getRole());
+       return userModel;
     }
 }

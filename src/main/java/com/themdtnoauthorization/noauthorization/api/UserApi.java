@@ -5,6 +5,7 @@ import com.themdtnoauthorization.noauthorization.entity.User;
 import com.themdtnoauthorization.noauthorization.manager.MedicalProfessionalManager;
 import com.themdtnoauthorization.noauthorization.manager.UserManager;
 import com.themdtnoauthorization.noauthorization.model.CustomUser;
+import com.themdtnoauthorization.noauthorization.model.UserModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,9 +39,10 @@ public class UserApi {
     }
 
     @GetMapping("/loggedUserInfo")
-    public User loggedUserInfo(){
+    public UserModel loggedUserInfo(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return userManager.findUserByUsername(auth.getName()).orElseThrow(()->new RuntimeException("No user found."));
+        User user = userManager.findUserByUsername(auth.getName()).orElseThrow(()->new RuntimeException("No user found."));
+        return userManager.getloggedUserInfo(user);
     }
 
     @GetMapping("/resetPassword")

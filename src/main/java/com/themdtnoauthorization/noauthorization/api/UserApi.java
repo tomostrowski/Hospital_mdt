@@ -77,9 +77,9 @@ public class UserApi {
         return ResponseEntity.ok().body("Role of user "+user.getFirstName()+" "+user.getLastName()+" email:"+user.getUsername()+ " has been changed to "+role);
     }
 
-    @PatchMapping("/{id}/activate")
-    public ResponseEntity<String> setEnabledTrue(@PathVariable Long id){
-        User user = userManager.findById(id);
+    @PatchMapping("/activate")
+    public ResponseEntity<String> setEnabledTrue(@RequestParam String email){
+        User user = userManager.findByEmail(email).orElseThrow(()-> new RuntimeException("There is no user registered with this email"));
         user.setEnabled(true);
         userManager.save(user);
         return ResponseEntity.ok().body("Account of user "+user.getFirstName()+" "+user.getLastName()+" has been activated");

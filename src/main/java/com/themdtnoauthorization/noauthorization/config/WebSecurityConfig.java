@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
                 .cors().and()
-                .authorizeRequests().antMatchers("/api/login" ,"/api/user/new", "/api/user/confirm", "/api/user/resetPassword", "/api/patient/no", "/console/**", "/api/hello/test0", "/api/v2/api-docs",
+                .authorizeRequests().antMatchers("/api/login" ,"/api/user/new", "/api/user/confirm", "/api/user/activate","/api/user/resetPassword", "/api/patient/no", "/console/**", "/api/hello/test0", "/api/v2/api-docs",
                 "/api/configuration/ui",
                 "/api/swagger-resources/**",
                 "/api/configuration/security",

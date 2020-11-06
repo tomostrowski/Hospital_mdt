@@ -52,7 +52,7 @@ public class UserApi {
     @GetMapping("/confirm")
     public ResponseEntity<String> confirmAccount(@RequestParam String token){
         userManager.confirmAccount(token);
-        return ResponseEntity.ok().body("Your password has been sent to you. Please check your email.");
+        return ResponseEntity.ok().body("Your account has been activated. Please log in to the MDT page.");
     }
 
 //    @PreAuthorize("hasRole('USER')")

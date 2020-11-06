@@ -38,12 +38,13 @@ public class CommentManager {
         return commentRepo.save(comment);
     }
 
-    public Comment create(Comment comment){
+    public Long create(Comment comment){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userRepo.findUserByEmail(auth.getName()).orElseThrow(()-> new RuntimeException("User not found."));
         comment.setAuthor(user);
         comment.setDate(LocalDateTime.now());
-        return commentRepo.save(comment);
+        commentRepo.save(comment);
+        return comment.getId();
     }
 
 

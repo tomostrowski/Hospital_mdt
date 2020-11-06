@@ -49,7 +49,7 @@ public class UserApi {
         return ResponseEntity.ok().body("Your account has been activated. Please visit the MDT page.");
     }
 
-    @PostMapping("/confirm")
+    @GetMapping("/confirm")
     public ResponseEntity<String> confirmAccount(@RequestParam String token){
         userManager.confirmAccount(token);
         return ResponseEntity.ok().body("Your password has been sent to you. Please check your email.");

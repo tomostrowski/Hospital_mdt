@@ -36,5 +36,8 @@ public class User {
     @OneToMany(cascade = {CascadeType.ALL})
     private Set<Comment> comments;
 
+    @OneToOne(cascade = {CascadeType.ALL}, mappedBy="user")
+    private ConfirmationToken token;
+
 }
 

@@ -103,6 +103,7 @@ public class UserManager {
 
     public UserModel getloggedUserInfo(User user) {
         UserModel userModel = new UserModel();
+        userModel.setId(user.getId());
         userModel.setEmail(user.getEmail());
         userModel.setEnabled(user.isEnabled());
         userModel.setFirstName(user.getFirstName());

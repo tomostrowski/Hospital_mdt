@@ -113,4 +113,21 @@ public class UserManager {
         userModel.setRole(user.getRole());
        return userModel;
     }
+
+    public void resendActivationLink(HttpServletRequest request, String email) {
+        String appUrl =
+                "http://" + request.getServerName() +
+                        ":" + request.getServerPort() +
+                        "/api/user/confirm?token=";
+        User user = userRepo.findUserByEmail(email).orElseThrow(() -> new RuntimeException("User not found by email"));
+        ConfirmationToken confirmationToken = confirmationTokenRepo.findByUser(user).orElseThrow(()-> new RuntimeException("Can't find confirmation token by user"));
+
+        String link = appUrl+confirmationToken.getConfirmationToken();
+        try{
+            emailService.sendConfirmationEmail(user, link);
+        } catch ( MailException e) {
+            // catch error
+            log.info("Error sending email:  "+e.getMessage());
+        }
+    }
 }

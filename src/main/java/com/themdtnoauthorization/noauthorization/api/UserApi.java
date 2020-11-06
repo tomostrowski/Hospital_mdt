@@ -48,7 +48,13 @@ public class UserApi {
     @GetMapping("/resetPassword")
     public ResponseEntity<String> remindPassword(@RequestParam String email){
         userManager.resetPassword(email);
-        return ResponseEntity.ok().body("Your account has been activated. Please visit the MDT page.");
+        return ResponseEntity.ok().body("Your password has been reset. Please check your email.");
+    }
+
+    @GetMapping("/resendActivationLink")
+    public ResponseEntity<String> resendActivationLink(HttpServletRequest request, @RequestParam String email){
+        userManager.resendActivationLink(request, email);
+        return ResponseEntity.ok().body("The activation link has been resent. Please check your email.");
     }
 
     @GetMapping("/confirm")
